@@ -12,19 +12,19 @@
         android:id="@+id/IvLogo"
         android:layout_width="166dp"
         android:layout_height="173dp"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="44dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.551"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/bodybuilder" />
 
     <EditText
         android:id="@+id/EtDni"
-        android:layout_width="196dp"
+        android:layout_width="wrap_content"
         android:layout_height="43dp"
-        android:layout_marginTop="52dp"
-        android:layout_marginEnd="108dp"
+        android:layout_marginTop="64dp"
+        android:layout_marginEnd="80dp"
         android:ems="10"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
@@ -39,21 +39,23 @@
         android:text="Dni:"
         app:layout_constraintBottom_toBottomOf="@+id/EtDni"
         app:layout_constraintEnd_toStartOf="@+id/EtDni"
+        app:layout_constraintHorizontal_bias="0.824"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/EtDni" />
+        app:layout_constraintTop_toTopOf="@+id/EtDni"
+        app:layout_constraintVertical_bias="0.583" />
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Contrasenya:"
-        app:layout_constraintBottom_toBottomOf="@+id/editText2"
-        app:layout_constraintEnd_toStartOf="@+id/editText2"
+        app:layout_constraintBottom_toBottomOf="@+id/EtContrasenya"
+        app:layout_constraintEnd_toStartOf="@+id/EtContrasenya"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/editText2" />
+        app:layout_constraintTop_toTopOf="@+id/EtContrasenya" />
 
     <EditText
-        android:id="@+id/editText2"
+        android:id="@+id/EtContrasenya"
         android:layout_width="196dp"
         android:layout_height="42dp"
         android:layout_marginBottom="248dp"
@@ -61,7 +63,39 @@
         android:inputType="textPassword"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/EtDni"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/EtDni"
-        app:layout_constraintTop_toBottomOf="@+id/EtDni" />
+        app:layout_constraintTop_toBottomOf="@+id/IvLogo" />
+
+    <Button
+        android:id="@+id/BtRegistre"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Registra't"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.516"
+        app:layout_constraintStart_toEndOf="@+id/BtEntrar"
+        app:layout_constraintTop_toTopOf="@+id/BtEntrar" />
+
+    <Button
+        android:id="@+id/BtEntrar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="35dp"
+        android:layout_marginBottom="120dp"
+        android:text="Entrar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/EtContrasenya"
+        app:layout_constraintStart_toStartOf="@+id/EtContrasenya"
+        app:layout_constraintTop_toBottomOf="@+id/EtContrasenya" />
+
+    <Button
+        android:id="@+id/BtBaixaUsuari"
+        android:layout_width="98dp"
+        android:layout_height="52dp"
+        android:text="Baixa Usuari"
+        app:layout_constraintEnd_toStartOf="@+id/BtEntrar"
+        app:layout_constraintHorizontal_bias="0.587"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/BtEntrar" />
 </androidx.constraintlayout.widget.ConstraintLayout>

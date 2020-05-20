@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AltaUsuariActivity">
+
+    <ScrollView
+        android:id="@+id/scrollView2"
+        android:layout_width="411dp"
+        android:layout_height="507dp"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/LBNomAlta"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Nom" />
+
+            <EditText
+                android:id="@+id/TfNomAlta"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPersonName" />
+
+            <TextView
+                android:id="@+id/LbCognomsAlta"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Cognoms" />
+
+            <EditText
+                android:id="@+id/TfCognomsAlta"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPersonName" />
+
+            <TextView
+                android:id="@+id/LbDniAlta"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Dni" />
+
+            <EditText
+                android:id="@+id/TfDniAlta"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPersonName" />
+
+            <TextView
+                android:id="@+id/LbTelefonAlta"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Telefon" />
+
+            <EditText
+                android:id="@+id/TfTelefonAlta"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPersonName" />
+
+            <TextView
+                android:id="@+id/LbContrasenyaAlta"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Contrasenya" />
+
+            <EditText
+                android:id="@+id/TfContrasenyaAlta"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPassword" />
+
+            <TextView
+                android:id="@+id/LbRepeticioAlta"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Torna a introduir la contrasenya" />
+
+            <EditText
+                android:id="@+id/TfRepeticioAlta"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPassword" />
+
+            <TextView
+                android:id="@+id/LbCodiPostalAlta"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Codi Postal" />
+
+            <EditText
+                android:id="@+id/TfCodiPostalAlta"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPersonName" />
+
+            <TextView
+                android:id="@+id/LbPoblacioAlta"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Poblacio" />
+
+            <EditText
+                android:id="@+id/TfPoblacioAlta"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPersonName" />
+
+            <TextView
+                android:id="@+id/LbIbanAlta"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="IBAN Electronic" />
+
+            <EditText
+                android:id="@+id/TfIbanAlta"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPersonName" />
+
+            <TextView
+                android:id="@+id/LbJornadaAlta"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Jornada" />
+
+            <RadioButton
+                android:id="@+id/RbMatiAlta"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Mati" />
+
+            <RadioButton
+                android:id="@+id/RbTardaAlta"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Tarda" />
+
+            <TextView
+                android:id="@+id/LbCuotaAlta"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Cuota" />
+
+            <EditText
+                android:id="@+id/TfCuotaAlta"
+                android:layout_width="match_parent"
+                android:layout_height="28dp"
+                android:ems="10"
+                android:inputType="textPersonName" />
+
+        </LinearLayout>
+    </ScrollView>
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="404dp"
+        android:layout_height="88dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/scrollView2">
+
+        <Button
+            android:id="@+id/BtAcceptarAlta"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Acceptar" />
+
+        <Button
+            android:id="@+id/BtCancelarAlta"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Cancel·lar" />
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
