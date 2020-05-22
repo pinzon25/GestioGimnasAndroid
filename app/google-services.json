@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "44453804969",
+    "firebase_url": "https://gestiogimnas.firebaseio.com",
+    "project_id": "gestiogimnas",
+    "storage_bucket": "gestiogimnas.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:44453804969:android:dd363a3a1ab5ae2f6de2b8",
+        "android_client_info": {
+          "package_name": "ricard.projecte.gestiogimnasandroid"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "44453804969-s79hu4rilvat11i94gdv63q2vede3uni.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "ricard.projecte.gestiogimnasandroid",
+            "certificate_hash": "dea26748eb6d113fd001dda6487b7f034d1050d4"
+          }
+        },
+        {
+          "client_id": "44453804969-k9dkivmqp2d1mmtnqqut19raaha2eu87.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBqVvHE9UBIZaPMg4TwABYBjWsOqYeEBT8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "44453804969-k9dkivmqp2d1mmtnqqut19raaha2eu87.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

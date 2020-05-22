@@ -14,21 +14,20 @@
         android:layout_height="173dp"
         android:layout_marginTop="44dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.551"
+        app:layout_constraintHorizontal_bias="0.526"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/bodybuilder" />
 
     <EditText
         android:id="@+id/EtDni"
-        android:layout_width="wrap_content"
-        android:layout_height="43dp"
-        android:layout_marginTop="64dp"
-        android:layout_marginEnd="80dp"
+        android:layout_width="196dp"
+        android:layout_height="39dp"
+        android:layout_marginTop="68dp"
         android:ems="10"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.6"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/IvLogo" />
 
@@ -63,9 +62,10 @@
         android:inputType="textPassword"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/EtDni"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/EtDni"
-        app:layout_constraintTop_toBottomOf="@+id/IvLogo" />
+        app:layout_constraintTop_toBottomOf="@+id/EtDni"
+        app:layout_constraintVertical_bias="0.248" />
 
     <Button
         android:id="@+id/BtRegistre"

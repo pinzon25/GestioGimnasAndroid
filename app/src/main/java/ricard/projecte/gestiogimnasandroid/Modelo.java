@@ -145,7 +145,7 @@ public class Modelo {
     }
 
     //Comprobem que la contrassenya i la seva repeticio son iguals.
-    public static boolean comprobaContrassenya(String contrassenya, String repeticio) {
+    public static boolean comprobaContrasenya(String contrassenya, String repeticio) {
         boolean igual = true;
         if (contrassenya.length() >= 12) {
             if (!repeticio.equals(contrassenya)) {
