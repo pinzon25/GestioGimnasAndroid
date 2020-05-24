@@ -1,7 +1,6 @@
 package ricard.projecte.gestiogimnasandroid;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -13,9 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firestore.v1.WriteResult;
 
 import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
@@ -24,7 +21,7 @@ import java.util.Map;
 public class AltaUsuariActivity extends AppCompatActivity {
     private static final String TAG = "AltaUsuariActivity";
     Client client;
-    FirebaseFirestore db = FirebaseFirestore.getInstance();
+    public FirebaseFirestore db = FirebaseFirestore.getInstance();
     Button BtCancelar, BtAcceptar;
     EditText nom, cognoms, dni, telefon, contrasenya, repeticio, codipostal, poblacio, iban, cuota;
     RadioButton jornadamati, jornadatarda;
@@ -45,7 +42,7 @@ public class AltaUsuariActivity extends AppCompatActivity {
         cognoms = findViewById(R.id.TfCognomsAlta);
         dni = findViewById(R.id.TfDniAlta);
         telefon = findViewById(R.id.TfTelefonAlta);
-        contrasenya = findViewById(R.id.TfContrasenyaAlta);
+        contrasenya = findViewById(R.id.TfContrasenya);
         repeticio = findViewById(R.id.TfRepeticioAlta);
         codipostal = findViewById(R.id.TfCodiPostalAlta);
         poblacio = findViewById(R.id.TfPoblacioAlta);
@@ -115,6 +112,8 @@ public class AltaUsuariActivity extends AppCompatActivity {
         data.put("Compte pagament", client.getComptePagament());
         data.put("Jornada acces", client.getJornadaAcces());
         data.put("Cuota", client.getCuota());
+
+        db.collection("Clients").document(client.getNom()).set(data);
 
 
         db.collection("Clients").document(client.getNom()).set(data).addOnSuccessListener(new OnSuccessListener() {

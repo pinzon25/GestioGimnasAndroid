@@ -6,17 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".BaixaUsuariActivity">
 
-    <TextView
-        android:id="@+id/TfContrasenyaAlta"
-        android:layout_width="82dp"
-        android:layout_height="24dp"
-        android:text="Contrasenya"
-        app:layout_constraintBottom_toBottomOf="@+id/TfContrasenyaBaixa"
-        app:layout_constraintEnd_toStartOf="@+id/TfContrasenyaBaixa"
-        app:layout_constraintHorizontal_bias="0.64"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/TfContrasenyaBaixa" />
-
     <EditText
         android:id="@+id/TfDniAlta"
         android:layout_width="wrap_content"
@@ -26,18 +15,10 @@
         android:inputType="textPersonName"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.97"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/IvLogo"
-        app:layout_constraintVertical_bias="0.117" />
-
-    <EditText
-        android:id="@+id/TfContrasenyaBaixa"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="@+id/TfDniAlta"
-        app:layout_constraintTop_toBottomOf="@+id/TfDniAlta" />
+        app:layout_constraintVertical_bias="0.088" />
 
     <TextView
         android:id="@+id/LbDni"
@@ -55,8 +36,8 @@
         android:layout_width="146dp"
         android:layout_height="134dp"
         android:layout_marginTop="100dp"
-        android:layout_marginEnd="132dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/bodybuilder" />
 
@@ -74,12 +55,30 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="72dp"
-        android:layout_marginTop="88dp"
         android:text="Cancel·lar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/BtFinalitzar"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/TfContrasenyaBaixa"
-        app:layout_constraintVertical_bias="0.025" />
+        app:layout_constraintTop_toBottomOf="@+id/TfContrasenya" />
+
+    <EditText
+        android:id="@+id/TfContrasenya"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:ems="10"
+        android:inputType="textPassword"
+        app:layout_constraintEnd_toEndOf="@+id/TfDniAlta"
+        app:layout_constraintTop_toBottomOf="@+id/TfDniAlta" />
+
+    <TextView
+        android:id="@+id/LbContrasenyaBaixa"
+        android:layout_width="84dp"
+        android:layout_height="24dp"
+        android:text="Contrasenya"
+        app:layout_constraintBottom_toBottomOf="@+id/TfContrasenya"
+        app:layout_constraintEnd_toStartOf="@+id/TfContrasenya"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/TfContrasenya" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

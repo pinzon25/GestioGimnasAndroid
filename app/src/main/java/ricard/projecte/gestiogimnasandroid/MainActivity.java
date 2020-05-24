@@ -16,8 +16,6 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
     Client client = null;
     ArrayList<Client> llistaClients = new ArrayList<>();
-    FirebaseInitialize fire = new FirebaseInitialize();
-    FirebaseFirestore db = FirebaseFirestore.getInstance();
     Button entrar, baixa,registrar;
     EditText EtDni, EtContrasenya;
 
