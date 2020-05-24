@@ -1,6 +1,11 @@
 package ricard.projecte.gestiogimnasandroid;
 
-public class Client {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import java.io.Serializable;
+
+public class Client implements Serializable {
 
     private int idClient;
     private String nom;
@@ -41,6 +46,22 @@ public class Client {
         this.jornadaAcces = jornadaAcces;
         this.cuota = cuota;
     }
+
+    protected Client(Parcel in) {
+        idClient = in.readInt();
+        nom = in.readString();
+        cognoms = in.readString();
+        dni = in.readString();
+        contrassenya = in.readString();
+        telefon = in.readLong();
+        poblacio = in.readString();
+        codiPostal = in.readInt();
+        jornadaAcces = in.readString();
+        comptePagament = in.readString();
+        cuota = in.readFloat();
+    }
+
+
 
     public int getIdClient() {
         return idClient;
@@ -129,4 +150,6 @@ public class Client {
     public void setCuota(float cuota) {
         this.cuota = cuota;
     }
+
+
 }

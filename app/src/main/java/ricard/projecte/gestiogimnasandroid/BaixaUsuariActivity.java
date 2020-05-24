@@ -98,7 +98,7 @@ public class BaixaUsuariActivity extends AppCompatActivity {
                 List<DocumentSnapshot> documents = queryDocumentSnapshots.getDocuments();
                 for (DocumentSnapshot document : documents) {
                     String nom="";
-                    Log.d("Nom del client",nom);
+                    //Log.d("Nom del client",nom); //Comprobacio de que s'obtenen els noms dels clients que consten a la base de dades.
                     if (dnii.equals(document.getString("Dni")) && contrasenyaa.equals(document.getString("Contrassenya"))) {
                         nom = document.getString("Nom");
 

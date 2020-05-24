@@ -106,7 +106,7 @@ public class AltaUsuariActivity extends AppCompatActivity {
         data.put("Cognoms", client.getCognoms());
         data.put("Dni", client.getDni());
         data.put("Telefon", client.getTelefon());
-        data.put("Contrassenya", client.getContrassenya());
+        data.put("Contrasenya", client.getContrassenya());
         data.put("Codi Postal", client.getCodiPostal());
         data.put("Poblacio", client.getPoblacio());
         data.put("Compte pagament", client.getComptePagament());

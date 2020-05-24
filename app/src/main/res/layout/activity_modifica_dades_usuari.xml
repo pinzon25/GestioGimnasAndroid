@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ModificaDadesUsuari">
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="161dp"
+        android:layout_height="154dp"
+        android:layout_marginTop="28dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.513"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/bodybuilder" />
+
+    <EditText
+        android:id="@+id/TfModificaContrasenya"
+        android:layout_width="164dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="12dp"
+        android:ems="10"
+        android:inputType="textPassword"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.558"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+
+    <EditText
+        android:id="@+id/TfRepeticioModifica"
+        android:layout_width="165dp"
+        android:layout_height="43dp"
+        android:layout_marginTop="12dp"
+        android:ems="10"
+        android:inputType="textPassword"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.552"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/TfModificaContrasenya" />
+
+    <EditText
+        android:id="@+id/TfCodipostalModifica"
+        android:layout_width="166dp"
+        android:layout_height="39dp"
+        android:layout_marginTop="12dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.551"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/TfRepeticioModifica" />
+
+    <EditText
+        android:id="@+id/TfPoblacioModifica"
+        android:layout_width="167dp"
+        android:layout_height="37dp"
+        android:layout_marginTop="12dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.553"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/TfCodipostalModifica" />
+
+    <TextView
+        android:id="@+id/LbCodipostalModifica"
+        android:layout_width="74dp"
+        android:layout_height="16dp"
+        android:text="Codi Postal"
+        app:layout_constraintBottom_toBottomOf="@+id/TfCodipostalModifica"
+        app:layout_constraintEnd_toStartOf="@+id/TfCodipostalModifica"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/TfCodipostalModifica" />
+
+    <EditText
+        android:id="@+id/TfCompteIbanModifica"
+        android:layout_width="167dp"
+        android:layout_height="39dp"
+        android:layout_marginTop="12dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.561"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/TfPoblacioModifica" />
+
+    <TextView
+        android:id="@+id/LbContrasenyaModifica"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Contrasenya"
+        app:layout_constraintBottom_toBottomOf="@+id/TfModificaContrasenya"
+        app:layout_constraintEnd_toStartOf="@+id/TfModificaContrasenya"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/TfModificaContrasenya" />
+
+    <TextView
+        android:id="@+id/LbRepeticio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Repeticio"
+        app:layout_constraintBottom_toBottomOf="@+id/TfRepeticioModifica"
+        app:layout_constraintEnd_toStartOf="@+id/TfRepeticioModifica"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/TfRepeticioModifica" />
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="54dp"
+        android:layout_height="15dp"
+        android:text="Poblacio"
+        app:layout_constraintBottom_toBottomOf="@+id/TfPoblacioModifica"
+        app:layout_constraintEnd_toStartOf="@+id/TfPoblacioModifica"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/TfPoblacioModifica" />
+
+    <TextView
+        android:id="@+id/LbComptePagamentModifica"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Compte IBAN"
+        app:layout_constraintBottom_toBottomOf="@+id/TfCompteIbanModifica"
+        app:layout_constraintEnd_toStartOf="@+id/TfCompteIbanModifica"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/TfCompteIbanModifica" />
+
+    <Button
+        android:id="@+id/BtActualitzaContrasenya"
+        android:layout_width="231dp"
+        android:layout_height="52dp"
+        android:layout_marginTop="20dp"
+        android:text="Actualitza Contrasenya"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.544"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/TfCompteIbanModifica" />
+
+    <Button
+        android:id="@+id/BtActualitzapoblaCp"
+        android:layout_width="231dp"
+        android:layout_height="47dp"
+        android:text="Actualitza CP/Poblacio"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.544"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/BtActualitzaContrasenya" />
+
+    <Button
+        android:id="@+id/BtActualitzaIban"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="24dp"
+        android:text="Actualitza IBAN"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.55"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/BtActualitzapoblaCp"
+        app:layout_constraintVertical_bias="0.0" />
+</androidx.constraintlayout.widget.ConstraintLayout>
