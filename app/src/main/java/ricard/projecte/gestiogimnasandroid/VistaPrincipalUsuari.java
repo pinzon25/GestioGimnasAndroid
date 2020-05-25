@@ -34,8 +34,12 @@ public class VistaPrincipalUsuari extends AppCompatActivity {
 
         //if(getIntent().getExtras() != null){
             cli = (Client)getIntent().getSerializableExtra("Client");
+    try {
+        benvinguda.setText("Benvingut: " + cli.getNom());
+    }catch(NullPointerException ex){
+        ex.getMessage();
+    }
 
-            benvinguda.setText("Benvingut: " + cli.getNom());
         //}
 
 

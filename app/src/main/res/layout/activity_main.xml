@@ -71,6 +71,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="24dp"
+        android:onClick="login"
         android:text="Registra't"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/BtEntrar" />
@@ -81,6 +82,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="35dp"
         android:layout_marginBottom="120dp"
+        android:onClick="login"
         android:text="Entrar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/BtRegistre"
