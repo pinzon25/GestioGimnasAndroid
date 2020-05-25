@@ -11,7 +11,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ModificaDadesUsuari"></activity>
+        <activity android:name=".RutinesUsuari"></activity>
+        <activity android:name=".ActivitatsUsuari" />
+        <activity android:name=".ModificaDadesUsuari" />
         <activity android:name=".VistaPrincipalUsuari" />
         <activity android:name=".BaixaUsuariActivity" />
         <activity android:name=".AltaUsuariActivity" />

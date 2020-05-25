@@ -59,20 +59,25 @@ public class VistaPrincipalUsuari extends AppCompatActivity {
             }
         } );
 
-        veureActivitats.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent( VistaPrincipalUsuari.this,ModificaDadesUsuari.class );
-                intent.putExtra("ClientActivitats",cli);
-                startActivity(intent);
-            }
-        } );
+
 
     }
 
     public void enviaClient(View view){
         Intent intent = new Intent( VistaPrincipalUsuari.this,ModificaDadesUsuari.class );
         intent.putExtra("ClientObjectiu", cli);
+        startActivity(intent);
+    }
+
+    public void ActivitatsClient(View view){
+        Intent intent = new Intent( VistaPrincipalUsuari.this,ActivitatsUsuari.class );
+        intent.putExtra("ClientActivitats", cli);
+        startActivity(intent);
+    }
+
+    public void RutinesClient(View view){
+        Intent intent = new Intent( VistaPrincipalUsuari.this,RutinesUsuari.class );
+        intent.putExtra("ClientRutines", cli);
         startActivity(intent);
     }
 

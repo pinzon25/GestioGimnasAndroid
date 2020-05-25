@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ActivitatsUsuari">
+
+    <ImageView
+        android:id="@+id/IvLogo"
+        android:layout_width="155dp"
+        android:layout_height="122dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/bodybuilder" />
+
+    <TextView
+        android:id="@+id/LbDisponibles"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Activitats Disponibles"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/IvLogo" />
+
+    <Spinner
+        android:id="@+id/ObservableDisponibles"
+        android:layout_width="303dp"
+        android:layout_height="22dp"
+        android:layout_marginTop="5dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/LbDisponibles" />
+
+    <TextView
+        android:id="@+id/LbInscrites"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:text="Activitats inscrites"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ObservableDisponibles" />
+
+    <Spinner
+        android:id="@+id/ObservableInscrites"
+        android:layout_width="301dp"
+        android:layout_height="23dp"
+        android:layout_marginTop="5dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.49"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/LbInscrites" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/RvInscrites"
+        android:layout_width="410dp"
+        android:layout_height="288dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ObservableInscrites" />
+
+    <Button
+        android:id="@+id/BtCancelar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cancel·lar"
+        app:layout_constraintBottom_toBottomOf="@id/BtBaixaActivitat"
+        app:layout_constraintEnd_toStartOf="@id/BtBaixaActivitat"
+        app:layout_constraintHorizontal_bias="0.537"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/RvInscrites"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <Button
+        android:id="@+id/BtBaixaActivitat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="92dp"
+        android:text="Baixa"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/RvInscrites" />
+
+    <Button
+        android:id="@+id/BtInscripcio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Apuntar´se"
+        app:layout_constraintBottom_toBottomOf="@id/BtBaixaActivitat"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.48"
+        app:layout_constraintStart_toEndOf="@id/BtBaixaActivitat"
+        app:layout_constraintTop_toBottomOf="@id/RvInscrites"
+        app:layout_constraintVertical_bias="1.0" />
+</androidx.constraintlayout.widget.ConstraintLayout>
