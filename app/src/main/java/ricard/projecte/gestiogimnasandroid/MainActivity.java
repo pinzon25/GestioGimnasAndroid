@@ -31,12 +31,14 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        EtDni = findViewById(R.id.EtDni);
+        EtContrasenya = findViewById(R.id.EtContrasenya);
+
         entrar=findViewById(R.id.BtEntrar);
         baixa=findViewById(R.id.BtBaixaUsuari);
         registrar=findViewById(R.id.BtRegistre);
 
-        EtDni = findViewById(R.id.EtDni);
-        EtContrasenya = findViewById(R.id.EtContrasenya);
+
 
 
         registrar.setOnClickListener(new View.OnClickListener(){
@@ -97,6 +99,8 @@ public class MainActivity extends AppCompatActivity {
                     Log.d("dni introduit",dni);
                     Log.d("contrasenya introduida",contrasenya);
                     Log.d("contrasenya introduida encriptada",contencriptada);
+                    Log.d("contrasenya bbdd",document.getString("Contrasenya"));
+
                     if (dni.equals(document.getString("Dni")) && contencriptada.equals(document.getString("Contrasenya"))) {
                         nom = document.getString("Nom");
                         Log.d("Nom del client dintre del for de documents",nom); //Comprobacio de que s'obtenen els noms dels clients que consten a la base de dades.

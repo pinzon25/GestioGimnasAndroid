@@ -65,16 +65,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/TfCodipostalModifica" />
 
-    <TextView
-        android:id="@+id/LbCodipostalModifica"
-        android:layout_width="74dp"
-        android:layout_height="16dp"
-        android:text="Codi Postal"
-        app:layout_constraintBottom_toBottomOf="@+id/TfCodipostalModifica"
-        app:layout_constraintEnd_toStartOf="@+id/TfCodipostalModifica"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/TfCodipostalModifica" />
-
     <EditText
         android:id="@+id/TfCompteIbanModifica"
         android:layout_width="167dp"
@@ -108,6 +98,16 @@
         app:layout_constraintTop_toTopOf="@+id/TfRepeticioModifica" />
 
     <TextView
+        android:id="@+id/LbCodipostalModifica"
+        android:layout_width="74dp"
+        android:layout_height="16dp"
+        android:text="Codi Postal"
+        app:layout_constraintBottom_toBottomOf="@+id/TfCodipostalModifica"
+        app:layout_constraintEnd_toStartOf="@+id/TfCodipostalModifica"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/TfCodipostalModifica" />
+
+    <TextView
         android:id="@+id/textView9"
         android:layout_width="54dp"
         android:layout_height="15dp"
@@ -130,7 +130,7 @@
     <Button
         android:id="@+id/BtActualitzaContrasenya"
         android:layout_width="231dp"
-        android:layout_height="52dp"
+        android:layout_height="34dp"
         android:layout_marginTop="20dp"
         android:onClick="modificaContrasenya"
         android:text="Actualitza Contrasenya"
@@ -141,26 +141,37 @@
 
     <Button
         android:id="@+id/BtActualitzapoblaCp"
-        android:layout_width="231dp"
-        android:layout_height="47dp"
+        android:layout_width="204dp"
+        android:layout_height="34dp"
         android:onClick="modificaPoblacio"
-        android:text="Actualitza CP/Poblacio"
+        android:text="Actualitza Poblacio"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.544"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/BtActualitzaContrasenya" />
 
     <Button
-        android:id="@+id/BtActualitzaIban"
+        android:id="@+id/BtCodiPostalModifica"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="34dp"
+        android:onClick="modificaCodiPostal"
+        android:text="Actualitza CP"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/BtActualitzapoblaCp" />
+
+    <Button
+        android:id="@+id/BtActualitzaIban"
+        android:layout_width="151dp"
+        android:layout_height="36dp"
         android:layout_marginBottom="24dp"
+        android:onClick="modificaIban"
         android:text="Actualitza IBAN"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.55"
+        app:layout_constraintHorizontal_bias="0.511"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/BtActualitzapoblaCp"
+        app:layout_constraintTop_toBottomOf="@+id/BtCodiPostalModifica"
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView
@@ -171,4 +182,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

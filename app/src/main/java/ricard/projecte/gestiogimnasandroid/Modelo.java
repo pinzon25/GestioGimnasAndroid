@@ -114,34 +114,24 @@ public class Modelo {
     }
 */
     public static boolean comprobaDni(String dni) {
-        Pattern patro = compile("[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][A-Z]");
-        Matcher matcher = patro.matcher(dni);
+        return Pattern.compile("[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][A-Z]").matcher(dni).matches();
 
-        return matcher.matches();
     }
 
     //Comprobem que el nom nomes el formen lletres.
     public static boolean comprobaNom(String nom) {
-        Pattern patro = compile("[a-zA-Z]+"); //Establim la condicio per poder filtrar tambe els noms compostos.
-        Matcher matcher = patro.matcher(nom);
+        return Pattern.compile("[a-zA-Z]+").matcher(nom).matches();
 
-        return matcher.matches();
     }
 
     //Comprobem que el cognom nomes el formen lletres.
     public static boolean comprobaCognom(String cognoms) {
-        Pattern patro = compile("[a-zA-Z]+");
-        Matcher matcher = patro.matcher(cognoms);
-
-        return matcher.matches();
+        return Pattern.compile("[a-zA-Z]+").matcher(cognoms).matches();
     }
 
     //Comprobem que el telefon estigui format per 9 numeros on el primer ha de estar entre 6 i 9.
     public static boolean comprobaTelefon(String telefon) {
-        Pattern patro = compile("[6-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]");
-        Matcher matcher = patro.matcher(telefon);
-
-        return matcher.matches();
+        return Pattern.compile("[6-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]").matcher(telefon).matches();
     }
 
     //Comprobem que la contrassenya i la seva repeticio son iguals.
@@ -157,25 +147,18 @@ public class Modelo {
 
     //Comprobem que el codi postal esta format per 5 numeros i on els dos primers son 0 i 8.
     public static boolean comprobaCodiPostal(String codiPostal) {
-        Pattern patro = compile("[0][8][0-9][0-9][0-9]");
-        Matcher matcher = patro.matcher(codiPostal);
-
-        return matcher.matches();
+        return Pattern.compile("[0][8][0-9][0-9][0-9]").matcher(codiPostal).matches();
     }
 
     //Comprobem que la poblacio nomes la formen lletres.
     public static boolean comprobaPoblacio(String poblacio) { //Nom del poble amb el nom mes llarg d'Espanya: "Colinas del Campo de Martín Moro Toledano".
-        Pattern patro = compile("[a-zA-Z]+");
-        Matcher matcher = patro.matcher(poblacio);
+        return Pattern.compile("[a-zA-Z]+").matcher(poblacio).matches();
 
-        return matcher.matches();
     }
 
     //Comprobem el numero de compte IBAN.
     public static boolean comprobaCompteBancari(String compteBancari) {
-        Pattern patro = compile("[E][S][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]");
-        Matcher matcher = patro.matcher(compteBancari);
+        return Pattern.compile("[E][S][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]").matcher(compteBancari).matches();
 
-        return matcher.matches();
     }
 }
