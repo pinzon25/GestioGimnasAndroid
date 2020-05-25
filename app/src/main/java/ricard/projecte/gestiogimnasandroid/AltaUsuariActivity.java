@@ -1,7 +1,9 @@
 package ricard.projecte.gestiogimnasandroid;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
@@ -128,6 +130,7 @@ public class AltaUsuariActivity extends AppCompatActivity {
             }
         });
 
+        inicialitzaCamps();
     }
 
 
@@ -181,7 +184,31 @@ public class AltaUsuariActivity extends AppCompatActivity {
             return verificat;
     }
 
+        public void inicialitzaCamps(){
+            nom.setText("");
+            cognoms.setText("");
+            dni.setText("");
+            telefon.setText("");
+            contrasenya.setText("");
+            repeticio.setText("");
+            codipostal.setText("");
+            poblacio.setText("");
+            iban.setText("");
+            cuota.setText("");
 
+            jornadamati.setChecked(false);
+            jornadatarda.setChecked(false);
+            ocultaTeclat();
+        }
+
+        public void ocultaTeclat(){
+            View view = this.getCurrentFocus();
+            if(view != null){
+                InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+                imm.hideSoftInputFromWindow(view.getWindowToken(),0);
+
+            }
+        }
 
 
     }

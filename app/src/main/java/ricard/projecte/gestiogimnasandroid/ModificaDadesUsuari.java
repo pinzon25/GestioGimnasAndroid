@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
@@ -25,11 +26,16 @@ public class ModificaDadesUsuari extends AppCompatActivity {
     public FirebaseFirestore db = FirebaseFirestore.getInstance();
     Button actCpPob,actIb,actCont;
     EditText cp, pob, ib, cont, rep;
+    TextView etiquetaClient;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_modifica_dades_usuari);
 
+        c = (Client)getIntent().getSerializableExtra("ClientObjectiu");
+
+        etiquetaClient = findViewById(R.id.LbClientModificaDades);
+        etiquetaClient.setText(c.getNom() + " " + c.getCognoms());
         actCpPob=findViewById(R.id.BtActualitzapoblaCp);
         actIb = findViewById(R.id.BtActualitzaIban);
         actCont = findViewById(R.id.BtActualitzaContrasenya);
@@ -40,76 +46,74 @@ public class ModificaDadesUsuari extends AppCompatActivity {
         cont = findViewById(R.id.TfModificaContrasenya);
         rep = findViewById(R.id.TfRepeticioModifica);
 
-        bundle = getIntent().getExtras();
-        c = bundle.getParcelable("Client");
-
-
-        actCpPob.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                try {
-                    modificaPoblacio();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        });
-
-
-
-
-
     }
 
-
-    public void modificaPoblacio() throws InterruptedException, ExecutionException {
-        String pb = "", codipostal = "";
-        int codipost = 0;
-
-        try {
-            codipost = Integer.valueOf(cp.getText().toString());
-        } catch (NumberFormatException ex) {
-           // LbCp.setText("Format del codi postal erroni.");
-        }
-
-        pb = pob.getText().toString();
-        codipostal = cp.getText().toString();
-
-        if (!Modelo.comprobaPoblacio(pb)) {
-            Toast.makeText(ModificaDadesUsuari.this, "Format de la poblacio erroni.", Toast.LENGTH_SHORT);
-        } else if (!Modelo.comprobaCodiPostal(codipostal)) {
-            Toast.makeText(ModificaDadesUsuari.this,"Format de codi postal erroni.", Toast.LENGTH_SHORT);
-        } else {
-         //db.collection("Clients").document(c.getNom());
-
-            db.collection("Clients").document(c.getNom()).update("Codi Postal",codipost).addOnSuccessListener(new OnSuccessListener<Void>() {
+    public void modificaContrasenya(View view){
+        String contrasenya = "", repeticio = "";
+        contrasenya = cont.getText().toString();
+        repeticio=rep.getText().toString();
+        boolean correcte;
+        if(Modelo.comprobaContrasenya(contrasenya,repeticio)==true){
+            db.collection("Clients").document(c.getNom()).update("Contrasenya",EncriptaDesencripta.getMD5(contrasenya)).addOnSuccessListener(new OnSuccessListener<Void>() {
                 @Override
                 public void onSuccess(Void aVoid) {
-                    Toast.makeText(ModificaDadesUsuari.this, "Dades actualitzades.", Toast.LENGTH_SHORT);
+                    Toast.makeText(ModificaDadesUsuari.this, "Contrasenya actualitzada.", Toast.LENGTH_SHORT);
                 }
             })
                     .addOnFailureListener(new OnFailureListener() {
                         @Override
                         public void onFailure(@NonNull Exception e) {
-                            Toast.makeText(ModificaDadesUsuari.this, "No s'han pogut actualitzar les dades.", Toast.LENGTH_SHORT);
+                            Toast.makeText(ModificaDadesUsuari.this, "No s'han pogut actualitzar lea contrasenya.", Toast.LENGTH_SHORT);
                         }
                     });
+        }
+    }
 
+    public void modificaPoblacio(View view) throws InterruptedException, ExecutionException {
+        String pb = "", codipostal = "";
+        int codipost = 0;
 
+       /* if (!Modelo.comprobaPoblacio(pb)) {
+            Toast.makeText(ModificaDadesUsuari.this, "Format de la poblacio erroni.", Toast.LENGTH_SHORT);
+        } else if (!Modelo.comprobaCodiPostal(codipostal)) {
+            Toast.makeText(ModificaDadesUsuari.this,"Format de codi postal erroni.", Toast.LENGTH_SHORT);
+        } else {*/
+        codipostal = cp.getText().toString();
+        pb = pob.getText().toString();
+
+        if (!pb.isEmpty()) {
+            db.collection("Clients").document(c.getNom()).update("Poblacio", pb).addOnSuccessListener(new OnSuccessListener<Void>() {
+                @Override
+                public void onSuccess(Void aVoid) {
+                    Toast.makeText(ModificaDadesUsuari.this, "Poblacio actualitzada.", Toast.LENGTH_SHORT);
+                }
+            })
+                    .addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            Toast.makeText(ModificaDadesUsuari.this, "No s'han pogut actualitzar la poblacio.", Toast.LENGTH_SHORT);
+                        }
+                    });
+        }else{
+            Toast.makeText(ModificaDadesUsuari.this, "No has introduit la poblacio.", Toast.LENGTH_SHORT);
         }
 
-        db.collection("Clients").document(c.getNom()).update("Poblacio",pb).addOnSuccessListener(new OnSuccessListener<Void>() {
-            @Override
-            public void onSuccess(Void aVoid) {
-                Toast.makeText(ModificaDadesUsuari.this, "Dades actualitzades.", Toast.LENGTH_SHORT);
-            }
-        })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(ModificaDadesUsuari.this, "No s'han pogut actualitzar les dades.", Toast.LENGTH_SHORT);
-                    }
-                });
-
+        //codipost = Integer.valueOf(cp.getText().toString());
+        if (!codipostal.isEmpty()) {
+            db.collection("Clients").document(c.getNom()).update("Codi Postal", Integer.valueOf(codipostal)).addOnSuccessListener(new OnSuccessListener<Void>() {
+                @Override
+                public void onSuccess(Void aVoid) {
+                    Toast.makeText(ModificaDadesUsuari.this, "Codi postal actualitzat.", Toast.LENGTH_SHORT);
+                }
+            })
+                    .addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            Toast.makeText(ModificaDadesUsuari.this, "No s'han pogut actualitzar el codi postal.", Toast.LENGTH_SHORT);
+                        }
+                    });
+        } else {
+            Toast.makeText(ModificaDadesUsuari.this, "No has introduit el codipostal.", Toast.LENGTH_SHORT);
+        }
     }
 }

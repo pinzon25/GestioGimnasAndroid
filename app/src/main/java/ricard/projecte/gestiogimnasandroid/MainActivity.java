@@ -66,13 +66,8 @@ public class MainActivity extends AppCompatActivity {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-
             }
         } );*/
-
-
-
-
     }
 
     public void login(View view) throws Exception {
@@ -82,9 +77,6 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(MainActivity.this, "Verifiqui el format de les dades!",
                     Toast.LENGTH_SHORT).show();
         }
-
-
-
     }
 
     public void obteClients() throws Exception {

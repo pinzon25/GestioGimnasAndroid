@@ -26,7 +26,6 @@ public class VistaPrincipalUsuari extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_vista_principal_usuari);
-         //cli = (Client) getIntent().getParcelableExtra("Client");
         modificarDades = findViewById(R.id.BtModificarDades);
         veureRutines = findViewById(R.id.BtRutinesFitness);
         veureActivitats = findViewById(R.id.BtActivitats);
@@ -34,31 +33,28 @@ public class VistaPrincipalUsuari extends AppCompatActivity {
 
         //if(getIntent().getExtras() != null){
             cli = (Client)getIntent().getSerializableExtra("Client");
-    try {
+        try {
         benvinguda.setText("Benvingut: " + cli.getNom());
-    }catch(NullPointerException ex){
+         }catch(NullPointerException ex){
         ex.getMessage();
-    }
+        }
 
         //}
 
-
-
-
-        modificarDades.setOnClickListener(new View.OnClickListener(){
+       /* modificarDades.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent( VistaPrincipalUsuari.this,ModificaDadesUsuari.class );
-                intent.putExtra("Client", cli);
+                intent.putExtra("ClientObjectiu", cli);
                 startActivity(intent);
             }
-        } );
+        } );*/
 
         veureRutines.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent( VistaPrincipalUsuari.this,ModificaDadesUsuari.class );
-                intent.putExtra("Client",cli);
+                intent.putExtra("ClientRutines",cli);
                 startActivity(intent);
             }
         } );
@@ -67,22 +63,18 @@ public class VistaPrincipalUsuari extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent( VistaPrincipalUsuari.this,ModificaDadesUsuari.class );
-                intent.putExtra("Client",cli);
+                intent.putExtra("ClientActivitats",cli);
                 startActivity(intent);
             }
         } );
 
-        //c= getIntent().getParcelableExtra("Client");
-
-
-        //Log.d("Nom del client",cli.getNom()); //Comprobacio de que s'obtenen els noms dels clients que consten a la base de dades.
-
-
-
-
-
     }
 
+    public void enviaClient(View view){
+        Intent intent = new Intent( VistaPrincipalUsuari.this,ModificaDadesUsuari.class );
+        intent.putExtra("ClientObjectiu", cli);
+        startActivity(intent);
+    }
 
 
 }
