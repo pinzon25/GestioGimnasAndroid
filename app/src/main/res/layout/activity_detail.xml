@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <RelativeLayout
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".DetailActivity">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/sportsImageDetail"
+            android:adjustViewBounds="true"
+            >
+        </ImageView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/sportsImageDetail"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark"
+            android:id="@+id/titleDetail"
+            android:text="@string/title_placeholder"
+            android:padding="16dp"
+            style="@style/TextAppearance.AppCompat.Headline"/>
+
+        <!--El interrogant del atribut android:textColor significa que aplicara el tema actual, que es el ThemeOverlay.AppCompat.Dark -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/newsTitleDetail"
+            android:layout_below="@id/sportsImageDetail"
+            android:textColor="?android:textColorSecondary"
+            android:text="@string/news_placeholder"
+            android:padding="16dp"
+            style="@style/TextAppearance.AppCompat.Subhead" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/newsTitleDetail"
+            android:id="@+id/subTitleDetail"
+            android:text="@string/best_metal_albums"
+            android:padding="16dp"
+            style="@style/TextAppearance.AppCompat.Subhead" />
+
+    </RelativeLayout>
+</ScrollView>

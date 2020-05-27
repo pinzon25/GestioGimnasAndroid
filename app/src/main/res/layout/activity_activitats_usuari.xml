@@ -56,15 +56,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/LbInscrites" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/RvInscrites"
-        android:layout_width="410dp"
-        android:layout_height="288dp"
-        android:layout_marginTop="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ObservableInscrites" />
-
     <Button
         android:id="@+id/BtCancelar"
         android:layout_width="wrap_content"
@@ -73,21 +64,20 @@
         app:layout_constraintBottom_toBottomOf="@id/BtBaixaActivitat"
         app:layout_constraintEnd_toStartOf="@id/BtBaixaActivitat"
         app:layout_constraintHorizontal_bias="0.537"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/RvInscrites"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/BtBaixaActivitat"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="1dp"
         android:layout_marginBottom="92dp"
         android:text="Baixa"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/RvInscrites" />
+        app:layout_constraintTop_toBottomOf="@+id/relativeLayout" />
 
     <Button
         android:id="@+id/BtInscripcio"
@@ -97,7 +87,20 @@
         app:layout_constraintBottom_toBottomOf="@id/BtBaixaActivitat"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.48"
-        app:layout_constraintStart_toEndOf="@id/BtBaixaActivitat"
-        app:layout_constraintTop_toBottomOf="@id/RvInscrites"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintStart_toEndOf="@id/BtBaixaActivitat" />
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout"
+        android:layout_width="409dp"
+        android:layout_height="330dp"
+        android:layout_marginTop="1dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ObservableInscrites">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/RecyclerActivitats"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </RelativeLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,3 +1,25 @@
 <resources>
     <string name="app_name">GestioGimnasAndroid</string>
+
+    <string name="title_placeholder">Metal Songs</string>
+    <string name="news_placeholder">Album</string>
+    <string name="sports_info_placeholder">Chants of war</string>
+    <string name="best_metal_albums">Best Metal albums</string>
+
+    <array name="sports_images">
+        <item>@drawable/jiujitsu</item>
+        <item>@drawable/karate</item>
+        <item>@drawable/kickboxing</item>
+        <item>@drawable/sambo</item>
+    </array>
+
+
+    <string-array name="activitats">
+        <item>Jiu Jitsu</item>
+        <item>Karate</item>
+        <item>KickBoxing</item>
+        <item>Sambo</item>
+    </string-array>
+
+
 </resources>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/cardView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="8dp" >
+
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/sportsImage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"></ImageView>
+
+        <TextView
+            android:id="@+id/title"
+            style="@style/TextAppearance.AppCompat.Headline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/sportsImage"
+            android:padding="8dp"
+            android:text="@string/title_placeholder"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark" />
+
+        <!--El interrogant del atribut android:textColor significa que aplicara el tema actual, que es el ThemeOverlay.AppCompat.Dark -->
+        <TextView
+            android:id="@+id/newsTitle"
+            style="@style/TextAppearance.AppCompat.Subhead"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/sportsImage"
+            android:padding="8dp"
+            android:text="@string/news_placeholder"
+            android:textColor="?android:textColorSecondary" />
+
+        <TextView
+            android:id="@+id/subTitle"
+            style="@style/TextAppearance.AppCompat.Subhead"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/newsTitle"
+            android:padding="8dp"
+            android:text="@string/sports_info_placeholder" />
+
+    </RelativeLayout>
+</androidx.cardview.widget.CardView>
