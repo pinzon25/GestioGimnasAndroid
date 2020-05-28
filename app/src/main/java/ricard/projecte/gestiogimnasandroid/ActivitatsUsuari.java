@@ -1,10 +1,13 @@
 package ricard.projecte.gestiogimnasandroid;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.R.layout;
+import android.content.Intent;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.os.Bundle;
@@ -16,50 +19,64 @@ import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.google.firestore.v1.WriteResult;
 
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class ActivitatsUsuari extends AppCompatActivity {
  public FirebaseFirestore db = FirebaseFirestore.getInstance();
         Client client;
-        Spinner Sdisponibles, Sinscrites;
-        Button BtBaixa, BtFinalitzar,BtCancelar;
+        Button BtCancelar;
         ArrayList<Activitat> disponibles = new ArrayList<>();
-        ArrayList<Activitat> inscrites = new ArrayList<>();
-         ArrayList<Recycler> disponiblesNoms;;
+        ArrayList<Activitat> inscrites;
+        ArrayList<Recycler> disponiblesNoms;;
+       // String actSeleccionada="";
         RecyclerView Rinscrites;
         ActivitatsAdapter Aadapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_activitats_usuari);
-
+        /*Intent i = getIntent();
+        actSeleccionada = i.getStringExtra("NomActivitat");*/
         client = (Client)getIntent().getSerializableExtra("ClientActivitats");
-        obteActivitatsDisponibles();
-        Sdisponibles = findViewById(R.id.ObservableDisponibles);
-        Sinscrites = findViewById(R.id.ObservableInscrites);
-        BtBaixa = findViewById(R.id.BtBaixaActivitat);
-        BtFinalitzar = findViewById(R.id.BtInscripcio);
+        Intent intent = new Intent("client_intent").putExtra("client",client.getNom());
+        LocalBroadcastManager.getInstance(ActivitatsUsuari.this).sendBroadcast(intent);
         BtCancelar = findViewById(R.id.BtCancelar);
         disponiblesNoms=new ArrayList<>();
-
+        inscrites  = new ArrayList<>();
+        disponibles  = new ArrayList<>();
         Rinscrites = findViewById(R.id.RecyclerActivitats);
 
         Rinscrites.setLayoutManager(new LinearLayoutManager(this));
         Aadapter = new ActivitatsAdapter(this,disponiblesNoms);
-        //Aadapter = new ActivitatsAdapter(this,disponibles);
         Rinscrites.setAdapter(Aadapter);
 
         initializeData();
 
+    }
 
+    public void sortir(View view){
+        finish();
+    }
+
+    public void enviaClient(){
+        Intent intent = new Intent("client_intent").putExtra("client",client.getNom());
+        LocalBroadcastManager.getInstance(ActivitatsUsuari.this).sendBroadcast(intent);
     }
 
     private void initializeData() {
@@ -72,7 +89,7 @@ public class ActivitatsUsuari extends AppCompatActivity {
         TypedArray sportsImageResources = getResources().obtainTypedArray(R.array.sports_images);
 
         // Clear the existing data (to avoid duplication).
-        disponibles.clear();
+        disponiblesNoms.clear();
 
         // Create the ArrayList of Sports objects with titles and
         // information about each sport.
@@ -92,62 +109,6 @@ public class ActivitatsUsuari extends AppCompatActivity {
 
 
 
-    public void obteActivitatsDisponibles(){
 
-        Task<QuerySnapshot> querySnapshotTask = db.collection("Activitats").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
-            @Override
-            public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-                String nom="";
-                Activitat act = null;
-                int id = 0;
-                float suplement = 0;
-
-                List<DocumentSnapshot> documents = queryDocumentSnapshots.getDocuments();
-                for (DocumentSnapshot document : documents) {
-                    id = document.getLong("Id").intValue();
-                    suplement = document.getLong("Suplement").floatValue();
-                    act = new Activitat(id, document.getString("Nom"), document.getString("Descripcio"), suplement);
-                    disponibles.add(act);
-                }
-            }
-        });
-    }
-
-    public void obteActivitatsInscrites(){
-        Task<QuerySnapshot> querySnapshotTask = db.collection("Activitats").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
-            @Override
-            public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-                String nom="";
-                Activitat act = null;
-                int id = 0;
-                float suplement = 0;
-
-                List<DocumentSnapshot> documents = queryDocumentSnapshots.getDocuments();
-                for (DocumentSnapshot document : documents) {
-                    id = document.getLong("Id").intValue();
-                    suplement = document.getLong("Suplement").floatValue();
-                    act = new Activitat(id, document.getString("Nom"), document.getString("Descripcio"), suplement);
-                    disponibles.add(act);
-                   // disponiblesNoms.add(document.getString("Nom"));
-                }
-
-            }
-        });
-
-
-        /*ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item, disponiblesNoms);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        Sdisponibles.setAdapter(adapter);
-        Sdisponibles.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                String tutorialsName = parent.getItemAtPosition(position).toString();
-                Toast.makeText(parent.getContext(), "Selected: " + tutorialsName,Toast.LENGTH_LONG).show();
-            }
-            @Override
-            public void onNothingSelected(AdapterView <?> parent) {
-            }
-        });*/
-    }
 
 }

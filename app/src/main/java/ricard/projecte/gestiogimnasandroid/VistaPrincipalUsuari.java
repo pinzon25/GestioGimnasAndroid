@@ -63,6 +63,10 @@ public class VistaPrincipalUsuari extends AppCompatActivity {
 
     }
 
+    public void sortir(View view){
+        finish();
+    }
+
     public void enviaClient(View view){
         Intent intent = new Intent( VistaPrincipalUsuari.this,ModificaDadesUsuari.class );
         intent.putExtra("ClientObjectiu", cli);

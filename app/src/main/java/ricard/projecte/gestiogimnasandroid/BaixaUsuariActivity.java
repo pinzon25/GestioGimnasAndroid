@@ -49,6 +49,13 @@ public class BaixaUsuariActivity extends AppCompatActivity {
                 }
             }
         });
+
+        cancelarBaixa.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
 
     public boolean comprobaCamps() {

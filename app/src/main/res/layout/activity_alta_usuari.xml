@@ -8,8 +8,8 @@
 
     <ScrollView
         android:id="@+id/scrollView2"
-        android:layout_width="411dp"
-        android:layout_height="507dp"
+        android:layout_width="408dp"
+        android:layout_height="526dp"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
@@ -127,11 +127,12 @@
                 android:id="@+id/LbIbanAlta"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="IBAN Electronic" />
+                android:text="IBAN Electronic"
+                android:textSize="12sp" />
 
             <EditText
                 android:id="@+id/TfIbanAlta"
-                android:layout_width="match_parent"
+                android:layout_width="401dp"
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:inputType="textPersonName" />
@@ -145,13 +146,13 @@
             <RadioButton
                 android:id="@+id/RbMatiAlta"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="22dp"
                 android:text="Mati" />
 
             <RadioButton
                 android:id="@+id/RbTardaAlta"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="22dp"
                 android:text="Tarda" />
 
             <TextView
@@ -162,8 +163,8 @@
 
             <EditText
                 android:id="@+id/TfCuotaAlta"
-                android:layout_width="match_parent"
-                android:layout_height="28dp"
+                android:layout_width="398dp"
+                android:layout_height="wrap_content"
                 android:ems="10"
                 android:inputType="textPersonName" />
 
@@ -172,8 +173,8 @@
 
     <LinearLayout
         android:id="@+id/linearLayout"
-        android:layout_width="404dp"
-        android:layout_height="88dp"
+        android:layout_width="399dp"
+        android:layout_height="77dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -182,14 +183,16 @@
         <Button
             android:id="@+id/BtAcceptarAlta"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="34dp"
             android:text="Acceptar" />
 
         <Button
             android:id="@+id/BtCancelarAlta"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Cancel·lar" />
+            android:layout_height="33dp"
+            android:onClick="sortir"
+            android:text="Cancel·lar"
+            android:textSize="12sp" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

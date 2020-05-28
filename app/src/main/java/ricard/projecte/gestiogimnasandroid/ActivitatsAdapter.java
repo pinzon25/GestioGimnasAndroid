@@ -30,7 +30,6 @@ class ActivitatsAdapter extends RecyclerView.Adapter<ActivitatsAdapter.ViewHolde
         this.mContext = context;
     }
 
-
     /**
      * Required method for creating the viewholder objects.
      *
@@ -107,12 +106,44 @@ class ActivitatsAdapter extends RecyclerView.Adapter<ActivitatsAdapter.ViewHolde
 
         @Override
         public void onClick(View view) {
+            String nom ="";
             Recycler currentSport = mSportsData.get(getAdapterPosition());
+            nom = currentSport.getNom();
+            /*Intent detailIntent = new Intent(mContext, DetailActivity.class);
+            detailIntent.putExtra("NomActivitat", currentSport.getNom());
+            mContext.startActivity(detailIntent);*/
 
-            Intent detailIntent = new Intent(mContext, DetailActivity.class);
+            switch(nom){
+                case "res/drawable/jiujitsu.jpg":
+                   String act1 = "Jiu Jitsu";
+                    Intent detailIntent1 = new Intent(mContext, DetailActivity.class);
+                    detailIntent1.putExtra("NomActivitat", act1);
+                    mContext.startActivity(detailIntent1);
+                    break;
+                case "res/drawable/karate.jpg":
+                    String act2 = "Karate";
+                    Intent detailIntent2 = new Intent(mContext, DetailActivity.class);
+                    detailIntent2.putExtra("NomActivitat", act2);
+                    mContext.startActivity(detailIntent2);
+                    break;
+                case "res/drawable/kickboxing.jpg":
+                    String act3 = "KickBoxing";
+                    Intent detailIntent3 = new Intent(mContext, DetailActivity.class);
+                    detailIntent3.putExtra("NomActivitat", act3);
+                    mContext.startActivity(detailIntent3);
+                    break;
+                case "res/drawable/sambo.jpg":
+                    String act4 = "KickBoxing";
+                    Intent detailIntent4 = new Intent(mContext, DetailActivity.class);
+                    detailIntent4.putExtra("NomActivitat", act4);
+                    mContext.startActivity(detailIntent4);
+                    break;
+            }
+
+            /*Intent detailIntent = new Intent(mContext, DetailActivity.class);
             detailIntent.putExtra("title", currentSport.getNom());
             detailIntent.putExtra("image_resource", currentSport.getImageId());
-            mContext.startActivity(detailIntent);
+            mContext.startActivity(detailIntent);*/
         }
     }
 }

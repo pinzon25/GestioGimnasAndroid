@@ -37,9 +37,6 @@ public class AltaUsuariActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_alta_usuari);
 
-        BtCancelar = findViewById(R.id.BtCancelar);
-        BtAcceptar = findViewById(R.id.BtAcceptarAlta);
-
         nom = findViewById(R.id.TfNomAlta);
         cognoms = findViewById(R.id.TfCognomsAlta);
         dni = findViewById(R.id.TfDniAlta);
@@ -54,23 +51,30 @@ public class AltaUsuariActivity extends AppCompatActivity {
         jornadamati = findViewById(R.id.RbMatiAlta);
         jornadatarda = findViewById(R.id.RbTardaAlta);
 
-        jornadamati.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(android.view.View v) {
-                jornadaacces = "Mati";
-                cuot = (float) 30.50;
-                cuota.setText(String.valueOf(cuot));
-            }
-        });
+        BtCancelar = findViewById(R.id.BtCancelar);
+        BtAcceptar = findViewById(R.id.BtAcceptarAlta);
 
-        jornadatarda.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(android.view.View v) {
-                jornadaacces = "Tarda";
-                cuot = (float) 40.50;
-                cuota.setText(String.valueOf(cuot));
-            }
-        });
+
+            jornadamati.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(android.view.View v) {
+                    jornadaacces = "Mati";
+                    cuot = (float) 30.50;
+                    cuota.setText(String.valueOf(cuot));
+                    jornadatarda.setChecked(false);
+                }
+            });
+
+
+            jornadatarda.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(android.view.View v) {
+                    jornadaacces = "Tarda";
+                    cuot = (float) 40.50;
+                    cuota.setText(String.valueOf(cuot));
+                    jornadamati.setChecked(false);
+                }
+            });
 
 
         BtAcceptar.setOnClickListener(new View.OnClickListener() {
@@ -196,6 +200,8 @@ public class AltaUsuariActivity extends AppCompatActivity {
             iban.setText("");
             cuota.setText("");
 
+
+
             jornadamati.setChecked(false);
             jornadatarda.setChecked(false);
             ocultaTeclat();
@@ -208,6 +214,10 @@ public class AltaUsuariActivity extends AppCompatActivity {
                 imm.hideSoftInputFromWindow(view.getWindowToken(),0);
 
             }
+        }
+
+        public void sortir(View view){
+        finish();
         }
 
 

@@ -2,9 +2,9 @@
     <string name="app_name">GestioGimnasAndroid</string>
 
     <string name="title_placeholder">Metal Songs</string>
-    <string name="news_placeholder">Album</string>
+    <string name="news_placeholder"></string>
     <string name="sports_info_placeholder">Chants of war</string>
-    <string name="best_metal_albums">Best Metal albums</string>
+    <string name="best_metal_albums"></string>
 
     <array name="sports_images">
         <item>@drawable/jiujitsu</item>
