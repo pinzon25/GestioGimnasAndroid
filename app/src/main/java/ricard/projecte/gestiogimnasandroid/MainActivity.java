@@ -116,7 +116,7 @@ public class MainActivity extends AppCompatActivity {
                         client.setComptePagament(document.getString("Compte pagament"));
                         client.setJornadaAcces(document.getString("Jornada acces"));
                         client.setCuota(document.getLong("Cuota").floatValue());
-                        mostraclients(client);//(DEBUG).
+                        //mostraclients(client);//(DEBUG).
                         enviaClientNovaActivitat(client);
 
                     }/*else{

@@ -2,7 +2,9 @@ package ricard.projecte.gestiogimnasandroid;
 
 import android.util.FloatProperty;
 
-public class Activitat {
+import java.io.Serializable;
+
+public class Activitat implements Serializable {
 
     private Integer idActivitat;
     private String nom;

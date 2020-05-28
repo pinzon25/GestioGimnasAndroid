@@ -2,6 +2,7 @@ package ricard.projecte.gestiogimnasandroid;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,7 +18,9 @@ class ActivitatsAdapter extends RecyclerView.Adapter<ActivitatsAdapter.ViewHolde
 
     private ArrayList<Recycler> mSportsData;
     private Context mContext;
-
+    public Client client;
+    public ArrayList<Activitat> disponibles;
+    public ArrayList<Activitat> inscrites;
 
     /**
      * Constructor that passes in the sports data and the context.
@@ -25,9 +28,12 @@ class ActivitatsAdapter extends RecyclerView.Adapter<ActivitatsAdapter.ViewHolde
      * @param sportsData ArrayList containing the sports data.
      * @param context    Context of the application.
      */
-    ActivitatsAdapter(Context context, ArrayList<Recycler> sportsData) {
+    ActivitatsAdapter(Context context, ArrayList<Recycler> sportsData, Client client, ArrayList<Activitat>disponibles, ArrayList<Activitat>inscrites) {
         this.mSportsData = sportsData;
         this.mContext = context;
+        this.client = client;
+        this.disponibles=disponibles;
+        this.inscrites=inscrites;
     }
 
     /**
@@ -109,41 +115,45 @@ class ActivitatsAdapter extends RecyclerView.Adapter<ActivitatsAdapter.ViewHolde
             String nom ="";
             Recycler currentSport = mSportsData.get(getAdapterPosition());
             nom = currentSport.getNom();
-            /*Intent detailIntent = new Intent(mContext, DetailActivity.class);
-            detailIntent.putExtra("NomActivitat", currentSport.getNom());
-            mContext.startActivity(detailIntent);*/
 
             switch(nom){
                 case "res/drawable/jiujitsu.jpg":
                    String act1 = "Jiu Jitsu";
                     Intent detailIntent1 = new Intent(mContext, DetailActivity.class);
                     detailIntent1.putExtra("NomActivitat", act1);
+                    detailIntent1.putExtra("Client", client);
+                    detailIntent1.putExtra("Disponibles", disponibles);
+                    detailIntent1.putExtra("Inscrites", inscrites);
                     mContext.startActivity(detailIntent1);
                     break;
                 case "res/drawable/karate.jpg":
                     String act2 = "Karate";
                     Intent detailIntent2 = new Intent(mContext, DetailActivity.class);
                     detailIntent2.putExtra("NomActivitat", act2);
+                    detailIntent2.putExtra("Client", client);
+                    detailIntent2.putExtra("Disponibles", disponibles);
+                    detailIntent2.putExtra("Inscrites", inscrites);
                     mContext.startActivity(detailIntent2);
                     break;
                 case "res/drawable/kickboxing.jpg":
                     String act3 = "KickBoxing";
                     Intent detailIntent3 = new Intent(mContext, DetailActivity.class);
                     detailIntent3.putExtra("NomActivitat", act3);
+                    detailIntent3.putExtra("Client", client);
+                    detailIntent3.putExtra("Disponibles", disponibles);
+                    detailIntent3.putExtra("Inscrites", inscrites);
                     mContext.startActivity(detailIntent3);
                     break;
                 case "res/drawable/sambo.jpg":
-                    String act4 = "KickBoxing";
+                    String act4 = "Sambo";
                     Intent detailIntent4 = new Intent(mContext, DetailActivity.class);
                     detailIntent4.putExtra("NomActivitat", act4);
+                    detailIntent4.putExtra("Client", client);
+                    detailIntent4.putExtra("Disponibles", disponibles);
+                    detailIntent4.putExtra("Inscrites", inscrites);
                     mContext.startActivity(detailIntent4);
                     break;
             }
-
-            /*Intent detailIntent = new Intent(mContext, DetailActivity.class);
-            detailIntent.putExtra("title", currentSport.getNom());
-            detailIntent.putExtra("image_resource", currentSport.getImageId());
-            mContext.startActivity(detailIntent);*/
         }
     }
 }
