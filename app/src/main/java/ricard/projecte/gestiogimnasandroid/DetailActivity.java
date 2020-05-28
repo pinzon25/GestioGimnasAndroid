@@ -33,12 +33,13 @@ import java.util.List;
 import java.util.Map;
 
 public class DetailActivity extends AppCompatActivity {
-    public Activitat act;
+    Activitat act;
     public Client client;
     public ArrayList<Activitat> dispAct;
     public ArrayList<Activitat> insAct;
     private BroadcastReceiver mReceiver;
     public FirebaseFirestore db = FirebaseFirestore.getInstance();
+    boolean borrat;
     Button cancel, finalitzar, baixa;
     TextView nomActivitat;
     @Override
@@ -54,76 +55,58 @@ public class DetailActivity extends AppCompatActivity {
         finalitzar = findViewById(R.id.BtRealitzaInscripcio);
         baixa = findViewById(R.id.BtBaixaActivitat);
 
-
-//        sportsTitle.setText(getIntent().getStringExtra("title"));
-
-        //Glide.with(this).load(getIntent().getIntExtra("image_resource",0)).into(sportsImage);
-
-
-         /*mReceiver = new BroadcastReceiver() {
-            @Override
-            public void onReceive(Context context, Intent intent) {
-                final String nomClient = intent.getStringExtra("client");
-
-                Task<QuerySnapshot> querySnapshotTask = db.collection("Clients").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
-                    @Override
-                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-                        List<DocumentSnapshot> documents = queryDocumentSnapshots.getDocuments();
-                        for (DocumentSnapshot document : documents) {
-
-                            if (nomClient.equals(document.getString("Nom"))) {
-                                client = new Client();
-                                client.setNom(document.getString("Nom"));
-                                client.setCognoms(document.getString("Cognoms"));
-                                client.setDni(document.getString("Dni"));
-                                client.setTelefon(document.getLong("Telefon"));
-                                client.setContrassenya(document.getString("Contrasenya"));
-                                client.setCodiPostal(document.getLong("Codi Postal").intValue());
-                                client.setPoblacio(document.getString("Poblacio"));
-                                client.setComptePagament(document.getString("Compte pagament"));
-                                client.setJornadaAcces(document.getString("Jornada acces"));
-                                client.setCuota(document.getLong("Cuota").floatValue());
-
-
-                                obteActivitatsInscrites(client);
-
-
-                            }
-
-                        }
-                    }
-                });
-            }
-        };*/
-
-
-        LocalBroadcastManager.getInstance(this).registerReceiver(mReceiver, new IntentFilter("client_intent"));
-
-
-
         obteDades();
 
-        //obteActivitatsDisponibles();
-        //obteActivitatsInscrites();
-        //mostraArray(dispAct);
-        //mostraArrayinscrites(insAct);
-
-        finalitzar.setOnClickListener(new View.OnClickListener() {
+        /*finalitzar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                inscriureActivitat();
+                if(inscritaOno() ==false) {
+                    inscriureActivitat();
+                }else {
+                    Toast.makeText(DetailActivity.this, "Ja estas inscrit a aquesta activitat!.", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });*/
+
+        cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
             }
         });
 
-        //obteActivitatsInscrites();
+        /*baixa.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                 if(comprobaBorrades() == false) {
+                     Toast.makeText(DetailActivity.this, "No estas inscrit a aquesta activitat!.", Toast.LENGTH_SHORT).show();
+                }else {
+                     baixaActivitat();
+                }
+            }
 
+        });*/
+
+    }
+    public void inscriu(View view){
+        if(inscritaOno() ==false) {
+            inscriureActivitat();
+        }else {
+            Toast.makeText(DetailActivity.this, "Ja estas inscrit a aquesta activitat!.", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    public void baixa(View view){
+        if(comprobaBorrades() == false) {
+            baixaActivitat();
+        }else {
+            Toast.makeText(DetailActivity.this, "No estas inscrit a aquesta activitat!.", Toast.LENGTH_SHORT).show();
+        }
     }
 
 
     public void obteDades(){
         String nom="", nomAct="";
-        ArrayList<Activitat> disp = new ArrayList<>();
-        ArrayList<Activitat> ins = new ArrayList<>();
         Intent in = getIntent();
         nom = in.getStringExtra("NomActivitat");
         client = (Client) in.getSerializableExtra("Client");
@@ -145,16 +128,13 @@ public class DetailActivity extends AppCompatActivity {
 
 
 
-    //public void inscriureActivitat(View view){
-        public void inscriureActivitat(){
+    public void inscriureActivitat(){
         String nomac="";
         nomac = act.getNom();
 
         Log.d("Metode inscriureActivitat, variable global activitat, nom act",nomac);
         float totalsuplement=0;
-        for(int i = 0; i < insAct.size(); i++){
 
-            if(!nomac.equals(insAct.get(i).getNom())){
                 Map<String, Object> actv = new HashMap<>();
                 actv.put("Id", act.getIdActivitat());
                 actv.put("Nom", act.getNom());
@@ -164,28 +144,64 @@ public class DetailActivity extends AppCompatActivity {
                 totalsuplement += act.getSuplement();
 
 
+                db.collection("Clients").document(client.getNom()).collection("activitats").document(act.getNom()).set(actv).addOnSuccessListener(new OnSuccessListener() {
+                @Override
+                public void onSuccess(Object o) {
+                    Toast.makeText(DetailActivity.this, "Dades guardades", Toast.LENGTH_SHORT).show();
+                }
+                }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    Toast.makeText(DetailActivity.this, "No s'han pogut guardar les dades.", Toast.LENGTH_SHORT).show();
+                }
+                 });
+
                 DocumentReference docRef = (DocumentReference) db.collection("Clients").document(client.getNom());
                 docRef.update("Cuota", FieldValue.increment(totalsuplement));
-                db.collection("Clients").document(client.getNom()).collection("activitats").document(act.getNom()).set(actv).addOnSuccessListener(new OnSuccessListener() {
-                    @Override
-                    public void onSuccess(Object o) {
-                        Toast.makeText(DetailActivity.this, "Dades guardades", Toast.LENGTH_SHORT);
-                    }
-                }).addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(DetailActivity.this, "No s'han pogut guardar les dades.", Toast.LENGTH_SHORT);
-                    }
-                });
 
-                //DocumentReference docRef = (DocumentReference) db.collection("Clients").document(client.getNom());
-                //docRef.update("Cuota", FieldValue.increment(totalsuplement));
+                insAct.add(act);
+    }
+
+    public void baixaActivitat(){
+        float totalsuplement=0;
+        Activitat a = act;
+        db.collection("Clients").document(client.getNom()).collection("activitats").document(act.getNom()).delete().addOnSuccessListener(new OnSuccessListener() {
+            @Override
+            public void onSuccess(Object o) {
+                Toast.makeText(DetailActivity.this, "Dades guardades", Toast.LENGTH_SHORT).show();
             }
-            else if(nomac.equals(insAct.get(i).getNom())){
-                Toast.makeText(DetailActivity.this, "Ja estas inscrit a aquesta activitat!.", Toast.LENGTH_SHORT);
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(DetailActivity.this, "No s'han pogut guardar les dades.", Toast.LENGTH_SHORT).show();
+            }
+        });
+        DocumentReference docRef = (DocumentReference) db.collection("Clients").document(client.getNom());
+        docRef.update("Cuota", FieldValue.increment(-act.getSuplement()));
+        insAct.remove(a);
+        Log.d("Activitat Borrada",act.getNom());
+    }
+
+    public boolean inscritaOno(){
+        boolean inscrita = false;
+        for(int i = 0; i < insAct.size(); i++){
+            if(act.getNom().equals(insAct.get(i).getNom())){
+                inscrita = true;
+                break;
             }
         }
+        return inscrita;
+    }
 
+    public boolean comprobaBorrades(){
+        boolean borrada=true;
+        for(int i = 0; i < insAct.size(); i++){
+            if(act.getNom().equals(insAct.get(i).getNom())){
+                borrada=false;
+                break;
+            }
+        }
+        return borrada;
     }
 
     public void mostraArray(ArrayList<Activitat> a){

@@ -43,7 +43,6 @@ public class ActivitatsUsuari extends AppCompatActivity {
         public ArrayList<Activitat> disponibles;
         public ArrayList<Activitat> inscrites;
         ArrayList<Recycler> disponiblesNoms;;
-       // String actSeleccionada="";
         RecyclerView Rinscrites;
         ActivitatsAdapter Aadapter;
 
@@ -53,8 +52,6 @@ public class ActivitatsUsuari extends AppCompatActivity {
         setContentView(R.layout.activity_activitats_usuari);
         inscrites  = new ArrayList<>();
         disponibles  = new ArrayList<>();
-        /*Intent i = getIntent();
-        actSeleccionada = i.getStringExtra("NomActivitat");*/
         client = (Client)getIntent().getSerializableExtra("ClientActivitats");
         obteActivitatsDisponibles();
         obteActivitatsInscrites();
@@ -73,6 +70,14 @@ public class ActivitatsUsuari extends AppCompatActivity {
 
     }
 
+    @Override
+    public void onResume(){
+        super.onResume();
+        this.obteActivitatsDisponibles();
+        this.obteActivitatsInscrites();
+
+    }
+
     public void sortir(View view){
         finish();
     }
@@ -87,13 +92,9 @@ public class ActivitatsUsuari extends AppCompatActivity {
 
         TypedArray sportsImageResources = getResources().obtainTypedArray(R.array.sports_images);
 
-        // Clear the existing data (to avoid duplication).
         disponiblesNoms.clear();
 
-        // Create the ArrayList of Sports objects with titles and
-        // information about each sport.
         for(int i=0;i<sportsList.length;i++){
-            //mSportsData.add(new Sport(sportsList[i],sportsInfo[i])); //afegim al arraylist nous esports amb el new i el seu constructor.
             disponiblesNoms.add(new Recycler(sportsList[i],sportsInfo[i],sportsImageResources.getResourceId(i,0))); //Afegim el atribut de tipus int necessari per formar correctament el constructor.
         }
 

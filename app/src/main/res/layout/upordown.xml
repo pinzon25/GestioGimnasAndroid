@@ -33,10 +33,10 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="152dp"
-        android:onClick="inscriureActivitat"
-        android:text="Finalitzar"
+        android:onClick="inscriu"
+        android:text="Alta"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.98"
+        app:layout_constraintHorizontal_bias="0.941"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/LbActivitat" />
 
@@ -56,6 +56,7 @@
         android:id="@+id/BtBaixaActivitat"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:onClick="baixa"
         android:text="Baixa"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
