@@ -39,21 +39,10 @@ public class VistaPrincipalUsuari extends AppCompatActivity {
         ex.getMessage();
         }
 
-        //}
-
-       /* modificarDades.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent( VistaPrincipalUsuari.this,ModificaDadesUsuari.class );
-                intent.putExtra("ClientObjectiu", cli);
-                startActivity(intent);
-            }
-        } );*/
-
         veureRutines.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent( VistaPrincipalUsuari.this,ModificaDadesUsuari.class );
+                Intent intent = new Intent( VistaPrincipalUsuari.this,RutinesUsuari.class );
                 intent.putExtra("ClientRutines",cli);
                 startActivity(intent);
             }

@@ -39,8 +39,6 @@ public class MainActivity extends AppCompatActivity {
         registrar=findViewById(R.id.BtRegistre);
 
 
-
-
         registrar.setOnClickListener(new View.OnClickListener(){
         @Override
         public void onClick(View v) {
@@ -57,19 +55,6 @@ public class MainActivity extends AppCompatActivity {
             }
         } );
 
-       /* entrar.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-                try {
-                    obteClients();
-                    Intent intent = new Intent( MainActivity.this, VistaPrincipalUsuari.class);
-                    intent.putExtra("Client",client);
-                    startActivity(intent);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        } );*/
     }
 
     public void login(View view) throws Exception {
@@ -123,7 +108,6 @@ public class MainActivity extends AppCompatActivity {
                         Toast.makeText(MainActivity.this, "No s'ha trobat el client.",
                                 Toast.LENGTH_SHORT).show();
                     }*/
-
                 }
             }
         });
@@ -148,6 +132,8 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(MainActivity.this, VistaPrincipalUsuari.class);
             intent.putExtra("Client", c);
             startActivity(intent);
+            //EtDni.setText("");
+            //EtContrasenya.setText("");
         }catch(NullPointerException ex){
             ex.printStackTrace();
             ex.getMessage();

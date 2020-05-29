@@ -47,7 +47,7 @@ class ActivitatsAdapter extends RecyclerView.Adapter<ActivitatsAdapter.ViewHolde
     public ActivitatsAdapter.ViewHolder onCreateViewHolder( //viewHolder es cada element del recyclerview.
                                                         ViewGroup parent, int viewType) { //el viewgroup es el parametre que sera el linearlayout.
         return new ViewHolder(LayoutInflater.from(mContext).
-                inflate(R.layout.list_item, parent, false));
+                inflate(R.layout.list_item_activitat, parent, false));
     }
 
     @Override
@@ -88,7 +88,7 @@ class ActivitatsAdapter extends RecyclerView.Adapter<ActivitatsAdapter.ViewHolde
         /**
          * Constructor for the ViewHolder, used in onCreateViewHolder().
          *
-         * @param itemView The rootview of the list_item.xml layout file.
+         * @param itemView The rootview of the list_item_activitat_activitat.xml layout file.
          */
         ViewHolder(View itemView) {
             super(itemView);

@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".DetailActivityRutines"><![CDATA[
+
+
+        android:layout_width="match_parent"
+        android:layout_height="108dp"
+        android:orientation="vertical">
+
+
+
+
+    ]]>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="116dp">
+
+            <TextView
+                android:id="@+id/LbNomMuscul"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/LogoIv" />
+
+            <ImageView
+                android:id="@+id/LogoIv"
+                android:layout_width="147dp"
+                android:layout_height="70dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/bodybuilder" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <ListView
+        android:id="@+id/LlistaEx"
+        android:layout_width="match_parent"
+        android:layout_height="475dp" /><![CDATA[
+
+    />
+
+
+
+
+
+    ]]>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="140dp"
+        android:orientation="vertical">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:id="@+id/BtCancelarRutina"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Cancel·lar"
+                app:layout_constraintBottom_toBottomOf="@+id/BtAfegirExercici"
+                app:layout_constraintEnd_toStartOf="@+id/BtAfegirExercici"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/BtAfegirExercici" />
+
+            <Button
+                android:id="@+id/BtAfegirExercici"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="44dp"
+                android:text="Afegir"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.498"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.041" />
+
+            <Button
+                android:id="@+id/BtEsborraExercici"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Esborra"
+                app:layout_constraintBottom_toBottomOf="@+id/BtAfegirExercici"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/BtAfegirExercici"
+                app:layout_constraintTop_toTopOf="@+id/BtAfegirExercici" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
+
+</LinearLayout>

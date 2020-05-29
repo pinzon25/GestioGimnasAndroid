@@ -40,8 +40,8 @@ public class ActivitatsUsuari extends AppCompatActivity {
         client = (Client)getIntent().getSerializableExtra("ClientActivitats");
         obteActivitatsDisponibles();
         obteActivitatsInscrites();
-        Intent intent = new Intent("client_intent").putExtra("client",client.getNom());
-        LocalBroadcastManager.getInstance(ActivitatsUsuari.this).sendBroadcast(intent);
+        /*Intent intent = new Intent("client_intent").putExtra("client",client.getNom());
+        LocalBroadcastManager.getInstance(ActivitatsUsuari.this).sendBroadcast(intent);*/
         BtCancelar = findViewById(R.id.BtCancelar);
         disponiblesNoms=new ArrayList<>();
 

@@ -13,12 +13,41 @@
         <item>@drawable/sambo</item>
     </array>
 
+    <array name="musculs_imatges">
+        <item>@drawable/abdominal</item>
+        <item>@drawable/avantbracos</item>
+        <item>@drawable/biceps</item>
+        <item>@drawable/biceps_femoral</item>
+        <item>@drawable/coll</item>
+        <item>@drawable/cuadriceps</item>
+        <item>@drawable/espatlles</item>
+        <item>@drawable/esquena</item>
+        <item>@drawable/bessons</item>
+        <item>@drawable/glutis</item>
+        <item>@drawable/pectoral</item>
+        <item>@drawable/triceps</item>
+    </array>
 
     <string-array name="activitats">
         <item>Jiu Jitsu</item>
         <item>Karate</item>
         <item>KickBoxing</item>
         <item>Sambo</item>
+    </string-array>
+
+    <string-array name="musculs">
+        <item>Abdominal</item>
+        <item>Avantbraç</item>
+        <item>Biceps</item>
+        <item>Biceps Femoral</item>
+        <item>Coll</item>
+        <item>Cuadriceps</item>
+        <item>Espatlles</item>
+        <item>Esquena</item>
+        <item>Bessons</item>
+        <item>Glutis</item>
+        <item>Pectoral</item>
+        <item>Triceps</item>
     </string-array>
 
 
