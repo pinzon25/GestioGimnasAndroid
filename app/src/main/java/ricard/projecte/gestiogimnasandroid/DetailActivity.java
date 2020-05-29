@@ -57,35 +57,12 @@ public class DetailActivity extends AppCompatActivity {
 
         obteDades();
 
-        /*finalitzar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(inscritaOno() ==false) {
-                    inscriureActivitat();
-                }else {
-                    Toast.makeText(DetailActivity.this, "Ja estas inscrit a aquesta activitat!.", Toast.LENGTH_SHORT).show();
-                }
-            }
-        });*/
-
         cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();
             }
         });
-
-        /*baixa.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                 if(comprobaBorrades() == false) {
-                     Toast.makeText(DetailActivity.this, "No estas inscrit a aquesta activitat!.", Toast.LENGTH_SHORT).show();
-                }else {
-                     baixaActivitat();
-                }
-            }
-
-        });*/
 
     }
     public void inscriu(View view){
@@ -223,47 +200,5 @@ public class DetailActivity extends AppCompatActivity {
         }
 
     }
-
-    /*public void obteActivitatsDisponibles(){
-
-        Task<QuerySnapshot> querySnapshotTask = db.collection("Activitats").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
-            @Override
-            public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-                String nom="";
-                Activitat act = null;
-                int id = 0;
-                float suplement = 0;
-
-                List<DocumentSnapshot> documents = queryDocumentSnapshots.getDocuments();
-                for (DocumentSnapshot document : documents) {
-                    id = document.getLong("Id").intValue();
-                    suplement = document.getLong("Suplement").floatValue();
-                    act = new Activitat(id, document.getString("Nom"), document.getString("Descripcio"), suplement);
-                    disponibles.add(act);
-                }
-            }
-        });
-    }*/
-
-    /*public void obteActivitatsInscrites() {
-
-         Task<QuerySnapshot> querySnapshotTask = db.collection("Clients").document(client.getNom()).collection("activitats").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
-            @Override
-            public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-                String nom = "";
-                Activitat act = null;
-                int id = 0;
-                float suplement = 0;
-
-                List<DocumentSnapshot> documents = queryDocumentSnapshots.getDocuments();
-                for (DocumentSnapshot document : documents) {
-                    id = document.getLong("Id").intValue();
-                    suplement = document.getLong("Suplement").floatValue();
-                    act = new Activitat(id, document.getString("Nom"), document.getString("Descripcio"), suplement);
-                    inscrites.add(act);
-                }
-            }
-        });
-    }*/
 
 }

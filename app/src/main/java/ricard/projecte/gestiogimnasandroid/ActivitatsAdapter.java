@@ -2,7 +2,6 @@ package ricard.projecte.gestiogimnasandroid;
 
 import android.content.Context;
 import android.content.Intent;
-import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,7 +15,7 @@ import java.util.ArrayList;
 
 class ActivitatsAdapter extends RecyclerView.Adapter<ActivitatsAdapter.ViewHolder> {
 
-    private ArrayList<Recycler> mSportsData;
+    private ArrayList<RecyclerActivitats> mSportsData;
     private Context mContext;
     public Client client;
     public ArrayList<Activitat> disponibles;
@@ -28,7 +27,7 @@ class ActivitatsAdapter extends RecyclerView.Adapter<ActivitatsAdapter.ViewHolde
      * @param sportsData ArrayList containing the sports data.
      * @param context    Context of the application.
      */
-    ActivitatsAdapter(Context context, ArrayList<Recycler> sportsData, Client client, ArrayList<Activitat>disponibles, ArrayList<Activitat>inscrites) {
+    ActivitatsAdapter(Context context, ArrayList<RecyclerActivitats> sportsData, Client client, ArrayList<Activitat>disponibles, ArrayList<Activitat>inscrites) {
         this.mSportsData = sportsData;
         this.mContext = context;
         this.client = client;
@@ -53,8 +52,8 @@ class ActivitatsAdapter extends RecyclerView.Adapter<ActivitatsAdapter.ViewHolde
 
     @Override
     public void onBindViewHolder(@NonNull ActivitatsAdapter.ViewHolder holder, int position) {
-        Recycler recycler = mSportsData.get(position);
-        holder.bindTo(recycler);
+        RecyclerActivitats recyclerActivitats = mSportsData.get(position);
+        holder.bindTo(recyclerActivitats);
     }
 
     /**
@@ -102,7 +101,7 @@ class ActivitatsAdapter extends RecyclerView.Adapter<ActivitatsAdapter.ViewHolde
             itemView.setOnClickListener(this);
         }
 
-        void bindTo(Recycler currentSport) {
+        void bindTo(RecyclerActivitats currentSport) {
             // Populate the textviews with data.
             mTitleText.setText(currentSport.getNom()); //omplim els textview amb el esport.
             mInfoText.setText(currentSport.getDescripcio());
@@ -113,7 +112,7 @@ class ActivitatsAdapter extends RecyclerView.Adapter<ActivitatsAdapter.ViewHolde
         @Override
         public void onClick(View view) {
             String nom ="";
-            Recycler currentSport = mSportsData.get(getAdapterPosition());
+            RecyclerActivitats currentSport = mSportsData.get(getAdapterPosition());
             nom = currentSport.getNom();
 
             switch(nom){

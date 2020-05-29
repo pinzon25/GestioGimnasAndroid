@@ -1,40 +1,25 @@
 package ricard.projecte.gestiogimnasandroid;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.R.layout;
 import android.content.Intent;
-import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.Spinner;
-import android.widget.Toast;
 
-import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
-import com.google.firestore.v1.WriteResult;
 
-import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class ActivitatsUsuari extends AppCompatActivity {
  public FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -42,7 +27,7 @@ public class ActivitatsUsuari extends AppCompatActivity {
         Button BtCancelar;
         public ArrayList<Activitat> disponibles;
         public ArrayList<Activitat> inscrites;
-        ArrayList<Recycler> disponiblesNoms;;
+        ArrayList<RecyclerActivitats> disponiblesNoms;;
         RecyclerView Rinscrites;
         ActivitatsAdapter Aadapter;
 
@@ -95,7 +80,7 @@ public class ActivitatsUsuari extends AppCompatActivity {
         disponiblesNoms.clear();
 
         for(int i=0;i<sportsList.length;i++){
-            disponiblesNoms.add(new Recycler(sportsList[i],sportsInfo[i],sportsImageResources.getResourceId(i,0))); //Afegim el atribut de tipus int necessari per formar correctament el constructor.
+            disponiblesNoms.add(new RecyclerActivitats(sportsList[i],sportsInfo[i],sportsImageResources.getResourceId(i,0))); //Afegim el atribut de tipus int necessari per formar correctament el constructor.
         }
 
         sportsImageResources.recycle();

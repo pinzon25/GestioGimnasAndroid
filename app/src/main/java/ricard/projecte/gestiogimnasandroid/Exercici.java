@@ -1,6 +1,8 @@
 package ricard.projecte.gestiogimnasandroid;
 
-public class Exercici {
+import java.io.Serializable;
+
+public class Exercici implements Serializable {
 
     private String nom;
     private String descripcio;
