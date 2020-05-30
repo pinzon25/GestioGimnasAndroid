@@ -43,7 +43,6 @@ public class DetailActivityRutines extends AppCompatActivity {
     public ArrayList<String> exercicisLlista;
     public List<String> rutinesExistents;
     public String nomRutina;
-    public String[]rut;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,7 +57,6 @@ public class DetailActivityRutines extends AppCompatActivity {
         esborrarExercici = findViewById(R.id.BtEsborraExercici);
         novaRutina = findViewById(R.id.BtNovaRutina);
         nomRutina="";
-        rut = new String[1];
 
         e = null;
         exercicisLlista = new ArrayList<>();
@@ -85,16 +83,26 @@ public class DetailActivityRutines extends AppCompatActivity {
 
         obteRutinesExistents();
 
-        ArrayAdapter adapter= new ArrayAdapter(this, simple_spinner_item,rutinesExistents);
+        ArrayAdapter adapter = new ArrayAdapter(this, simple_spinner_item,rutinesExistents);
         adapter.setDropDownViewResource(simple_spinner_item);
         SpRutines.setAdapter(adapter);
 
     } //Final OnCreate
 
-
-
-
-
+    public void esborraExercici(View view){
+        nomRutina = Nrutina.getText().toString();
+        if(nomRutina.isEmpty()){
+            Toast.makeText(DetailActivityRutines.this, "Introdueix el nom de la rutina.", Toast.LENGTH_SHORT).show();
+        }else{
+        db.collection("Clients").document(c.getNom()).collection("Rutines").document(nomRutina).collection("exercicis").document(e.getNom()).delete().addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void aVoid) {
+                Toast.makeText(DetailActivityRutines.this, "Exercici esborrat correctament.", Toast.LENGTH_SHORT).show();
+            }
+        });
+        }
+        nomRutina="";
+    }
     //Agafa el contingut del text view i el guarda com a rutina a labbdd.
     public void creaNovaRutina(View view){
 
