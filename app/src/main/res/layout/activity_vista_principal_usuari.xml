@@ -62,11 +62,11 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/BtSortir"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="sortir"
-        android:text="Button"
+        android:text="Sortir"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/BtActivitats" />
