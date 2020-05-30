@@ -43,13 +43,14 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/bodybuilder" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
         <ListView
             android:id="@+id/LlistaEx"
             android:layout_width="match_parent"
-            android:layout_height="371dp" />
+            android:layout_height="300dp" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -67,6 +68,31 @@
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
+
+                    <EditText
+                        android:id="@+id/TfNomRutina"
+                        android:layout_width="220dp"
+                        android:layout_height="33dp"
+                        android:layout_marginTop="2dp"
+                        android:ems="10"
+                        android:inputType="textPersonName"
+                        android:textSize="12sp"
+                        app:layout_constraintBottom_toTopOf="@+id/BtAfegirExercici"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.181"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.3" />
+
+                    <Spinner
+                        android:id="@+id/SpRutinesExistents"
+                        android:layout_width="240dp"
+                        android:layout_height="19dp"
+                        android:contextClickable="false"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
                     <Button
                         android:id="@+id/BtCancelarRutina"
@@ -87,9 +113,9 @@
                         android:text="Afegir"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.498"
+                        app:layout_constraintHorizontal_bias="0.517"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        app:layout_constraintTop_toBottomOf="@+id/SpRutinesExistents" />
 
                     <Button
                         android:id="@+id/BtEsborraExercici"
@@ -101,17 +127,16 @@
                         app:layout_constraintStart_toEndOf="@+id/BtAfegirExercici"
                         app:layout_constraintTop_toTopOf="@+id/BtAfegirExercici" />
 
-                    <EditText
-                        android:id="@+id/TfNomRutina"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:ems="10"
-                        android:inputType="textPersonName"
-                        app:layout_constraintBottom_toTopOf="@+id/BtAfegirExercici"
+                    <Button
+                        android:id="@+id/BtNovaRutina"
+                        android:layout_width="126dp"
+                        android:layout_height="39dp"
+                        android:onClick="creaNovaRutina"
+                        android:text="Crear Rutina"
+                        app:layout_constraintBottom_toBottomOf="@+id/TfNomRutina"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        app:layout_constraintStart_toEndOf="@+id/TfNomRutina"
+                        app:layout_constraintTop_toTopOf="@+id/TfNomRutina" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </LinearLayout>
