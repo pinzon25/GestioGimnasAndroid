@@ -40,8 +40,6 @@ public class ActivitatsUsuari extends AppCompatActivity {
         client = (Client)getIntent().getSerializableExtra("ClientActivitats");
         obteActivitatsDisponibles();
         obteActivitatsInscrites();
-        /*Intent intent = new Intent("client_intent").putExtra("client",client.getNom());
-        LocalBroadcastManager.getInstance(ActivitatsUsuari.this).sendBroadcast(intent);*/
         BtCancelar = findViewById(R.id.BtCancelar);
         disponiblesNoms=new ArrayList<>();
 
@@ -97,7 +95,6 @@ public class ActivitatsUsuari extends AppCompatActivity {
         Task<QuerySnapshot> querySnapshotTask = db.collection("Activitats").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
             @Override
             public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-                String nom="";
                 Activitat act = null;
                 int id = 0;
                 float suplement = 0;
@@ -118,8 +115,6 @@ public class ActivitatsUsuari extends AppCompatActivity {
         Task<QuerySnapshot> querySnapshotTask = db.collection("Clients").document(client.getNom()).collection("activitats").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
             @Override
             public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-                String nom = "";
-
                 int id = 0;
                 float suplement = 0;
 
@@ -128,16 +123,17 @@ public class ActivitatsUsuari extends AppCompatActivity {
                     id = document.getLong("Id").intValue();
                     suplement = document.getLong("Suplement").floatValue();
                     Activitat act = new Activitat(id, document.getString("Nom"), document.getString("Descripcio"), suplement);
-                    mostraArrayinscrites(act);
+                    //mostraArrayinscrites(act);
                     inscrites.add(act);
                 }
-                mostraArrayins(inscrites);//El arrayList esta ple.
+                //mostraArrayins(inscrites);//El arrayList esta ple.
             }
 
 
         });
     }
 
+    //Metode que permet veure a traves de consola les dades de la activitat rebuda com a parametre
     public void mostraArrayinscrites(Activitat a){
             Log.d("nom activitat inscrita",a.getNom());
             Log.d("Descripcio activitat inscrita",a.getDescripcio());
@@ -145,6 +141,7 @@ public class ActivitatsUsuari extends AppCompatActivity {
             Log.d("Suplement activitat inscrita",String.valueOf(a.getSuplement()));
     }
 
+    //Metode que permet veure a traves de consola les dades de la activitat rebuda com a parametre
     public void mostraArrayins(ArrayList<Activitat> a){
         for(int i=0; i <a.size();i++){
             Log.d("nom activitat inscrita arraylist",a.get(i).getNom());

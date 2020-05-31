@@ -15,7 +15,7 @@ import java.util.ArrayList;
 
 class ActivitatsAdapter extends RecyclerView.Adapter<ActivitatsAdapter.ViewHolder> {
 
-    private ArrayList<RecyclerActivitats> mSportsData;
+    private ArrayList<RecyclerActivitats> mActivitatsData;
     private Context mContext;
     public Client client;
     public ArrayList<Activitat> disponibles;
@@ -28,7 +28,7 @@ class ActivitatsAdapter extends RecyclerView.Adapter<ActivitatsAdapter.ViewHolde
      * @param context    Context of the application.
      */
     ActivitatsAdapter(Context context, ArrayList<RecyclerActivitats> sportsData, Client client, ArrayList<Activitat>disponibles, ArrayList<Activitat>inscrites) {
-        this.mSportsData = sportsData;
+        this.mActivitatsData = sportsData;
         this.mContext = context;
         this.client = client;
         this.disponibles=disponibles;
@@ -52,7 +52,7 @@ class ActivitatsAdapter extends RecyclerView.Adapter<ActivitatsAdapter.ViewHolde
 
     @Override
     public void onBindViewHolder(@NonNull ActivitatsAdapter.ViewHolder holder, int position) {
-        RecyclerActivitats recyclerActivitats = mSportsData.get(position);
+        RecyclerActivitats recyclerActivitats = mActivitatsData.get(position);
         holder.bindTo(recyclerActivitats);
     }
 
@@ -71,7 +71,7 @@ class ActivitatsAdapter extends RecyclerView.Adapter<ActivitatsAdapter.ViewHolde
      */
     @Override
     public int getItemCount() {
-        return mSportsData.size();
+        return mActivitatsData.size();
     }
 
 
@@ -83,7 +83,7 @@ class ActivitatsAdapter extends RecyclerView.Adapter<ActivitatsAdapter.ViewHolde
         // Member Variables for the TextViews
         private TextView mTitleText;
         private TextView mInfoText;
-        private ImageView mSportsImage; //creem variable de tipus ImageView.
+        private ImageView mActivitatsImage; //creem variable de tipus ImageView.
 
         /**
          * Constructor for the ViewHolder, used in onCreateViewHolder().
@@ -96,7 +96,7 @@ class ActivitatsAdapter extends RecyclerView.Adapter<ActivitatsAdapter.ViewHolde
             // Initialize the views.
             mTitleText = itemView.findViewById(R.id.title);
             mInfoText = itemView.findViewById(R.id.subTitle);
-            mSportsImage = itemView.findViewById(R.id.sportsImage); //inicialitzem el atribut ImageView.
+            mActivitatsImage = itemView.findViewById(R.id.sportsImage); //inicialitzem el atribut ImageView.
 
             itemView.setOnClickListener(this);
         }
@@ -105,14 +105,15 @@ class ActivitatsAdapter extends RecyclerView.Adapter<ActivitatsAdapter.ViewHolde
             // Populate the textviews with data.
             mTitleText.setText(currentSport.getNom()); //omplim els textview amb el esport.
             mInfoText.setText(currentSport.getDescripcio());
-            Glide.with(mContext).load(currentSport.getImageId()).into(mSportsImage);
+            Glide.with(mContext).load(currentSport.getImageId()).into(mActivitatsImage);
 
         }
 
+        //Al fer click sobre l'activitat, obtenim el nom del recurs i enviem un String amb el nom de l'activitat a la DetailActivity.
         @Override
         public void onClick(View view) {
             String nom ="";
-            RecyclerActivitats currentSport = mSportsData.get(getAdapterPosition());
+            RecyclerActivitats currentSport = mActivitatsData.get(getAdapterPosition());
             nom = currentSport.getNom();
 
             switch(nom){

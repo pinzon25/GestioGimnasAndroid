@@ -12,12 +12,8 @@ import android.widget.TextView;
 
 public class VistaPrincipalUsuari extends AppCompatActivity {
     Client cli;
-    String nomClient="", cognomsClient="",dniClient="",contrasenyaClient="",pobClient="",ibClient="",jornadaClient="",cuotaClient="";
-    long telfClient=0;
-    int cpClient=0;
     Button modificarDades, veureRutines, veureActivitats;
     TextView benvinguda;
-    Bundle bundle;
 
 
 
@@ -31,7 +27,6 @@ public class VistaPrincipalUsuari extends AppCompatActivity {
         veureActivitats = findViewById(R.id.BtActivitats);
         benvinguda = (TextView)findViewById(R.id.LbBenvingudaClient);
 
-        //if(getIntent().getExtras() != null){
             cli = (Client)getIntent().getSerializableExtra("Client");
         try {
         benvinguda.setText("Benvingut: " + cli.getNom());
@@ -47,8 +42,6 @@ public class VistaPrincipalUsuari extends AppCompatActivity {
                 startActivity(intent);
             }
         } );
-
-
 
     }
 

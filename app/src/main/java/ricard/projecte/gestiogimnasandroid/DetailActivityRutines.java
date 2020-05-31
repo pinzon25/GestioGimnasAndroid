@@ -64,9 +64,6 @@ public class DetailActivityRutines extends AppCompatActivity {
         llistaExercicisMuscul = new ArrayList<>();
         rebreDades();
 
-        //obteRutinesExistents();
-
-
         exercicis.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
@@ -119,10 +116,6 @@ public class DetailActivityRutines extends AppCompatActivity {
 
     //Guarda els exercicis a les rutines.
     public void obteRutina(View view) {
-        //String nomrutina="";
-        //Exercici ex = DetailActivityRutines.this.e;//Funciona be.
-        //Log.d("obteRutina()-->Nom del exercici ex", ex.getNom());
-        //Log.d("obteRutina()-->Nom del exercici e", e.getNom());//Aqui tambe obte el exercici global.
         nomRutina = Nrutina.getText().toString();
     if(nomRutina.equals("")){
         Toast.makeText(DetailActivityRutines.this, "No has escollit la rutina.", Toast.LENGTH_SHORT).show();
@@ -194,7 +187,6 @@ public class DetailActivityRutines extends AppCompatActivity {
 
     //Llegeix les rutines existents a la BBDD.
     public void obteRutinesExistents(){
-        //final ArrayList<String> llistaRut = new ArrayList<>();
         Task<QuerySnapshot> querySnapshotTask = db.collection("Clients").document(c.getNom()).collection("Rutines").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
             @Override
             public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
@@ -209,7 +201,7 @@ public class DetailActivityRutines extends AppCompatActivity {
             });
         }
 
-
+    //Finalitza la activity i torna a la activity anterior.
     public void sortir(View view){
         finish();
     }

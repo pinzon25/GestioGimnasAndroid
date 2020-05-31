@@ -60,6 +60,7 @@ public class MainActivity extends AppCompatActivity {
     public void login(View view) throws Exception {
         if(EtDni.getText() != null && EtContrasenya != null){
             obteClients();
+
         }else{
             Toast.makeText(MainActivity.this, "Verifiqui el format de les dades!",
                     Toast.LENGTH_SHORT).show();
@@ -81,14 +82,14 @@ public class MainActivity extends AppCompatActivity {
 
                 List<DocumentSnapshot> documents = queryDocumentSnapshots.getDocuments();
                 for (DocumentSnapshot document : documents) {
-                    Log.d("dni introduit",dni);
+                    /*Log.d("dni introduit",dni);
                     Log.d("contrasenya introduida",contrasenya);
                     Log.d("contrasenya introduida encriptada",contencriptada);
-                    Log.d("contrasenya bbdd",document.getString("Contrasenya"));
+                    Log.d("contrasenya bbdd",document.getString("Contrasenya"));*/
 
                     if (dni.equals(document.getString("Dni")) && contencriptada.equals(document.getString("Contrasenya"))) {
                         nom = document.getString("Nom");
-                        Log.d("Nom del client dintre del for de documents",nom); //Comprobacio de que s'obtenen els noms dels clients que consten a la base de dades.
+                        //Log.d("Nom del client dintre del for de documents",nom); //Comprobacio de que s'obtenen els noms dels clients que consten a la base de dades.
 
                         Client client = new Client();
                         client.setNom(document.getString("Nom"));
@@ -104,10 +105,7 @@ public class MainActivity extends AppCompatActivity {
                         //mostraclients(client);//(DEBUG).
                         enviaClientNovaActivitat(client);
 
-                    }/*else{
-                        Toast.makeText(MainActivity.this, "No s'ha trobat el client.",
-                                Toast.LENGTH_SHORT).show();
-                    }*/
+                    }
                 }
             }
         });
@@ -132,12 +130,16 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(MainActivity.this, VistaPrincipalUsuari.class);
             intent.putExtra("Client", c);
             startActivity(intent);
-            //EtDni.setText("");
-            //EtContrasenya.setText("");
+            //inicialitzaCamps();
         }catch(NullPointerException ex){
             ex.printStackTrace();
             ex.getMessage();
         }
+    }
+
+    public void inicialitzaCamps(){
+        EtDni.setText("");
+        EtContrasenya.setText("");
     }
 
 }

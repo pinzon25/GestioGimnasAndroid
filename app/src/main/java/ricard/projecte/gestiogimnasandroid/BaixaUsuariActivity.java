@@ -21,8 +21,8 @@ import java.util.List;
 import java.util.concurrent.ExecutionException;
 
 public class BaixaUsuariActivity extends AppCompatActivity {
-    EditText dniBaixa,contrasenyaBaixa;
-    Button cancelarBaixa,aceptarBaixa;
+    public EditText dniBaixa,contrasenyaBaixa;
+    public Button cancelarBaixa,aceptarBaixa;
     public FirebaseFirestore db = FirebaseFirestore.getInstance();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -95,7 +95,6 @@ public class BaixaUsuariActivity extends AppCompatActivity {
     Client client;
         final String dnii;
         final String contrasenyaa;
-        final String[] nomm = {""};
         dnii = dniBaixa.getText().toString();
         contrasenyaa = EncriptaDesencripta.getMD5(contrasenyaBaixa.getText().toString());
 
@@ -105,8 +104,8 @@ public class BaixaUsuariActivity extends AppCompatActivity {
                 List<DocumentSnapshot> documents = queryDocumentSnapshots.getDocuments();
                 for (DocumentSnapshot document : documents) {
                     String nom="";
-                    //Log.d("Nom del client",nom); //Comprobacio de que s'obtenen els noms dels clients que consten a la base de dades.
-                    if (dnii.equals(document.getString("Dni")) && contrasenyaa.equals(document.getString("Contrassenya"))) {
+                    Log.d("Nom del client",nom); //Comprobacio de que s'obtenen els noms dels clients que consten a la base de dades.
+                    if (dnii.equals(document.getString("Dni")) && contrasenyaa.equals(document.getString("Contrasenya"))) {
                         nom = document.getString("Nom");
 
                         try {
@@ -119,11 +118,15 @@ public class BaixaUsuariActivity extends AppCompatActivity {
                         }
 
                         break;
+                    }else{
+                        Toast.makeText(BaixaUsuariActivity.this, "L'usuari no figura a la base de dades.",
+                                Toast.LENGTH_SHORT).show();
                     }
                 }
             }
         });
     }
+
 
 
 }
