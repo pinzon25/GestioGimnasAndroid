@@ -2,12 +2,9 @@ package ricard.projecte.gestiogimnasandroid;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
 import android.content.BroadcastReceiver;
-import android.content.Context;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -16,28 +13,21 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QuerySnapshot;
 
-import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
-public class DetailActivity extends AppCompatActivity {
+public class DetailActivitats extends AppCompatActivity {
     Activitat act;
     public Client client;
     public ArrayList<Activitat> dispAct;
     public ArrayList<Activitat> insAct;
-    private BroadcastReceiver mReceiver;
     public FirebaseFirestore db = FirebaseFirestore.getInstance();
     boolean borrat;
     Button cancel, finalitzar, baixa;
@@ -69,7 +59,7 @@ public class DetailActivity extends AppCompatActivity {
         if(inscritaOno() ==false) {
             inscriureActivitat();
         }else {
-            Toast.makeText(DetailActivity.this, "Ja estas inscrit a aquesta activitat!.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(DetailActivitats.this, "Ja estas inscrit a aquesta activitat!.", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -77,12 +67,12 @@ public class DetailActivity extends AppCompatActivity {
         if(comprobaBorrades() == false) {
             baixaActivitat();
         }else {
-            Toast.makeText(DetailActivity.this, "No estas inscrit a aquesta activitat!.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(DetailActivitats.this, "No estas inscrit a aquesta activitat!.", Toast.LENGTH_SHORT).show();
         }
     }
 
 
-    public void obteDades(){
+    private void obteDades(){
         String nom="", nomAct="";
         Intent in = getIntent();
         nom = in.getStringExtra("NomActivitat");
@@ -105,7 +95,7 @@ public class DetailActivity extends AppCompatActivity {
 
 
 
-    public void inscriureActivitat(){
+    private void inscriureActivitat(){
         String nomac="";
         nomac = act.getNom();
 
@@ -124,12 +114,12 @@ public class DetailActivity extends AppCompatActivity {
                 db.collection("Clients").document(client.getNom()).collection("activitats").document(act.getNom()).set(actv).addOnSuccessListener(new OnSuccessListener() {
                 @Override
                 public void onSuccess(Object o) {
-                    Toast.makeText(DetailActivity.this, "Dades guardades", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(DetailActivitats.this, "Dades guardades", Toast.LENGTH_SHORT).show();
                 }
                 }).addOnFailureListener(new OnFailureListener() {
                 @Override
                 public void onFailure(@NonNull Exception e) {
-                    Toast.makeText(DetailActivity.this, "No s'han pogut guardar les dades.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(DetailActivitats.this, "No s'han pogut guardar les dades.", Toast.LENGTH_SHORT).show();
                 }
                  });
 
@@ -139,18 +129,18 @@ public class DetailActivity extends AppCompatActivity {
                 insAct.add(act);
     }
 
-    public void baixaActivitat(){
+    private void baixaActivitat(){
         float totalsuplement=0;
         Activitat a = act;
         db.collection("Clients").document(client.getNom()).collection("activitats").document(act.getNom()).delete().addOnSuccessListener(new OnSuccessListener() {
             @Override
             public void onSuccess(Object o) {
-                Toast.makeText(DetailActivity.this, "Dades guardades", Toast.LENGTH_SHORT).show();
+                Toast.makeText(DetailActivitats.this, "Dades guardades", Toast.LENGTH_SHORT).show();
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
-                Toast.makeText(DetailActivity.this, "No s'han pogut guardar les dades.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(DetailActivitats.this, "No s'han pogut guardar les dades.", Toast.LENGTH_SHORT).show();
             }
         });
         DocumentReference docRef = (DocumentReference) db.collection("Clients").document(client.getNom());
@@ -159,7 +149,7 @@ public class DetailActivity extends AppCompatActivity {
         Log.d("Activitat Borrada",act.getNom());
     }
 
-    public boolean inscritaOno(){
+    private boolean inscritaOno(){
         boolean inscrita = false;
         for(int i = 0; i < insAct.size(); i++){
             if(act.getNom().equals(insAct.get(i).getNom())){
@@ -170,7 +160,7 @@ public class DetailActivity extends AppCompatActivity {
         return inscrita;
     }
 
-    public boolean comprobaBorrades(){
+    private boolean comprobaBorrades(){
         boolean borrada=true;
         for(int i = 0; i < insAct.size(); i++){
             if(act.getNom().equals(insAct.get(i).getNom())){
@@ -181,7 +171,7 @@ public class DetailActivity extends AppCompatActivity {
         return borrada;
     }
 
-    public void mostraArray(ArrayList<Activitat> a){
+    private void mostraArray(ArrayList<Activitat> a){
         for(int i=0; i <a.size();i++){
             Log.d("nom activitat disponible",a.get(i).getNom());
             Log.d("Descripcio activitat disponible",a.get(i).getDescripcio());

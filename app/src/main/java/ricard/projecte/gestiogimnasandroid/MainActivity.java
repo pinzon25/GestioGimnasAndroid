@@ -16,13 +16,10 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
 
-import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     public FirebaseFirestore db = FirebaseFirestore.getInstance();
-    //public Client client;
     Button entrar, baixa,registrar;
     EditText EtDni, EtContrasenya;
 
@@ -42,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
         registrar.setOnClickListener(new View.OnClickListener(){
         @Override
         public void onClick(View v) {
-            Intent intent = new Intent( MainActivity.this, AltaUsuariActivity.class);
+            Intent intent = new Intent( MainActivity.this, AltaUsuari.class);
             startActivity(intent);
             }
         } );
@@ -50,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
         baixa.setOnClickListener(new View.OnClickListener(){
         @Override
         public void onClick(View v) {
-            Intent intent = new Intent( MainActivity.this, BaixaUsuariActivity.class);
+            Intent intent = new Intent( MainActivity.this, BaixaUsuari.class);
             startActivity(intent);
             }
         } );
@@ -67,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public void obteClients() throws Exception {
+    private void obteClients() throws Exception {
 
         Task<QuerySnapshot> querySnapshotTask = db.collection("Clients").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
             @Override
@@ -112,7 +109,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     //Metode per comprobar que tots els clients s'obtenen correctament.(Debug)
-    public void mostraclients(Client c){
+    private void mostraclients(Client c){
         Log.d("nom client",c.getNom());
         Log.d("cognom client",c.getCognoms());
         Log.d("dni client",c.getDni());
@@ -125,7 +122,7 @@ public class MainActivity extends AppCompatActivity {
         Log.d("cuota client",String.valueOf(c.getCuota()));
     }
 
-    public void enviaClientNovaActivitat(Client c){
+    private void enviaClientNovaActivitat(Client c){
         try {
             Intent intent = new Intent(MainActivity.this, VistaPrincipalUsuari.class);
             intent.putExtra("Client", c);
@@ -137,7 +134,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public void inicialitzaCamps(){
+    private void inicialitzaCamps(){
         EtDni.setText("");
         EtContrasenya.setText("");
     }

@@ -27,7 +27,7 @@ public class ActivitatsUsuari extends AppCompatActivity {
         Button BtCancelar;
         public ArrayList<Activitat> disponibles;
         public ArrayList<Activitat> inscrites;
-        ArrayList<RecyclerActivitats> disponiblesNoms;;
+        public ArrayList<RecyclerActivitats> disponiblesNoms;;
         RecyclerView Rinscrites;
         ActivitatsAdapter Aadapter;
 
@@ -86,11 +86,7 @@ public class ActivitatsUsuari extends AppCompatActivity {
         Aadapter.notifyDataSetChanged();
     }
 
-    public void resetSports(View view) {
-        initializeData();
-    }
-
-    public void obteActivitatsDisponibles(){
+    private void obteActivitatsDisponibles(){
 
         Task<QuerySnapshot> querySnapshotTask = db.collection("Activitats").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
             @Override
@@ -110,7 +106,7 @@ public class ActivitatsUsuari extends AppCompatActivity {
         });
     }
 
-    public void obteActivitatsInscrites() {
+    private void obteActivitatsInscrites() {
 
         Task<QuerySnapshot> querySnapshotTask = db.collection("Clients").document(client.getNom()).collection("activitats").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
             @Override
@@ -134,7 +130,7 @@ public class ActivitatsUsuari extends AppCompatActivity {
     }
 
     //Metode que permet veure a traves de consola les dades de la activitat rebuda com a parametre
-    public void mostraArrayinscrites(Activitat a){
+    private void mostraArrayinscrites(Activitat a){
             Log.d("nom activitat inscrita",a.getNom());
             Log.d("Descripcio activitat inscrita",a.getDescripcio());
             Log.d("Id activitat inscrita",a.getIdActivitat().toString());
@@ -142,7 +138,7 @@ public class ActivitatsUsuari extends AppCompatActivity {
     }
 
     //Metode que permet veure a traves de consola les dades de la activitat rebuda com a parametre
-    public void mostraArrayins(ArrayList<Activitat> a){
+    private void mostraArrayins(ArrayList<Activitat> a){
         for(int i=0; i <a.size();i++){
             Log.d("nom activitat inscrita arraylist",a.get(i).getNom());
             Log.d("Descripcio activitat inscrita arraylist",a.get(i).getDescripcio());

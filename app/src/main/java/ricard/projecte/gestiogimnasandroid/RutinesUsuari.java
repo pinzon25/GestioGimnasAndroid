@@ -65,7 +65,7 @@ public class RutinesUsuari extends AppCompatActivity {
         Madapter.notifyDataSetChanged();
     }
 
-    public void obteMusculs(){
+    private void obteMusculs(){
 
         Task<QuerySnapshot> querySnapshotTask = db.collection("Exercicis").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
             @Override

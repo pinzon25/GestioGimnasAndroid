@@ -21,7 +21,6 @@ import java.io.UnsupportedEncodingException;
 import java.util.concurrent.ExecutionException;
 
 public class ModificaDadesUsuari extends AppCompatActivity {
-    Bundle bundle;
     Client c;
     public FirebaseFirestore db = FirebaseFirestore.getInstance();
     Button actCpPob,actIb,actCont;

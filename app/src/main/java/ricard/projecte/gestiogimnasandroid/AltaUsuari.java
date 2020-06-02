@@ -20,17 +20,14 @@ import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 import java.util.Map;
 
-public class AltaUsuariActivity extends AppCompatActivity {
-    private static final String TAG = "AltaUsuariActivity";
+public class AltaUsuari extends AppCompatActivity {
     Client client;
     public FirebaseFirestore db = FirebaseFirestore.getInstance();
     Button BtCancelar, BtAcceptar;
     EditText nom, cognoms, dni, telefon, contrasenya, repeticio, codipostal, poblacio, iban, cuota;
     RadioButton jornadamati, jornadatarda;
     String jornadaacces = "";
-    int codipost = 0;
     float cuot = 0;
-    long telef = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,14 +78,14 @@ public class AltaUsuariActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(nom.getText().toString().isEmpty() && cognoms.getText().toString().isEmpty() && dni.getText().toString().isEmpty() && telefon.getText().toString().isEmpty() && contrasenya.getText().toString().isEmpty() && repeticio.getText().toString().isEmpty() && codipostal.getText().toString().isEmpty() && poblacio.getText().toString().isEmpty() && iban.getText().toString().isEmpty() && cuota.getText().toString().isEmpty()) {
-                    Toast.makeText(AltaUsuariActivity.this, "El formulari esta buit!",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(AltaUsuari.this, "El formulari esta buit!",Toast.LENGTH_SHORT).show();
                 }else{
                     try {
                         guardaUsuari(nom.getText().toString(), cognoms.getText().toString(), dni.getText().toString(), Long.parseLong(telefon.getText().toString()), contrasenya.getText().toString(), repeticio.getText().toString(), Integer.parseInt(codipostal.getText().toString()), poblacio.getText().toString(), iban.getText().toString(), jornadaacces, Float.parseFloat(cuota.getText().toString()));
                     } catch (UnsupportedEncodingException e) {
                         e.printStackTrace();
                     } catch(NumberFormatException es){
-                        Toast.makeText(AltaUsuariActivity.this, "Tipus de dades erroni!",
+                        Toast.makeText(AltaUsuari.this, "Tipus de dades erroni!",
                                 Toast.LENGTH_SHORT).show();
                     }
                 }
@@ -97,14 +94,14 @@ public class AltaUsuariActivity extends AppCompatActivity {
     }
 
     private void guardaUsuari(String nomm, String cognomsi, String dnii, long telef, String contraseny, String rep, int codipost, String poblac, String ibann, String jornadaacces, float cuot) throws UnsupportedEncodingException {
-        if(comprobacions(nomm,cognomsi,dnii,telef,contraseny,rep,codipost,poblac,ibann)==true) {
+        //if(comprobacions(nomm,cognomsi,dnii,telef,contraseny,rep,codipost,poblac,ibann)==true) {
         creaUsuari(nomm, cognomsi, dnii, String.valueOf(telef), contraseny, codipost, poblac, ibann, jornadaacces, cuot);
         pujaUsuari();
 
-         }else {
-            Toast.makeText(AltaUsuariActivity.this, "Verifiqui el format de les dades!",
+        /* }else {
+            Toast.makeText(AltaUsuari.this, "Verifiqui el format de les dades!",
                     Toast.LENGTH_SHORT).show();
-        }
+        }*/
     }
 
     private void pujaUsuari() {
@@ -129,12 +126,12 @@ public class AltaUsuariActivity extends AppCompatActivity {
         db.collection("Clients").document(client.getNom()).set(data).addOnSuccessListener(new OnSuccessListener() {
             @Override
             public void onSuccess(Object o) {
-                Toast.makeText(AltaUsuariActivity.this, "Dades guardades", Toast.LENGTH_SHORT);
+                Toast.makeText(AltaUsuari.this, "Dades guardades", Toast.LENGTH_SHORT);
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
-                Toast.makeText(AltaUsuariActivity.this, "No s'ha pogut guardar les dades.", Toast.LENGTH_SHORT);
+                Toast.makeText(AltaUsuari.this, "No s'ha pogut guardar les dades.", Toast.LENGTH_SHORT);
             }
         });
 

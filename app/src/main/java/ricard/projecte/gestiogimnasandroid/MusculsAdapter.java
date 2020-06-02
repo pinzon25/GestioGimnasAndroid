@@ -117,7 +117,7 @@ public class MusculsAdapter extends RecyclerView.Adapter<MusculsAdapter.ViewHold
             switch(nom){
                 case "res/drawable/abdominal.jpg":
                     String act1 = "Abdominal";
-                    Intent detailIntent1 = new Intent(mContext, DetailActivityRutines.class);
+                    Intent detailIntent1 = new Intent(mContext, DetailRutines.class);
                     detailIntent1.putExtra("NomMuscul", act1);
                     detailIntent1.putExtra("Client", client);
                     detailIntent1.putExtra("Disponibles", Musculs);
@@ -125,7 +125,7 @@ public class MusculsAdapter extends RecyclerView.Adapter<MusculsAdapter.ViewHold
                     break;
                 case "res/drawable/avantbracos.jpg":
                     String act2 = "Avantbraç";
-                    Intent detailIntent2 = new Intent(mContext, DetailActivityRutines.class);
+                    Intent detailIntent2 = new Intent(mContext, DetailRutines.class);
                     detailIntent2.putExtra("NomMuscul", act2);
                     detailIntent2.putExtra("Client", client);
                     detailIntent2.putExtra("Disponibles", Musculs);
@@ -133,7 +133,7 @@ public class MusculsAdapter extends RecyclerView.Adapter<MusculsAdapter.ViewHold
                     break;
                 case "res/drawable/bessons.jpg":
                     String act3 = "Bessons";
-                    Intent detailIntent3 = new Intent(mContext, DetailActivityRutines.class);
+                    Intent detailIntent3 = new Intent(mContext, DetailRutines.class);
                     detailIntent3.putExtra("NomMuscul", act3);
                     detailIntent3.putExtra("Client", client);
                     detailIntent3.putExtra("Disponibles", Musculs);
@@ -141,7 +141,7 @@ public class MusculsAdapter extends RecyclerView.Adapter<MusculsAdapter.ViewHold
                     break;
                 case "res/drawable/biceps.jpg":
                     String act4 = "Biceps";
-                    Intent detailIntent4 = new Intent(mContext, DetailActivityRutines.class);
+                    Intent detailIntent4 = new Intent(mContext, DetailRutines.class);
                     detailIntent4.putExtra("NomMuscul", act4);
                     detailIntent4.putExtra("Client", client);
                     detailIntent4.putExtra("Disponibles", Musculs);
@@ -149,7 +149,7 @@ public class MusculsAdapter extends RecyclerView.Adapter<MusculsAdapter.ViewHold
                     break;
                 case "res/drawable/biceps_femoral.jpg":
                     String act5 = "Biceps Femoral";
-                    Intent detailIntent5 = new Intent(mContext, DetailActivityRutines.class);
+                    Intent detailIntent5 = new Intent(mContext, DetailRutines.class);
                     detailIntent5.putExtra("NomMuscul", act5);
                     detailIntent5.putExtra("Client", client);
                     detailIntent5.putExtra("Disponibles", Musculs);
@@ -157,7 +157,7 @@ public class MusculsAdapter extends RecyclerView.Adapter<MusculsAdapter.ViewHold
                     break;
                 case "res/drawable/coll.jpg":
                     String act6 = "Coll";
-                    Intent detailIntent6 = new Intent(mContext, DetailActivityRutines.class);
+                    Intent detailIntent6 = new Intent(mContext, DetailRutines.class);
                     detailIntent6.putExtra("NomMuscul", act6);
                     detailIntent6.putExtra("Client", client);
                     detailIntent6.putExtra("Disponibles", Musculs);
@@ -165,7 +165,7 @@ public class MusculsAdapter extends RecyclerView.Adapter<MusculsAdapter.ViewHold
                     break;
                 case "res/drawable/cuadriceps.jpg":
                     String act7 = "Cuadriceps";
-                    Intent detailIntent7 = new Intent(mContext, DetailActivityRutines.class);
+                    Intent detailIntent7 = new Intent(mContext, DetailRutines.class);
                     detailIntent7.putExtra("NomMuscul", act7);
                     detailIntent7.putExtra("Client", client);
                     detailIntent7.putExtra("Disponibles", Musculs);
@@ -173,7 +173,7 @@ public class MusculsAdapter extends RecyclerView.Adapter<MusculsAdapter.ViewHold
                     break;
                 case "res/drawable/espatlles.jpg":
                     String act8 = "Espatlles";
-                    Intent detailIntent8 = new Intent(mContext, DetailActivityRutines.class);
+                    Intent detailIntent8 = new Intent(mContext, DetailRutines.class);
                     detailIntent8.putExtra("NomMuscul", act8);
                     detailIntent8.putExtra("Client", client);
                     detailIntent8.putExtra("Disponibles", Musculs);
@@ -181,7 +181,7 @@ public class MusculsAdapter extends RecyclerView.Adapter<MusculsAdapter.ViewHold
                     break;
                 case "res/drawable/esquena.jpg":
                     String act9 = "Esquena";
-                    Intent detailIntent9 = new Intent(mContext, DetailActivityRutines.class);
+                    Intent detailIntent9 = new Intent(mContext, DetailRutines.class);
                     detailIntent9.putExtra("NomMuscul", act9);
                     detailIntent9.putExtra("Client", client);
                     detailIntent9.putExtra("Disponibles", Musculs);
@@ -189,7 +189,7 @@ public class MusculsAdapter extends RecyclerView.Adapter<MusculsAdapter.ViewHold
                     break;
                 case "res/drawable/glutis.jpg":
                     String act10 = "Glutis";
-                    Intent detailIntent10 = new Intent(mContext, DetailActivityRutines.class);
+                    Intent detailIntent10 = new Intent(mContext, DetailRutines.class);
                     detailIntent10.putExtra("NomMuscul", act10);
                     detailIntent10.putExtra("Client", client);
                     detailIntent10.putExtra("Disponibles", Musculs);
@@ -197,7 +197,7 @@ public class MusculsAdapter extends RecyclerView.Adapter<MusculsAdapter.ViewHold
                     break;
                 case "res/drawable/pectoral.jpg":
                     String act11 = "Pectoral";
-                    Intent detailIntent11 = new Intent(mContext, DetailActivityRutines.class);
+                    Intent detailIntent11 = new Intent(mContext, DetailRutines.class);
                     detailIntent11.putExtra("NomMuscul", act11);
                     detailIntent11.putExtra("Client", client);
                     detailIntent11.putExtra("Disponibles", Musculs);
@@ -205,7 +205,7 @@ public class MusculsAdapter extends RecyclerView.Adapter<MusculsAdapter.ViewHold
                     break;
                 case "res/drawable/triceps.jpg":
                     String act12 = "Triceps";
-                    Intent detailIntent12 = new Intent(mContext, DetailActivityRutines.class);
+                    Intent detailIntent12 = new Intent(mContext, DetailRutines.class);
                     detailIntent12.putExtra("NomMuscul", act12);
                     detailIntent12.putExtra("Client", client);
                     detailIntent12.putExtra("Disponibles", Musculs);

@@ -14,13 +14,11 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
-import com.google.firestore.v1.WriteResult;
 
 import java.io.UnsupportedEncodingException;
 import java.util.List;
-import java.util.concurrent.ExecutionException;
 
-public class BaixaUsuariActivity extends AppCompatActivity {
+public class BaixaUsuari extends AppCompatActivity {
     public EditText dniBaixa,contrasenyaBaixa;
     public Button cancelarBaixa,aceptarBaixa;
     public FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -58,31 +56,31 @@ public class BaixaUsuariActivity extends AppCompatActivity {
         });
     }
 
-    public boolean comprobaCamps() {
+    private boolean comprobaCamps() {
         boolean correcte = true;
         String dni = dniBaixa.getText().toString();
         String contrassenya = contrasenyaBaixa.getText().toString();
 
         if (dni.isEmpty() && !contrassenya.isEmpty()) {
-            Toast.makeText(BaixaUsuariActivity.this, "Camp DNI buit!",
+            Toast.makeText(BaixaUsuari.this, "Camp DNI buit!",
                     Toast.LENGTH_SHORT).show();
             correcte = false;
         }
 
         if (!dni.isEmpty() && contrassenya.isEmpty()) {
-            Toast.makeText(BaixaUsuariActivity.this, "Camp Contrassenya buit!",
+            Toast.makeText(BaixaUsuari.this, "Camp Contrassenya buit!",
                     Toast.LENGTH_SHORT).show();
             correcte = false;
         }
 
         if (dni.isEmpty() && contrassenya.isEmpty()) {
-            Toast.makeText(BaixaUsuariActivity.this, "No s'han introduit les dades!",
+            Toast.makeText(BaixaUsuari.this, "No s'han introduit les dades!",
                     Toast.LENGTH_SHORT).show();
             correcte = false;
         }
 
         if (Modelo.comprobaDni(dni) == false) {
-            Toast.makeText(BaixaUsuariActivity.this, "El dni no te el format correcte.",
+            Toast.makeText(BaixaUsuari.this, "El dni no te el format correcte.",
                     Toast.LENGTH_SHORT).show();
             correcte = false;
         }
@@ -91,7 +89,7 @@ public class BaixaUsuariActivity extends AppCompatActivity {
     }
 
     //Introduim el dni i la contrassenya del client/usuari, si coincideixen amb algun document dels clients, n'agafem el nom i l'esborrem.
-    public void realitzaBaixa() throws Exception {
+    private void realitzaBaixa() throws Exception {
     Client client;
         final String dnii;
         final String contrasenyaa;
@@ -110,16 +108,16 @@ public class BaixaUsuariActivity extends AppCompatActivity {
 
                         try {
                             db.collection("Clients").document(nom).delete();
-                            Toast.makeText(BaixaUsuariActivity.this, "Baixa realitzada!",
+                            Toast.makeText(BaixaUsuari.this, "Baixa realitzada!",
                                     Toast.LENGTH_SHORT).show();
                         } catch (IllegalArgumentException ex) {
-                            Toast.makeText(BaixaUsuariActivity.this, "L'usuari no figura a la base de dades.",
+                            Toast.makeText(BaixaUsuari.this, "L'usuari no figura a la base de dades.",
                                     Toast.LENGTH_SHORT).show();
                         }
 
                         break;
                     }else{
-                        Toast.makeText(BaixaUsuariActivity.this, "L'usuari no figura a la base de dades.",
+                        Toast.makeText(BaixaUsuari.this, "L'usuari no figura a la base de dades.",
                                 Toast.LENGTH_SHORT).show();
                     }
                 }

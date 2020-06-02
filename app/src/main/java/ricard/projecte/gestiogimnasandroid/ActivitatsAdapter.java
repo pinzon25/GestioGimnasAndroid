@@ -101,25 +101,25 @@ class ActivitatsAdapter extends RecyclerView.Adapter<ActivitatsAdapter.ViewHolde
             itemView.setOnClickListener(this);
         }
 
-        void bindTo(RecyclerActivitats currentSport) {
+        void bindTo(RecyclerActivitats currentAct) {
             // Populate the textviews with data.
-            mTitleText.setText(currentSport.getNom()); //omplim els textview amb el esport.
-            mInfoText.setText(currentSport.getDescripcio());
-            Glide.with(mContext).load(currentSport.getImageId()).into(mActivitatsImage);
+            mTitleText.setText(currentAct.getNom()); //omplim els textview amb el esport.
+            mInfoText.setText(currentAct.getDescripcio());
+            Glide.with(mContext).load(currentAct.getImageId()).into(mActivitatsImage);
 
         }
 
-        //Al fer click sobre l'activitat, obtenim el nom del recurs i enviem un String amb el nom de l'activitat a la DetailActivity.
+        //Al fer click sobre l'activitat, obtenim el nom del recurs i enviem un String amb el nom de l'activitat a la DetailActivitats.
         @Override
         public void onClick(View view) {
             String nom ="";
-            RecyclerActivitats currentSport = mActivitatsData.get(getAdapterPosition());
-            nom = currentSport.getNom();
+            RecyclerActivitats currentAct = mActivitatsData.get(getAdapterPosition());
+            nom = currentAct.getNom();
 
             switch(nom){
                 case "res/drawable/jiujitsu.jpg":
                    String act1 = "Jiu Jitsu";
-                    Intent detailIntent1 = new Intent(mContext, DetailActivity.class);
+                    Intent detailIntent1 = new Intent(mContext, DetailActivitats.class);
                     detailIntent1.putExtra("NomActivitat", act1);
                     detailIntent1.putExtra("Client", client);
                     detailIntent1.putExtra("Disponibles", disponibles);
@@ -128,7 +128,7 @@ class ActivitatsAdapter extends RecyclerView.Adapter<ActivitatsAdapter.ViewHolde
                     break;
                 case "res/drawable/karate.jpg":
                     String act2 = "Karate";
-                    Intent detailIntent2 = new Intent(mContext, DetailActivity.class);
+                    Intent detailIntent2 = new Intent(mContext, DetailActivitats.class);
                     detailIntent2.putExtra("NomActivitat", act2);
                     detailIntent2.putExtra("Client", client);
                     detailIntent2.putExtra("Disponibles", disponibles);
@@ -137,7 +137,7 @@ class ActivitatsAdapter extends RecyclerView.Adapter<ActivitatsAdapter.ViewHolde
                     break;
                 case "res/drawable/kickboxing.jpg":
                     String act3 = "KickBoxing";
-                    Intent detailIntent3 = new Intent(mContext, DetailActivity.class);
+                    Intent detailIntent3 = new Intent(mContext, DetailActivitats.class);
                     detailIntent3.putExtra("NomActivitat", act3);
                     detailIntent3.putExtra("Client", client);
                     detailIntent3.putExtra("Disponibles", disponibles);
@@ -146,7 +146,7 @@ class ActivitatsAdapter extends RecyclerView.Adapter<ActivitatsAdapter.ViewHolde
                     break;
                 case "res/drawable/sambo.jpg":
                     String act4 = "Sambo";
-                    Intent detailIntent4 = new Intent(mContext, DetailActivity.class);
+                    Intent detailIntent4 = new Intent(mContext, DetailActivitats.class);
                     detailIntent4.putExtra("NomActivitat", act4);
                     detailIntent4.putExtra("Client", client);
                     detailIntent4.putExtra("Disponibles", disponibles);

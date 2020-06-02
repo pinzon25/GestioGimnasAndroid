@@ -30,7 +30,7 @@ import java.util.Map;
 
 import static android.R.layout.simple_spinner_item;
 
-public class DetailActivityRutines extends AppCompatActivity {
+public class DetailRutines extends AppCompatActivity {
     public FirebaseFirestore db = FirebaseFirestore.getInstance();
     public Client c;
     public Exercici e;
@@ -89,12 +89,12 @@ public class DetailActivityRutines extends AppCompatActivity {
     public void esborraExercici(View view){
         nomRutina = Nrutina.getText().toString();
         if(nomRutina.isEmpty()){
-            Toast.makeText(DetailActivityRutines.this, "Introdueix el nom de la rutina.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(DetailRutines.this, "Introdueix el nom de la rutina.", Toast.LENGTH_SHORT).show();
         }else{
         db.collection("Clients").document(c.getNom()).collection("Rutines").document(nomRutina).collection("exercicis").document(e.getNom()).delete().addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void aVoid) {
-                Toast.makeText(DetailActivityRutines.this, "Exercici esborrat correctament.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(DetailRutines.this, "Exercici esborrat correctament.", Toast.LENGTH_SHORT).show();
             }
         });
         }
@@ -118,7 +118,7 @@ public class DetailActivityRutines extends AppCompatActivity {
     public void obteRutina(View view) {
         nomRutina = Nrutina.getText().toString();
     if(nomRutina.equals("")){
-        Toast.makeText(DetailActivityRutines.this, "No has escollit la rutina.", Toast.LENGTH_SHORT).show();
+        Toast.makeText(DetailRutines.this, "No has escollit la rutina.", Toast.LENGTH_SHORT).show();
     }else {
 
         Map<String, Object> exN = new HashMap<>();
@@ -134,12 +134,12 @@ public class DetailActivityRutines extends AppCompatActivity {
         db.collection("Clients").document(c.getNom()).collection("Rutines").document(nomRutina).collection("exercicis").document(e.getNom()).set(actv).addOnSuccessListener(new OnSuccessListener() {
             @Override
             public void onSuccess(Object o) {
-                Toast.makeText(DetailActivityRutines.this, "Dades guardades", Toast.LENGTH_SHORT).show();
+                Toast.makeText(DetailRutines.this, "Dades guardades", Toast.LENGTH_SHORT).show();
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
-                Toast.makeText(DetailActivityRutines.this, "No s'han pogut guardar les dades.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(DetailRutines.this, "No s'han pogut guardar les dades.", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -149,7 +149,7 @@ public class DetailActivityRutines extends AppCompatActivity {
 
 
     //Obte les dades de la activity anterior.
-    public void rebreDades(){
+    private void rebreDades(){
         String nom="";
         Intent in = getIntent();
         c  = (Client) in.getSerializableExtra("Client");
@@ -159,7 +159,7 @@ public class DetailActivityRutines extends AppCompatActivity {
     }
 
     //Obte els exercicis del muscul escollit.
-    public void obteExercicisMuscul(String nomMuscul){
+    private void obteExercicisMuscul(String nomMuscul){
         Task<QuerySnapshot> querySnapshotTask = db.collection("Exercicis").document(nomMuscul).collection("Exercici").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
             @Override
             public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
@@ -178,7 +178,7 @@ public class DetailActivityRutines extends AppCompatActivity {
                     llistaExercicisMuscul.add(ex);
                     exercicisLlista.add(ex.getNom());
                     Log.d("exerciciLlista conte",ex.getNom()); //Verifiquem el nom que ens arriba des de la activity ActivitatsUsuari.
-                    ArrayAdapter adaptador = new ArrayAdapter(DetailActivityRutines.this, android.R.layout.simple_list_item_1,exercicisLlista);
+                    ArrayAdapter adaptador = new ArrayAdapter(DetailRutines.this, android.R.layout.simple_list_item_1,exercicisLlista);
                     exercicis.setAdapter(adaptador);
                 }
             }
@@ -186,7 +186,7 @@ public class DetailActivityRutines extends AppCompatActivity {
     }
 
     //Llegeix les rutines existents a la BBDD.
-    public void obteRutinesExistents(){
+    private void obteRutinesExistents(){
         Task<QuerySnapshot> querySnapshotTask = db.collection("Clients").document(c.getNom()).collection("Rutines").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
             @Override
             public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
