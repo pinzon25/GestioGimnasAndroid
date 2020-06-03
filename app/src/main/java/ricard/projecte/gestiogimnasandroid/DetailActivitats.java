@@ -111,7 +111,7 @@ public class DetailActivitats extends AppCompatActivity {
                 totalsuplement += act.getSuplement();
 
 
-                db.collection("Clients").document(client.getNom()).collection("activitats").document(act.getNom()).set(actv).addOnSuccessListener(new OnSuccessListener() {
+                db.collection("Clients").document(client.getNom()).collection("Activitats").document(act.getNom()).set(actv).addOnSuccessListener(new OnSuccessListener() {
                 @Override
                 public void onSuccess(Object o) {
                     Toast.makeText(DetailActivitats.this, "Dades guardades", Toast.LENGTH_SHORT).show();
