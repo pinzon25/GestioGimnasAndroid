@@ -38,7 +38,7 @@ public class RutinesUsuari extends AppCompatActivity {
         BtCancelarRutina = findViewById(R.id.BtCancelarRutines);
         Rmusculs = findViewById(R.id.RecyclerMusculs);
         Rmusculs.setLayoutManager(new LinearLayoutManager(this));
-        Madapter = new MusculsAdapter(this,Musculs, clientRutina, NomsMusculs);
+        Madapter = new MusculsAdapter(this,Musculs, clientRutina/*, NomsMusculs*/);
         Rmusculs.setAdapter(Madapter);
 
         initializeData();
@@ -53,8 +53,6 @@ public class RutinesUsuari extends AppCompatActivity {
                 .getStringArray(R.array.musculs); //igual pero al fitxer sports_info.
 
         TypedArray MusculsImageResources = getResources().obtainTypedArray(R.array.musculs_imatges);
-
-        //Musculs.clear();
 
         for(int i=0;i<MusculList.length;i++){
             Musculs.add(new RecyclerMusculs(MusculList[i],MusculsInfo[i],MusculsImageResources.getResourceId(i,0))); //Afegim el atribut de tipus int necessari per formar correctament el constructor.

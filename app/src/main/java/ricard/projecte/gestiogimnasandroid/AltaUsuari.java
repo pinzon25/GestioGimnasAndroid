@@ -77,14 +77,15 @@ public class AltaUsuari extends AppCompatActivity {
         BtAcceptar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(nom.getText().toString().isEmpty() && cognoms.getText().toString().isEmpty() && dni.getText().toString().isEmpty() && telefon.getText().toString().isEmpty() && contrasenya.getText().toString().isEmpty() && repeticio.getText().toString().isEmpty() && codipostal.getText().toString().isEmpty() && poblacio.getText().toString().isEmpty() && iban.getText().toString().isEmpty() && cuota.getText().toString().isEmpty()) {
-                    Toast.makeText(AltaUsuari.this, "El formulari esta buit!",Toast.LENGTH_SHORT).show();
-                }else{
+                if (nom.getText().toString().isEmpty() && cognoms.getText().toString().isEmpty() && dni.getText().toString().isEmpty() && telefon.getText().toString().isEmpty() && contrasenya.getText().toString().isEmpty() && repeticio.getText().toString().isEmpty() && codipostal.getText().toString().isEmpty() && poblacio.getText().toString().isEmpty() && iban.getText().toString().isEmpty() && cuota.getText().toString().isEmpty()) {
+                    Toast.makeText(AltaUsuari.this, "El formulari esta buit!", Toast.LENGTH_SHORT).show();
+                } else {
+                    //try {
                     try {
                         guardaUsuari(nom.getText().toString(), cognoms.getText().toString(), dni.getText().toString(), Long.parseLong(telefon.getText().toString()), contrasenya.getText().toString(), repeticio.getText().toString(), Integer.parseInt(codipostal.getText().toString()), poblacio.getText().toString(), iban.getText().toString(), jornadaacces, Float.parseFloat(cuota.getText().toString()));
                     } catch (UnsupportedEncodingException e) {
                         e.printStackTrace();
-                    } catch(NumberFormatException es){
+                    } catch (NumberFormatException es) {
                         Toast.makeText(AltaUsuari.this, "Tipus de dades erroni!",
                                 Toast.LENGTH_SHORT).show();
                     }
@@ -94,14 +95,42 @@ public class AltaUsuari extends AppCompatActivity {
     }
 
     private void guardaUsuari(String nomm, String cognomsi, String dnii, long telef, String contraseny, String rep, int codipost, String poblac, String ibann, String jornadaacces, float cuot) throws UnsupportedEncodingException {
-        //if(comprobacions(nomm,cognomsi,dnii,telef,contraseny,rep,codipost,poblac,ibann)==true) {
-        creaUsuari(nomm, cognomsi, dnii, String.valueOf(telef), contraseny, codipost, poblac, ibann, jornadaacces, cuot);
-        pujaUsuari();
+        if (comprobacions(nomm, cognomsi, dnii, telef, contraseny, rep, codipost, poblac, ibann)) {
+            creaUsuari(nomm, cognomsi, dnii, String.valueOf(telef), contraseny, codipost, poblac, ibann, jornadaacces, cuot);
+            pujaUsuari();
+       } else {
+            Toast.makeText(AltaUsuari.this, "Una o varies comprobacions han retornat false.", Toast.LENGTH_SHORT).show();
+        }
+    }
 
-        /* }else {
-            Toast.makeText(AltaUsuari.this, "Verifiqui el format de les dades!",
-                    Toast.LENGTH_SHORT).show();
-        }*/
+    private boolean comprobacions(String n, String c, String d, long t, String con, String r, int cp,String pob, String ib){
+        boolean verificat=false;
+
+        if(Modelo.comprobaNom(n)) {
+            verificat=true;
+        }
+        if(Modelo.comprobaCognom(c)){
+            verificat=true;
+        }
+        if(Modelo.comprobaDni(d)) {
+            verificat=true;
+        }
+        if(Modelo.comprobaTelefon(String.valueOf(t))){
+            verificat=true;
+        }
+        if(Modelo.comprobaContrasenya(con,r)) {
+            verificat=true;
+        }
+        if(Modelo.comprobaCodiPostal(String.valueOf(cp))) {
+            verificat=true;
+        }
+        if(Modelo.comprobaPoblacio(pob)) {
+            verificat=true;
+        }
+        if(Modelo.comprobaCompteBancari(ib)) {
+            verificat=true;
+        }
+        return verificat;
     }
 
     private void pujaUsuari() {
@@ -139,11 +168,11 @@ public class AltaUsuari extends AppCompatActivity {
     }
 
 
-    private void creaUsuari(String nom, String cognoms, String dni, String telefon, String contrassenya, int codi_postal, String poblacio, String comptePagament, String jornadaAcces, float cuota) throws UnsupportedEncodingException {
+    private void creaUsuari(String nom, String cognoms, String dni, String telefon, String contrasenya, int codi_postal, String poblacio, String comptePagament, String jornadaAcces, float cuota) throws UnsupportedEncodingException {
         String contra = "";
         long telf;
         telf = Long.parseLong(telefon);
-        contra = EncriptaDesencripta.getMD5(contrassenya);
+        contra = EncriptaDesencripta.getMD5(contrasenya);
         client = new Client();
         client.setNom(nom);
         client.setCognoms(cognoms);
@@ -157,37 +186,7 @@ public class AltaUsuari extends AppCompatActivity {
         client.setCuota(cuota);
     }
 
-    public boolean comprobacions(String n, String c, String d, long t, String con, String r, int cp,String pob, String ib){
-    boolean verificat=true;
-        if(!Modelo.comprobaNom(n)) {
-            verificat=false;
-        }
-        if(!Modelo.comprobaNom(n)) {
-             verificat=false;
-         }
-        if(!Modelo.comprobaCognom(c)){
-            verificat=false;
-        }
-        if(!Modelo.comprobaDni(d)) {
-              verificat=false;
-        }
-        if(!Modelo.comprobaTelefon(String.valueOf(t))){
-            verificat=false;
-        }
-        if(!Modelo.comprobaContrasenya(con, r)) {
-            verificat=false;
-        }
-        if(!Modelo.comprobaCodiPostal(String.valueOf(cp))) {
-            verificat=false;
-        }
-        if(!Modelo.comprobaPoblacio(pob)) {
-            verificat=false;
-        }
-        if(!Modelo.comprobaCompteBancari(ib)) {
-            verificat=false;
-        }
-            return verificat;
-    }
+
 
         public void inicialitzaCamps(){
             nom.setText("");

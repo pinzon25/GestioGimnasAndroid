@@ -113,11 +113,6 @@ public class Modelo {
 
     }
 */
-    public static boolean comprobaDni(String dni) {
-        return Pattern.compile("[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][A-Z]").matcher(dni).matches();
-
-    }
-
     //Comprobem que el nom nomes el formen lletres.
     public static boolean comprobaNom(String nom) {
         return Pattern.compile("[a-zA-Z]+").matcher(nom).matches();
@@ -126,7 +121,12 @@ public class Modelo {
 
     //Comprobem que el cognom nomes el formen lletres.
     public static boolean comprobaCognom(String cognoms) {
-        return Pattern.compile("[a-zA-Z]+").matcher(cognoms).matches();
+        return Pattern.compile("[a-zA-Z]+[ ][a-zA-Z]+").matcher(cognoms).matches();
+    }
+
+    public static boolean comprobaDni(String dni) {
+        return Pattern.compile("[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][A-Z]").matcher(dni).matches();
+
     }
 
     //Comprobem que el telefon estigui format per 9 numeros on el primer ha de estar entre 6 i 9.

@@ -53,7 +53,7 @@ public class ActivitatsUsuari extends AppCompatActivity {
 
     }
 
-    @Override
+    @Override //Quan tornem a la activity actualitzem les Activitats disponibles i les inscrites.
     public void onResume(){
         super.onResume();
         this.obteActivitatsDisponibles();
@@ -61,16 +61,16 @@ public class ActivitatsUsuari extends AppCompatActivity {
 
     }
 
+    //Finalitzem i tornem a láctivity anterior.
     public void sortir(View view){
         finish();
     }
 
-
+    //Adhereix les imatges a la seva activitat corresponent.
     private void initializeData() {
-
         String[] sportsList = getResources()
                 .getStringArray(R.array.sports_images); //va a buscar al fitxer sports_titles a buscar els sports en format string.
-        String[] sportsInfo = getResources()
+        String[] activitatsInfo = getResources()
                 .getStringArray(R.array.activitats); //igual pero al fitxer sports_info.
 
         TypedArray sportsImageResources = getResources().obtainTypedArray(R.array.sports_images);
@@ -78,7 +78,7 @@ public class ActivitatsUsuari extends AppCompatActivity {
         disponiblesNoms.clear();
 
         for(int i=0;i<sportsList.length;i++){
-            disponiblesNoms.add(new RecyclerActivitats(sportsList[i],sportsInfo[i],sportsImageResources.getResourceId(i,0))); //Afegim el atribut de tipus int necessari per formar correctament el constructor.
+            disponiblesNoms.add(new RecyclerActivitats(sportsList[i],activitatsInfo[i],sportsImageResources.getResourceId(i,0))); //Afegim el atribut de tipus int necessari per formar correctament el constructor.
         }
 
         sportsImageResources.recycle();
@@ -86,8 +86,8 @@ public class ActivitatsUsuari extends AppCompatActivity {
         Aadapter.notifyDataSetChanged();
     }
 
+    //Obte les activitats disponibles a la base de dades.
     private void obteActivitatsDisponibles(){
-
         Task<QuerySnapshot> querySnapshotTask = db.collection("Activitats").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
             @Override
             public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
@@ -106,8 +106,8 @@ public class ActivitatsUsuari extends AppCompatActivity {
         });
     }
 
+    //Obte les activitats a les que esta inscrit el client actual.
     private void obteActivitatsInscrites() {
-
         Task<QuerySnapshot> querySnapshotTask = db.collection("Clients").document(client.getNom()).collection("activitats").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
             @Override
             public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
@@ -119,36 +119,12 @@ public class ActivitatsUsuari extends AppCompatActivity {
                     id = document.getLong("Id").intValue();
                     suplement = document.getLong("Suplement").floatValue();
                     Activitat act = new Activitat(id, document.getString("Nom"), document.getString("Descripcio"), suplement);
-                    //mostraArrayinscrites(act);
                     inscrites.add(act);
                 }
-                //mostraArrayins(inscrites);//El arrayList esta ple.
             }
 
 
         });
     }
-
-    //Metode que permet veure a traves de consola les dades de la activitat rebuda com a parametre
-    private void mostraArrayinscrites(Activitat a){
-            Log.d("nom activitat inscrita",a.getNom());
-            Log.d("Descripcio activitat inscrita",a.getDescripcio());
-            Log.d("Id activitat inscrita",a.getIdActivitat().toString());
-            Log.d("Suplement activitat inscrita",String.valueOf(a.getSuplement()));
-    }
-
-    //Metode que permet veure a traves de consola les dades de la activitat rebuda com a parametre
-    private void mostraArrayins(ArrayList<Activitat> a){
-        for(int i=0; i <a.size();i++){
-            Log.d("nom activitat inscrita arraylist",a.get(i).getNom());
-            Log.d("Descripcio activitat inscrita arraylist",a.get(i).getDescripcio());
-            Log.d("Id activitat inscrita arraylist",a.get(i).getIdActivitat().toString());
-            Log.d("Suplement activitat inscrita arraylist",String.valueOf(a.get(i).getSuplement()));
-        }
-
-    }
-
-
-
 
 }

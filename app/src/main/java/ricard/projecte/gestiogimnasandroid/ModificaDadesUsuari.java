@@ -48,6 +48,7 @@ public class ModificaDadesUsuari extends AppCompatActivity {
 
     }
 
+    //Modifica la contrasenya del usuari.
     public void modificaContrasenya(View view){
         String contrasenya = "", repeticio = "", contencriptada="";
         contrasenya = cont.getText().toString();
@@ -80,6 +81,7 @@ public class ModificaDadesUsuari extends AppCompatActivity {
         }
     }
 
+    //Modifica la poblacio del usuari.
     public void modificaPoblacio(View view) throws InterruptedException, ExecutionException {
         String pb = "";
         int codipost = 0;
@@ -107,10 +109,10 @@ public class ModificaDadesUsuari extends AppCompatActivity {
 
     }
 
+    //Modifica el codi postal del usuari.
     public void modificaCodiPostal(View view) {
         String codipostal = "";
-
-            codipostal = cp.getText().toString();
+        codipostal = cp.getText().toString();
 
         if(codipostal.isEmpty()){
             Toast.makeText(ModificaDadesUsuari.this, "Dades incompletes.", Toast.LENGTH_SHORT).show();
@@ -133,8 +135,7 @@ public class ModificaDadesUsuari extends AppCompatActivity {
             }
         }
 
-
-
+    //Modifica el compte de pagament del usuari.
     public void modificaIban(View view){
         String iban = "";
         iban = ib.getText().toString();
@@ -156,5 +157,10 @@ public class ModificaDadesUsuari extends AppCompatActivity {
         } else {
             Toast.makeText(ModificaDadesUsuari.this, "El iban no te el format correcte.", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    //Finalitza i torna a l'activity anterior.
+    public void sortir(View view){
+        finish();
     }
 }

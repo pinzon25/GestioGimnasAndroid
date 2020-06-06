@@ -12,6 +12,7 @@ import java.util.Base64;
 
 public class EncriptaDesencripta {
 
+    //Converteix el String rebut com a parametre a MD5.
     public static String getMD5(String input) {
         try {
             MessageDigest md = MessageDigest.getInstance("MD5");

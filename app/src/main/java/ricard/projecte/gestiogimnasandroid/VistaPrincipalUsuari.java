@@ -26,30 +26,19 @@ public class VistaPrincipalUsuari extends AppCompatActivity {
         veureRutines = findViewById(R.id.BtRutinesFitness);
         veureActivitats = findViewById(R.id.BtActivitats);
         benvinguda = (TextView)findViewById(R.id.LbBenvingudaClient);
-
-            cli = (Client)getIntent().getSerializableExtra("Client");
+        cli = (Client)getIntent().getSerializableExtra("Client");
         try {
         benvinguda.setText("Benvingut: " + cli.getNom());
          }catch(NullPointerException ex){
         ex.getMessage();
         }
-
-        veureRutines.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent( VistaPrincipalUsuari.this,RutinesUsuari.class );
-                intent.putExtra("ClientRutines",cli);
-                startActivity(intent);
-            }
-        } );
-
     }
 
     public void sortir(View view){
         finish();
     }
 
-    public void enviaClient(View view){
+    public void ModificaDadesClient(View view){
         Intent intent = new Intent( VistaPrincipalUsuari.this,ModificaDadesUsuari.class );
         intent.putExtra("ClientObjectiu", cli);
         startActivity(intent);
@@ -66,6 +55,5 @@ public class VistaPrincipalUsuari extends AppCompatActivity {
         intent.putExtra("ClientRutines", cli);
         startActivity(intent);
     }
-
 
 }

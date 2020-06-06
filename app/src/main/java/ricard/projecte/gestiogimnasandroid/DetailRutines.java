@@ -66,8 +66,9 @@ public class DetailRutines extends AppCompatActivity {
         rutinesExistents= new ArrayList<>();
         llistaExercicisMuscul = new ArrayList<>();
         llistaExercicisRutina = new ArrayList<>();
-        rebreDades();
+        rebreDades(); //Obtenim les dades que ens envia  el RecyclerMusculs.
 
+        //Identifica el exercici clicat i l'emmagatzema en una variable de classe.
         exercicis.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
@@ -82,12 +83,14 @@ public class DetailRutines extends AppCompatActivity {
             }
         });
 
-        obteRutinesExistents();
+        obteRutinesExistents(); //Obtenim les rutines que te el client actual des de la base de dades.
 
-        ArrayAdapter adapter = new ArrayAdapter(this, simple_spinner_item,rutinesExistents);
+        ArrayAdapter adapter = new ArrayAdapter(this, simple_spinner_item,rutinesExistents); //Creem el adaptador i el configurem per mostrar el contingunt del Spinner correctament.
         adapter.setDropDownViewResource(simple_spinner_item);
         SpRutines.setAdapter(adapter);
 
+
+        //Configurem el boto de "Mostrar" per que amb un long click ens torni a mostrar els exercicis del grup muscular actual.
         BtMostrar.setOnLongClickListener(new View.OnLongClickListener(){
             @Override
             public boolean onLongClick(View view) {
@@ -99,6 +102,7 @@ public class DetailRutines extends AppCompatActivity {
             }
         });
 
+        //Configurem un click normal per que ens mostri els exercicis de la rutina introduida.
         BtMostrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -107,99 +111,20 @@ public class DetailRutines extends AppCompatActivity {
                 esborrarExercici.setEnabled(false);
             }
         });
-
-    } //Final OnCreate
-
-   //public void mostraRutina(View view){
-        private void mostraRutina(){
-        //exercicisLlista es el array de strings on s'han de posar els noms dels exercicis de la rutina.
-        nomRutina = Nrutina.getText().toString();
-        exercicisLlista.clear();
-        Task<QuerySnapshot> querySnapshotTask = db.collection("Clients").document(c.getNom()).collection("Rutines").document(nomRutina).collection("exercicis").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
-            @Override
-            public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-                String nom = "", benefici="",descripcio="",dificultat="";
-
-                List<DocumentSnapshot> documents = queryDocumentSnapshots.getDocuments();
-                for (DocumentSnapshot document : documents) {
-                    nom = document.getString("Nom");
-
-
-                    descripcio = document.getString("Descripcio");
-                    benefici = document.getString("Benefici");
-                    dificultat = document.getString("Dificultat");
-                    Exercici ex = new Exercici(nom, descripcio, benefici, dificultat);
-                    Log.d("exercici obtingut de bbdd",ex.getNom()); //Verifiquem el nom que ens arriba des de la activity ActivitatsUsuari.
-                    llistaExercicisRutina.add(ex);
-                    exercicisLlista.add(ex.getNom());
-                    ArrayAdapter adaptador = new ArrayAdapter(DetailRutines.this, android.R.layout.simple_list_item_1,exercicisLlista);
-                    exercicis.setAdapter(adaptador);
-                }
-            }
-        });
     }
 
-    public void obteRutina(String nomR) {
-        if(nomR.equals("")){
-            Toast.makeText(DetailRutines.this, "No has escollit la rutina.", Toast.LENGTH_SHORT).show();
-        }else {
-
-            Task<QuerySnapshot> querySnapshotTask = db.collection("Clients").document(c.getNom()).collection("Rutines").document(nomR).collection("exercicis").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
-                @Override
-                public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-                    String nom = "";
-
-                    List<DocumentSnapshot> documents = queryDocumentSnapshots.getDocuments();
-                    for (DocumentSnapshot document : documents) {
-                        nom = document.getString("Nom");
-                        rutinesExistents.add(nom);
-                    }
-                }
-            });
-        }
-            /*Map<String, Object> exN = new HashMap<>();
-            exN.put("Nom", e.getNom());
-
-            Map<String, Object> actv = new HashMap<>();
-            actv.put("Benefici", e.getBenefici());
-            actv.put("Nom", e.getNom());
-            actv.put("Descripcio", e.getDescripcio());
-            actv.put("Dificultat", e.getDificultat());
-
-
-            db.collection("Clients").document(c.getNom()).collection("Rutines").document(nomRutina).collection("exercicis").document(e.getNom()).set(actv).addOnSuccessListener(new OnSuccessListener() {
-                @Override
-                public void onSuccess(Object o) {
-                    Toast.makeText(DetailRutines.this, "Dades guardades", Toast.LENGTH_SHORT).show();
-                }
-            }).addOnFailureListener(new OnFailureListener() {
-                @Override
-                public void onFailure(@NonNull Exception e) {
-                    Toast.makeText(DetailRutines.this, "No s'han pogut guardar les dades.", Toast.LENGTH_SHORT).show();
-                }
-            });
-
-        }
-        nomRutina="";*/
+    //Obte el client actual, el nom del grup muscular escollit i els seus exercicis de la classe MusculsAdapter.
+    private void rebreDades(){
+        String nom="";
+        Intent in = getIntent();
+        c  = (Client) in.getSerializableExtra("Client");
+        nom = in.getStringExtra("NomMuscul");
+        obteExercicisMuscul(nom);
+        nomMuscul.setText(nom);
     }
 
-    public void esborraExercici(View view){
-        nomRutina = Nrutina.getText().toString();
-        if(nomRutina.isEmpty()){
-            Toast.makeText(DetailRutines.this, "Introdueix el nom de la rutina.", Toast.LENGTH_SHORT).show();
-        }else{
-        db.collection("Clients").document(c.getNom()).collection("Rutines").document(nomRutina).collection("exercicis").document(e.getNom()).delete().addOnSuccessListener(new OnSuccessListener<Void>() {
-            @Override
-            public void onSuccess(Void aVoid) {
-                Toast.makeText(DetailRutines.this, "Exercici esborrat correctament.", Toast.LENGTH_SHORT).show();
-            }
-        });
-        }
-        nomRutina="";
-    }
-    //Agafa el contingut del text view i el guarda com a rutina a labbdd.
+    //Agafa el contingut del text view i el guarda com a rutina a la bbdd.
     public void creaNovaRutina(View view){
-
         nomRutina = Nrutina.getText().toString();
         Map<String, Object> exN = new HashMap<>();
         exN.put("Nom", nomRutina);
@@ -210,8 +135,8 @@ public class DetailRutines extends AppCompatActivity {
         obteRutinesExistents();
     }
 
+    //Elimina la rutina introduida de la base de dades i actualitza el contingut del Spinner.
     public void esborrarRutina(View view){
-        //boolean existeix = false;
         nomRutina = Nrutina.getText().toString();
         Map<String, Object> exN = new HashMap<>();
         exN.put("Nom", nomRutina);
@@ -229,6 +154,34 @@ public class DetailRutines extends AppCompatActivity {
         obteRutinesExistents();
     }
 
+    //Agafa el nom de rutina introduit i mostra els exercicis que la formen.
+    private void mostraRutina(){
+        nomRutina = Nrutina.getText().toString();
+        exercicisLlista.clear();
+        Task<QuerySnapshot> querySnapshotTask = db.collection("Clients").document(c.getNom()).collection("Rutines").document(nomRutina).collection("exercicis").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+            @Override
+            public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                String nom = "", benefici="",descripcio="",dificultat="";
+
+                List<DocumentSnapshot> documents = queryDocumentSnapshots.getDocuments();
+                for (DocumentSnapshot document : documents) {
+
+                    nom = document.getString("Nom");
+                    descripcio = document.getString("Descripcio");
+                    benefici = document.getString("Benefici");
+                    dificultat = document.getString("Dificultat");
+                    Exercici ex = new Exercici(nom, descripcio, benefici, dificultat);
+
+                    llistaExercicisRutina.add(ex);
+                    exercicisLlista.add(ex.getNom());
+                    ArrayAdapter adaptador = new ArrayAdapter(DetailRutines.this, android.R.layout.simple_list_item_1,exercicisLlista);
+                    exercicis.setAdapter(adaptador);
+                }
+            }
+        });
+    }
+
+    //Verifica si el nom de rutina introduit es correspon amb algun dels de les rutines existents.
     private boolean comprobaExistenciaRutina(String nom){
         boolean existeix = false;
 
@@ -240,10 +193,9 @@ public class DetailRutines extends AppCompatActivity {
         return existeix;
     }
 
-
-    //Guarda els exercicis a les rutines.
-    public void obteRutina(View view) {
-        nomRutina = Nrutina.getText().toString();
+    //Guarda l'exercici a la rutina del client a la base de dades.
+    public void guardaExerciciRutina(View view) {
+      nomRutina = Nrutina.getText().toString();
     if(nomRutina.equals("")){
         Toast.makeText(DetailRutines.this, "No has escollit la rutina.", Toast.LENGTH_SHORT).show();
     }else {
@@ -274,19 +226,23 @@ public class DetailRutines extends AppCompatActivity {
     nomRutina="";
     }
 
-
-
-    //Obte les dades de la activity anterior.
-    private void rebreDades(){
-        String nom="";
-        Intent in = getIntent();
-        c  = (Client) in.getSerializableExtra("Client");
-        nom = in.getStringExtra("NomMuscul");
-        obteExercicisMuscul(nom);
-        nomMuscul.setText(nom);
+    //Esborra l'exercici clicat de la rutina introduida.
+    public void esborraExerciciRutina(View view){
+        nomRutina = Nrutina.getText().toString();
+        if(nomRutina.isEmpty()){
+            Toast.makeText(DetailRutines.this, "Introdueix el nom de la rutina.", Toast.LENGTH_SHORT).show();
+        }else{
+            db.collection("Clients").document(c.getNom()).collection("Rutines").document(nomRutina).collection("exercicis").document(e.getNom()).delete().addOnSuccessListener(new OnSuccessListener<Void>() {
+                @Override
+                public void onSuccess(Void aVoid) {
+                    Toast.makeText(DetailRutines.this, "Exercici esborrat correctament.", Toast.LENGTH_SHORT).show();
+                }
+            });
+        }
+        nomRutina="";
     }
 
-    //Obte els exercicis del muscul escollit.
+    //Obte els exercicis del muscul seleccionat.
     private void obteExercicisMuscul(String nomMuscul){
         Task<QuerySnapshot> querySnapshotTask = db.collection("Exercicis").document(nomMuscul).collection("Exercici").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
             @Override
@@ -295,14 +251,13 @@ public class DetailRutines extends AppCompatActivity {
 
                 List<DocumentSnapshot> documents = queryDocumentSnapshots.getDocuments();
                 for (DocumentSnapshot document : documents) {
+
                     nom = document.getString("Nom");
-
-
                     descripcio = document.getString("Descripcio");
                     benefici = document.getString("Benefici");
                     dificultat = document.getString("Dificultat");
-                     Exercici ex = new Exercici(nom, descripcio, benefici, dificultat);
-                    Log.d("exercici obtingut de bbdd",ex.getNom()); //Verifiquem el nom que ens arriba des de la activity ActivitatsUsuari.
+                    Exercici ex = new Exercici(nom, descripcio, benefici, dificultat);
+
                     llistaExercicisMuscul.add(ex);
                     exercicisLlista.add(ex.getNom());
                     Log.d("exerciciLlista conte",ex.getNom()); //Verifiquem el nom que ens arriba des de la activity ActivitatsUsuari.
@@ -313,7 +268,7 @@ public class DetailRutines extends AppCompatActivity {
         });
     }
 
-    //Llegeix les rutines existents a la BBDD.
+    //Llegeix les rutines existents del client de la base de dades.
     private void obteRutinesExistents(){
         Task<QuerySnapshot> querySnapshotTask = db.collection("Clients").document(c.getNom()).collection("Rutines").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
             @Override
@@ -329,7 +284,7 @@ public class DetailRutines extends AppCompatActivity {
             });
         }
 
-    //Finalitza la activity i torna a la activity anterior.
+    //Finalitza i torna a la activity anterior.
     public void sortir(View view){
         finish();
     }

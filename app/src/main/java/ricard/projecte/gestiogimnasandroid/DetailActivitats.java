@@ -39,8 +39,6 @@ public class DetailActivitats extends AppCompatActivity {
         dispAct= new ArrayList<>();
         insAct = new ArrayList<>();
         nomActivitat = findViewById(R.id.LbActivitat);
-        //TextView sportsTitle = findViewById(R.id.titleDetail);
-        //ImageView sportsImage = findViewById(R.id.sportsImageDetail);
         cancel = findViewById(R.id.BtCancelaInscripcio);
         finalitzar = findViewById(R.id.BtRealitzaInscripcio);
         baixa = findViewById(R.id.BtBaixaActivitat);
@@ -55,14 +53,17 @@ public class DetailActivitats extends AppCompatActivity {
         });
 
     }
+
+    //Es comproba si el client esta inscrit al'activitat seleccionada, si no ho esta s'inscriu el client, sino es mostra un missatge.
     public void inscriu(View view){
-        if(inscritaOno() ==false) {
+        if(inscritaOno() == false) {
             inscriureActivitat();
         }else {
             Toast.makeText(DetailActivitats.this, "Ja estas inscrit a aquesta activitat!.", Toast.LENGTH_SHORT).show();
         }
     }
 
+    //Es comproba si el client s'ha donat de baixa a l'activitat, si s'ha donat de baixa mostra un missatge, pel contrari si no ho esta, el dona de baixa.
     public void baixa(View view){
         if(comprobaBorrades() == false) {
             baixaActivitat();
@@ -71,7 +72,7 @@ public class DetailActivitats extends AppCompatActivity {
         }
     }
 
-
+    //Rep els ArrayList d'activitats disponibles i d'activitats inscrites aixi com el nom de l'activitat seleccionada.
     private void obteDades(){
         String nom="", nomAct="";
         Intent in = getIntent();
@@ -79,8 +80,6 @@ public class DetailActivitats extends AppCompatActivity {
         client = (Client) in.getSerializableExtra("Client");
         dispAct = (ArrayList<Activitat>) in.getSerializableExtra("Disponibles");
         insAct = (ArrayList<Activitat>) in.getSerializableExtra("Inscrites");
-        Log.d("Metode activitatSeleccionada, nom obtingut des del ActivitatsUsuari.java",nom); //Verifiquem el nom que ens arriba des de la activity ActivitatsUsuari.
-        Log.d("Metode activitatSeleccionada, nom del client obtingut des del ActivitatsAdapter",client.getNom()); //Verifiquem el nom que ens arriba des de la activity ActivitatsUsuari.
         nomActivitat.setText("Nom de la Activitat: "+ nom);
 
         for(int i=0; i <dispAct.size();i++){
@@ -89,12 +88,9 @@ public class DetailActivitats extends AppCompatActivity {
                Log.d("Metode activitatSeleccionada, nom de la activitat creada",act.getNom()); //Verifiquem el nom que ens arriba des de la activity ActivitatsUsuari.
             }
         }
-        mostraArray(dispAct);
-        mostraArrayinscrites(insAct);
     }
 
-
-
+    //S'afegeix l'activitat a la col·leccio "Activitats" del client.
     private void inscriureActivitat(){
         String nomac="";
         nomac = act.getNom();
@@ -129,6 +125,7 @@ public class DetailActivitats extends AppCompatActivity {
                 insAct.add(act);
     }
 
+    //S'esborra l'activitat de la col·leccio "Activitats" del client.
     private void baixaActivitat(){
         float totalsuplement=0;
         Activitat a = act;
@@ -149,6 +146,7 @@ public class DetailActivitats extends AppCompatActivity {
         Log.d("Activitat Borrada",act.getNom());
     }
 
+    //Es comproba si l'activitat es troba entre les activitats a les que esta inscrit el client.
     private boolean inscritaOno(){
         boolean inscrita = false;
         for(int i = 0; i < insAct.size(); i++){
@@ -160,6 +158,7 @@ public class DetailActivitats extends AppCompatActivity {
         return inscrita;
     }
 
+    //Es comproba si l'activitat es troba entre les activitats a les que s'ha donat de baixa el client.
     private boolean comprobaBorrades(){
         boolean borrada=true;
         for(int i = 0; i < insAct.size(); i++){
@@ -169,26 +168,6 @@ public class DetailActivitats extends AppCompatActivity {
             }
         }
         return borrada;
-    }
-
-    private void mostraArray(ArrayList<Activitat> a){
-        for(int i=0; i <a.size();i++){
-            Log.d("nom activitat disponible",a.get(i).getNom());
-            Log.d("Descripcio activitat disponible",a.get(i).getDescripcio());
-            Log.d("Id activitat disponible",a.get(i).getIdActivitat().toString());
-            Log.d("Suplement activitat disponible",String.valueOf(a.get(i).getSuplement()));
-        }
-
-    }
-
-    public void mostraArrayinscrites(ArrayList<Activitat> o){
-        for(int x=0; x <o.size();x++){
-            Log.d("nom activitat inscrita",o.get(x).getNom());
-            Log.d("Descripcio activitat inscrita",o.get(x).getDescripcio());
-            Log.d("Id activitat inscrita",o.get(x).getIdActivitat().toString());
-            Log.d("Suplement activitat inscrita",String.valueOf(o.get(x).getSuplement()));
-        }
-
     }
 
 }

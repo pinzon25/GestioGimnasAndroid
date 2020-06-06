@@ -21,12 +21,6 @@ class ActivitatsAdapter extends RecyclerView.Adapter<ActivitatsAdapter.ViewHolde
     public ArrayList<Activitat> disponibles;
     public ArrayList<Activitat> inscrites;
 
-    /**
-     * Constructor that passes in the sports data and the context.
-     *
-     * @param sportsData ArrayList containing the sports data.
-     * @param context    Context of the application.
-     */
     ActivitatsAdapter(Context context, ArrayList<RecyclerActivitats> sportsData, Client client, ArrayList<Activitat>disponibles, ArrayList<Activitat>inscrites) {
         this.mActivitatsData = sportsData;
         this.mContext = context;
@@ -35,14 +29,6 @@ class ActivitatsAdapter extends RecyclerView.Adapter<ActivitatsAdapter.ViewHolde
         this.inscrites=inscrites;
     }
 
-    /**
-     * Required method for creating the viewholder objects.
-     *
-     * @param parent   The ViewGroup into which the new View will be added
-     *                 after it is bound to an adapter position.
-     * @param viewType The view type of the new View.
-     * @return The newly created ViewHolder.
-     */
     @Override
     public ActivitatsAdapter.ViewHolder onCreateViewHolder( //viewHolder es cada element del recyclerview.
                                                         ViewGroup parent, int viewType) { //el viewgroup es el parametre que sera el linearlayout.
@@ -56,28 +42,11 @@ class ActivitatsAdapter extends RecyclerView.Adapter<ActivitatsAdapter.ViewHolde
         holder.bindTo(recyclerActivitats);
     }
 
-    /**
-     * Required method that binds the data to the viewholder.
-     *
-     * @param holder   The viewholder into which the data should be put.
-     * @param position The adapter position.
-     */
-
-
-    /**
-     * Required method for determining the size of the data set.
-     *
-     * @return Size of the data set.
-     */
     @Override
     public int getItemCount() {
         return mActivitatsData.size();
     }
 
-
-    /**
-     * ViewHolder class that represents each row of data in the RecyclerView.
-     */
     class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener { //clase interna
 
         // Member Variables for the TextViews
@@ -85,11 +54,6 @@ class ActivitatsAdapter extends RecyclerView.Adapter<ActivitatsAdapter.ViewHolde
         private TextView mInfoText;
         private ImageView mActivitatsImage; //creem variable de tipus ImageView.
 
-        /**
-         * Constructor for the ViewHolder, used in onCreateViewHolder().
-         *
-         * @param itemView The rootview of the list_item_activitat_activitat.xml layout file.
-         */
         ViewHolder(View itemView) {
             super(itemView);
 
