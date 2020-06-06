@@ -56,6 +56,7 @@ public class BaixaUsuari extends AppCompatActivity {
         });
     }
 
+    //Es comproben els camps de contrasenya i dni en els seus possibles casos.
     private boolean comprobaCamps() {
         boolean correcte = true;
         String dni = dniBaixa.getText().toString();

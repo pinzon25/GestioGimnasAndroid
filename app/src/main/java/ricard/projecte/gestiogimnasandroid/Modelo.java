@@ -135,10 +135,10 @@ public class Modelo {
     }
 
     //Comprobem que la contrassenya i la seva repeticio son iguals.
-    public static boolean comprobaContrasenya(String contrassenya, String repeticio) {
+    public static boolean comprobaContrasenya(String contrasenya, String repeticio) {
         boolean igual = true;
-        if (contrassenya.length() >= 12) {
-            if (!repeticio.equals(contrassenya)) {
+        if (contrasenya.length() >= 1) {
+            if (!repeticio.equals(contrasenya)) {
                 igual = false;
             }
         }
@@ -147,7 +147,13 @@ public class Modelo {
 
     //Comprobem que el codi postal esta format per 5 numeros i on els dos primers son 0 i 8.
     public static boolean comprobaCodiPostal(String codiPostal) {
-        return Pattern.compile("[0][8][0-9][0-9][0-9]").matcher(codiPostal).matches();
+        int codip=0;
+        codip = Integer.parseInt(codiPostal);
+        if(codip>=01000 && codip<=52999){
+            return true;
+        }else{
+            return false;
+        }
     }
 
     //Comprobem que la poblacio nomes la formen lletres.

@@ -20,6 +20,15 @@ import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 import java.util.Map;
 
+import static ricard.projecte.gestiogimnasandroid.Modelo.comprobaCodiPostal;
+import static ricard.projecte.gestiogimnasandroid.Modelo.comprobaCognom;
+import static ricard.projecte.gestiogimnasandroid.Modelo.comprobaCompteBancari;
+import static ricard.projecte.gestiogimnasandroid.Modelo.comprobaContrasenya;
+import static ricard.projecte.gestiogimnasandroid.Modelo.comprobaDni;
+import static ricard.projecte.gestiogimnasandroid.Modelo.comprobaNom;
+import static ricard.projecte.gestiogimnasandroid.Modelo.comprobaPoblacio;
+import static ricard.projecte.gestiogimnasandroid.Modelo.comprobaTelefon;
+
 public class AltaUsuari extends AppCompatActivity {
     Client client;
     public FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -80,20 +89,19 @@ public class AltaUsuari extends AppCompatActivity {
                 if (nom.getText().toString().isEmpty() && cognoms.getText().toString().isEmpty() && dni.getText().toString().isEmpty() && telefon.getText().toString().isEmpty() && contrasenya.getText().toString().isEmpty() && repeticio.getText().toString().isEmpty() && codipostal.getText().toString().isEmpty() && poblacio.getText().toString().isEmpty() && iban.getText().toString().isEmpty() && cuota.getText().toString().isEmpty()) {
                     Toast.makeText(AltaUsuari.this, "El formulari esta buit!", Toast.LENGTH_SHORT).show();
                 } else {
-                    //try {
                     try {
                         guardaUsuari(nom.getText().toString(), cognoms.getText().toString(), dni.getText().toString(), Long.parseLong(telefon.getText().toString()), contrasenya.getText().toString(), repeticio.getText().toString(), Integer.parseInt(codipostal.getText().toString()), poblacio.getText().toString(), iban.getText().toString(), jornadaacces, Float.parseFloat(cuota.getText().toString()));
                     } catch (UnsupportedEncodingException e) {
                         e.printStackTrace();
                     } catch (NumberFormatException es) {
-                        Toast.makeText(AltaUsuari.this, "Tipus de dades erroni!",
-                                Toast.LENGTH_SHORT).show();
+                        Toast.makeText(AltaUsuari.this, "Tipus de dades erroni!",Toast.LENGTH_SHORT).show();
                     }
                 }
             }
         });
     }
 
+    //Passa els parametres rebuts al metode de comprobacio, si els formats son correctes, es crea el client i es guarda a la base de dades, sino es mostra un missatge.
     private void guardaUsuari(String nomm, String cognomsi, String dnii, long telef, String contraseny, String rep, int codipost, String poblac, String ibann, String jornadaacces, float cuot) throws UnsupportedEncodingException {
         if (comprobacions(nomm, cognomsi, dnii, telef, contraseny, rep, codipost, poblac, ibann)) {
             creaUsuari(nomm, cognomsi, dnii, String.valueOf(telef), contraseny, codipost, poblac, ibann, jornadaacces, cuot);
@@ -103,36 +111,35 @@ public class AltaUsuari extends AppCompatActivity {
         }
     }
 
-    private boolean comprobacions(String n, String c, String d, long t, String con, String r, int cp,String pob, String ib){
-        boolean verificat=false;
-
-        if(Modelo.comprobaNom(n)) {
-            verificat=true;
+    //Es comproben els formats de les dades introduides per l'usuari.
+    public boolean comprobacions(String n, String c, String d, long t, String con, String r, int cp, String pob, String ib){
+        if(comprobaNom(n) && comprobaCognom(c) && comprobaDni(d) && comprobaTelefon(String.valueOf(t)) && comprobaContrasenya(con, r) && comprobaCodiPostal(String.valueOf(cp)) && comprobaPoblacio(pob) && comprobaCompteBancari(ib)){
+            return true;
+        }else{
+            return false;
         }
-        if(Modelo.comprobaCognom(c)){
-            verificat=true;
-        }
-        if(Modelo.comprobaDni(d)) {
-            verificat=true;
-        }
-        if(Modelo.comprobaTelefon(String.valueOf(t))){
-            verificat=true;
-        }
-        if(Modelo.comprobaContrasenya(con,r)) {
-            verificat=true;
-        }
-        if(Modelo.comprobaCodiPostal(String.valueOf(cp))) {
-            verificat=true;
-        }
-        if(Modelo.comprobaPoblacio(pob)) {
-            verificat=true;
-        }
-        if(Modelo.comprobaCompteBancari(ib)) {
-            verificat=true;
-        }
-        return verificat;
     }
 
+    //Es crea un usuari amb els parametres rebuts.
+    private void creaUsuari(String nom, String cognoms, String dni, String telefon, String contrasenya, int codi_postal, String poblacio, String comptePagament, String jornadaAcces, float cuota) throws UnsupportedEncodingException {
+        String contra = "";
+        long telf;
+        telf = Long.parseLong(telefon);
+        contra = EncriptaDesencripta.getMD5(contrasenya);
+        client = new Client();
+        client.setNom(nom);
+        client.setCognoms(cognoms);
+        client.setDni(dni);
+        client.setTelefon(telf);
+        client.setContrassenya(contra);
+        client.setCodiPostal(codi_postal);
+        client.setPoblacio(poblacio);
+        client.setComptePagament(comptePagament);
+        client.setJornadaAcces(jornadaAcces);
+        client.setCuota(cuota);
+    }
+
+    //L'usuari s'emmagatzema a la base de dades.
     private void pujaUsuari() {
 
         Map<String, Object> nomclient = new HashMap<>();
@@ -163,31 +170,10 @@ public class AltaUsuari extends AppCompatActivity {
                 Toast.makeText(AltaUsuari.this, "No s'ha pogut guardar les dades.", Toast.LENGTH_SHORT);
             }
         });
-
         inicialitzaCamps();
     }
 
-
-    private void creaUsuari(String nom, String cognoms, String dni, String telefon, String contrasenya, int codi_postal, String poblacio, String comptePagament, String jornadaAcces, float cuota) throws UnsupportedEncodingException {
-        String contra = "";
-        long telf;
-        telf = Long.parseLong(telefon);
-        contra = EncriptaDesencripta.getMD5(contrasenya);
-        client = new Client();
-        client.setNom(nom);
-        client.setCognoms(cognoms);
-        client.setDni(dni);
-        client.setTelefon(telf);
-        client.setContrassenya(contra);
-        client.setCodiPostal(codi_postal);
-        client.setPoblacio(poblacio);
-        client.setComptePagament(comptePagament);
-        client.setJornadaAcces(jornadaAcces);
-        client.setCuota(cuota);
-    }
-
-
-
+    //Els camps de text es buiden i es desseleccionen els radiobutton.
         public void inicialitzaCamps(){
             nom.setText("");
             cognoms.setText("");
@@ -205,6 +191,7 @@ public class AltaUsuari extends AppCompatActivity {
             ocultaTeclat();
         }
 
+        //Amaga el teclat
         public void ocultaTeclat(){
             View view = this.getCurrentFocus();
             if(view != null){
@@ -214,6 +201,7 @@ public class AltaUsuari extends AppCompatActivity {
             }
         }
 
+        //Finalitza i torna a l'activity anterior.
         public void sortir(View view){
         finish();
         }
