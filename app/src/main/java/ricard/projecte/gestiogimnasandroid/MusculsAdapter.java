@@ -111,8 +111,8 @@ public class MusculsAdapter extends RecyclerView.Adapter<MusculsAdapter.ViewHold
         @Override
         public void onClick(View view) {
             String nom ="";
-            RecyclerMusculs currentSport = mMusculs.get(getAdapterPosition());
-            nom = currentSport.getNom();
+            RecyclerMusculs currentMuscul = mMusculs.get(getAdapterPosition());
+            nom = currentMuscul.getNom();
 
             switch(nom){
                 case "res/drawable/abdominal.jpg":

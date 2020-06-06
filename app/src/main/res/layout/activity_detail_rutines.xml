@@ -50,7 +50,7 @@
         <ListView
             android:id="@+id/LlistaEx"
             android:layout_width="match_parent"
-            android:layout_height="300dp" />
+            android:layout_height="342dp" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -71,29 +71,31 @@
 
                     <EditText
                         android:id="@+id/TfNomRutina"
-                        android:layout_width="220dp"
-                        android:layout_height="33dp"
+                        android:layout_width="178dp"
+                        android:layout_height="32dp"
                         android:layout_marginTop="2dp"
                         android:ems="10"
                         android:inputType="textPersonName"
                         android:textSize="12sp"
                         app:layout_constraintBottom_toTopOf="@+id/BtAfegirExercici"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.181"
+                        app:layout_constraintHorizontal_bias="0.283"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintVertical_bias="0.3" />
+                        app:layout_constraintVertical_bias="0.22" />
 
                     <Spinner
                         android:id="@+id/SpRutinesExistents"
-                        android:layout_width="204dp"
-                        android:layout_height="25dp"
+                        android:layout_width="88dp"
+                        android:layout_height="22dp"
                         android:contextClickable="false"
+                        android:gravity="left"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.806"
+                        app:layout_constraintHorizontal_bias="0.424"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.501" />
 
                     <Button
                         android:id="@+id/BtCancelarRutina"
@@ -114,9 +116,10 @@
                         android:text="Afegir"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.517"
+                        app:layout_constraintHorizontal_bias="0.498"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/SpRutinesExistents" />
+                        app:layout_constraintTop_toBottomOf="@+id/SpRutinesExistents"
+                        app:layout_constraintVertical_bias="0.662" />
 
                     <Button
                         android:id="@+id/BtEsborraExercici"
@@ -126,19 +129,23 @@
                         android:text="Esborra"
                         app:layout_constraintBottom_toBottomOf="@+id/BtAfegirExercici"
                         app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.514"
                         app:layout_constraintStart_toEndOf="@+id/BtAfegirExercici"
-                        app:layout_constraintTop_toTopOf="@+id/BtAfegirExercici" />
+                        app:layout_constraintTop_toTopOf="@+id/BtAfegirExercici"
+                        app:layout_constraintVertical_bias="1.0" />
 
                     <Button
                         android:id="@+id/BtNovaRutina"
-                        android:layout_width="126dp"
-                        android:layout_height="39dp"
+                        android:layout_width="117dp"
+                        android:layout_height="36dp"
+                        android:layout_marginBottom="24dp"
                         android:onClick="creaNovaRutina"
-                        android:text="Crear Rutina"
+                        android:text="Crear"
                         app:layout_constraintBottom_toBottomOf="@+id/TfNomRutina"
                         app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.7"
                         app:layout_constraintStart_toEndOf="@+id/TfNomRutina"
-                        app:layout_constraintTop_toTopOf="@+id/TfNomRutina" />
+                        app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
                         android:id="@+id/LbRutinesEx"
@@ -150,6 +157,42 @@
                         app:layout_constraintEnd_toStartOf="@+id/SpRutinesExistents"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="@+id/SpRutinesExistents" />
+
+                    <TextView
+                        android:id="@+id/textView"
+                        android:layout_width="38dp"
+                        android:layout_height="16dp"
+                        android:text="Nom:"
+                        app:layout_constraintBottom_toBottomOf="@+id/TfNomRutina"
+                        app:layout_constraintEnd_toStartOf="@+id/TfNomRutina"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/TfNomRutina" />
+
+                    <Button
+                        android:id="@+id/BtEsborrarRutina"
+                        android:layout_width="115dp"
+                        android:layout_height="35dp"
+                        android:onClick="esborrarRutina"
+                        android:text="Esborrar"
+                        app:layout_constraintBottom_toTopOf="@+id/SpRutinesExistents"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.711"
+                        app:layout_constraintStart_toEndOf="@+id/TfNomRutina"
+                        app:layout_constraintTop_toBottomOf="@+id/BtNovaRutina"
+                        app:layout_constraintVertical_bias="0.081" />
+
+                    <Button
+                        android:id="@+id/BtMostrarRutina"
+                        android:layout_width="116dp"
+                        android:layout_height="35dp"
+                        android:longClickable="true"
+                        android:text="Mostrar"
+                        app:layout_constraintBottom_toTopOf="@+id/SpRutinesExistents"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.725"
+                        app:layout_constraintStart_toEndOf="@+id/TfNomRutina"
+                        app:layout_constraintTop_toBottomOf="@+id/BtEsborrarRutina"
+                        app:layout_constraintVertical_bias="0.0" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </LinearLayout>

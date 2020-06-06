@@ -39,8 +39,8 @@ public class DetailActivitats extends AppCompatActivity {
         dispAct= new ArrayList<>();
         insAct = new ArrayList<>();
         nomActivitat = findViewById(R.id.LbActivitat);
-        TextView sportsTitle = findViewById(R.id.titleDetail);
-        ImageView sportsImage = findViewById(R.id.sportsImageDetail);
+        //TextView sportsTitle = findViewById(R.id.titleDetail);
+        //ImageView sportsImage = findViewById(R.id.sportsImageDetail);
         cancel = findViewById(R.id.BtCancelaInscripcio);
         finalitzar = findViewById(R.id.BtRealitzaInscripcio);
         baixa = findViewById(R.id.BtBaixaActivitat);
@@ -132,7 +132,7 @@ public class DetailActivitats extends AppCompatActivity {
     private void baixaActivitat(){
         float totalsuplement=0;
         Activitat a = act;
-        db.collection("Clients").document(client.getNom()).collection("activitats").document(act.getNom()).delete().addOnSuccessListener(new OnSuccessListener() {
+        db.collection("Clients").document(client.getNom()).collection("Activitats").document(act.getNom()).delete().addOnSuccessListener(new OnSuccessListener() {
             @Override
             public void onSuccess(Object o) {
                 Toast.makeText(DetailActivitats.this, "Dades guardades", Toast.LENGTH_SHORT).show();
