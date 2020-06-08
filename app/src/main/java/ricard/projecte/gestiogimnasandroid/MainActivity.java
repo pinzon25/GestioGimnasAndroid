@@ -79,14 +79,9 @@ public class MainActivity extends AppCompatActivity {
 
                 List<DocumentSnapshot> documents = queryDocumentSnapshots.getDocuments();
                 for (DocumentSnapshot document : documents) {
-                    /*Log.d("dni introduit",dni);
-                    Log.d("contrasenya introduida",contrasenya);
-                    Log.d("contrasenya introduida encriptada",contencriptada);
-                    Log.d("contrasenya bbdd",document.getString("Contrasenya"));*/
 
                     if (dni.equals(document.getString("Dni")) && contencriptada.equals(document.getString("Contrasenya"))) {
                         nom = document.getString("Nom");
-                        //Log.d("Nom del client dintre del for de documents",nom); //Comprobacio de que s'obtenen els noms dels clients que consten a la base de dades.
 
                         Client client = new Client();
                         client.setNom(document.getString("Nom"));
@@ -99,27 +94,12 @@ public class MainActivity extends AppCompatActivity {
                         client.setComptePagament(document.getString("Compte pagament"));
                         client.setJornadaAcces(document.getString("Jornada acces"));
                         client.setCuota(document.getLong("Cuota").floatValue());
-                        //mostraclients(client);//(DEBUG).
                         enviaClientNovaActivitat(client);
 
                     }
                 }
             }
         });
-    }
-
-    //Metode per comprobar que tots els clients s'obtenen correctament.(Debug)
-    private void mostraclients(Client c){
-        Log.d("nom client",c.getNom());
-        Log.d("cognom client",c.getCognoms());
-        Log.d("dni client",c.getDni());
-        Log.d("telefon client",String.valueOf(c.getTelefon()));
-        Log.d("contrasenya client",c.getContrassenya());
-        Log.d("codi postal client",String.valueOf(c.getCodiPostal()));
-        Log.d("poblacio client",c.getPoblacio());
-        Log.d("iban client",c.getComptePagament());
-        Log.d("jornada client",c.getJornadaAcces());
-        Log.d("cuota client",String.valueOf(c.getCuota()));
     }
 
     private void enviaClientNovaActivitat(Client c){
