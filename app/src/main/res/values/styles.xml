@@ -8,4 +8,9 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <!--
+    <style name="botons" parent="Widget.AppCompat.Button">
+        <item name="android:background">@drawable/gradientbuton</item>
+    </style>-->
+
 </resources>

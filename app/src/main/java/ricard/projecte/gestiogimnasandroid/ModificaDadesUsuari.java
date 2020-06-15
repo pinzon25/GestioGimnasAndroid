@@ -30,7 +30,7 @@ public class ModificaDadesUsuari extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_modifica_dades_usuari);
-        Modelo.amagaBarraNavegacio(this.getWindow());
+        //Modelo.amagaBarraNavegacio(this.getWindow());
         c = (Client)getIntent().getSerializableExtra("ClientObjectiu");
 
         etiquetaClient = findViewById(R.id.LbClientModificaDades);
@@ -113,26 +113,29 @@ public class ModificaDadesUsuari extends AppCompatActivity {
     public void modificaCodiPostal(View view) {
         String codipostal = "";
         codipostal = cp.getText().toString();
-
-        if(codipostal.isEmpty()){
+    try {
+        if (codipostal.isEmpty()) {
             Toast.makeText(ModificaDadesUsuari.this, "Dades incompletes.", Toast.LENGTH_SHORT).show();
-        }else if (Modelo.comprobaCodiPostal(codipostal) == true) {
-                db.collection("Clients").document(c.getNom()).update("Codi Postal", Integer.valueOf(codipostal)).addOnSuccessListener(new OnSuccessListener<Void>() {
-                    @Override
-                    public void onSuccess(Void aVoid) {
-                        Toast.makeText(ModificaDadesUsuari.this, "Codi postal actualitzat.", Toast.LENGTH_SHORT).show();
-                        cp.setText("");
-                    }
-                })
-                        .addOnFailureListener(new OnFailureListener() {
-                            @Override
-                            public void onFailure(@NonNull Exception e) {
-                                Toast.makeText(ModificaDadesUsuari.this, "No s'han pogut actualitzar el codi postal.", Toast.LENGTH_SHORT).show();
-                            }
-                        });
-            } else if(Modelo.comprobaCodiPostal(codipostal) == false){
-                Toast.makeText(ModificaDadesUsuari.this, "Dades amb format incorrecte.", Toast.LENGTH_SHORT).show();
-            }
+        } else if (Modelo.comprobaCodiPostal(codipostal) == true) {
+            db.collection("Clients").document(c.getNom()).update("Codi Postal", Integer.valueOf(codipostal)).addOnSuccessListener(new OnSuccessListener<Void>() {
+                @Override
+                public void onSuccess(Void aVoid) {
+                    Toast.makeText(ModificaDadesUsuari.this, "Codi postal actualitzat.", Toast.LENGTH_SHORT).show();
+                    cp.setText("");
+                }
+            })
+                    .addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            Toast.makeText(ModificaDadesUsuari.this, "No s'han pogut actualitzar el codi postal.", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+        } else if (Modelo.comprobaCodiPostal(codipostal) == false) {
+            Toast.makeText(ModificaDadesUsuari.this, "Dades amb format incorrecte.", Toast.LENGTH_SHORT).show();
+        }
+    }catch(NumberFormatException ex){
+        Toast.makeText(ModificaDadesUsuari.this, "Dades amb format incorrecte.", Toast.LENGTH_SHORT).show();
+    }
         }
 
     //Modifica el compte de pagament del usuari.

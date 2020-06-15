@@ -59,6 +59,7 @@ public class MainActivity extends AppCompatActivity {
     public void onResume(){
         super.onResume();
         this.inicialitzaCamps();
+        Modelo.amagaBarraNavegacio(this.getWindow());
     }
 
     public void login(View view) throws Exception {

@@ -35,8 +35,10 @@ public class VistaPrincipalUsuari extends AppCompatActivity {
         }
     }
 
-    public void sortir(View view){
-        finish();
+    @Override //Quan tornem a la activity de Login, inicialitzem els camps.
+    public void onResume(){
+        super.onResume();
+        Modelo.amagaBarraNavegacio(this.getWindow());
     }
 
     public void ModificaDadesClient(View view){
@@ -57,4 +59,7 @@ public class VistaPrincipalUsuari extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void sortir(View view){
+        finish();
+    }
 }

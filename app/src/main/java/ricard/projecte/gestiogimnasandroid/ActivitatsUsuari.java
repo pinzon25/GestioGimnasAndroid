@@ -35,7 +35,6 @@ public class ActivitatsUsuari extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_activitats_usuari);
-        Modelo.amagaBarraNavegacio(this.getWindow());
         inscrites  = new ArrayList<>();
         disponibles  = new ArrayList<>();
         client = (Client)getIntent().getSerializableExtra("ClientActivitats");
@@ -51,7 +50,7 @@ public class ActivitatsUsuari extends AppCompatActivity {
         Rinscrites.setAdapter(Aadapter);
 
         initializeData();
-
+        Modelo.amagaBarraNavegacio(this.getWindow());
     }
 
     @Override //Quan tornem a la activity actualitzem les Activitats disponibles i les inscrites.
@@ -59,7 +58,7 @@ public class ActivitatsUsuari extends AppCompatActivity {
         super.onResume();
         this.obteActivitatsDisponibles();
         this.obteActivitatsInscrites();
-
+        Modelo.amagaBarraNavegacio(this.getWindow());
     }
 
     //Finalitzem i tornem a láctivity anterior.
