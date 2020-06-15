@@ -4,9 +4,11 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -83,6 +85,7 @@ public class DetailRutines extends AppCompatActivity {
                     }
             }
         });
+
 
         obteRutinesExistents(); //Obtenim les rutines que te el client actual des de la base de dades.
 
@@ -263,7 +266,20 @@ public class DetailRutines extends AppCompatActivity {
                     llistaExercicisMuscul.add(ex);
                     exercicisLlista.add(ex.getNom());
                     Log.d("exerciciLlista conte",ex.getNom()); //Verifiquem el nom que ens arriba des de la activity ActivitatsUsuari.
-                    ArrayAdapter adaptador = new ArrayAdapter(DetailRutines.this, android.R.layout.simple_list_item_1,exercicisLlista);
+                    ArrayAdapter adaptador = new ArrayAdapter(DetailRutines.this, android.R.layout.simple_list_item_1,exercicisLlista){@Override
+                    public View getView(int position, View convertView, ViewGroup parent){
+                        // Get the Item from ListView
+                        View view = super.getView(position, convertView, parent);
+
+                        // Initialize a TextView for ListView each Item
+                        TextView tv = (TextView) view.findViewById(android.R.id.text1);
+
+                        // Set the text color of TextView (ListView Item)
+                        tv.setTextColor(Color.WHITE);
+
+                        // Generate ListView Item using TextView
+                        return view;
+                    }};
 
                     exercicis.setAdapter(adaptador);
                 }
