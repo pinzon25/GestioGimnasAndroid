@@ -8,6 +8,12 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="AppStandard" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimaryStandard</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDarkStandard</item>
+        <item name="colorAccent">@color/colorAccentStandard</item>
+    </style>
     <!--
     <style name="botons" parent="Widget.AppCompat.Button">
         <item name="android:background">@drawable/gradientbuton</item>
