@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
         baixa=findViewById(R.id.BtBaixaUsuari);
         registrar=findViewById(R.id.BtRegistre);
 
-        Modelo.amagaBarraNavegacio(this.getWindow());
+        //Modelo.amagaBarraNavegacio(this.getWindow());
 
         registrar.setOnClickListener(new View.OnClickListener(){
         @Override
@@ -59,15 +59,12 @@ public class MainActivity extends AppCompatActivity {
     public void onResume(){
         super.onResume();
         this.inicialitzaCamps();
-        Modelo.amagaBarraNavegacio(this.getWindow());
+        //Modelo.amagaBarraNavegacio(this.getWindow());
     }
 
     public void login(View view) throws Exception {
         if(EtDni.getText() != null && EtContrasenya != null){
             obteClients();
-        }else{
-            Toast.makeText(MainActivity.this, "Verifiqui el format de les dades!",
-                    Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -85,11 +82,17 @@ public class MainActivity extends AppCompatActivity {
                 contrasenya = EtContrasenya.getText().toString();
                 contencriptada = EncriptaDesencripta.getMD5(contrasenya);
 
-                if(dni.isEmpty() | contrasenya.isEmpty()){
+                if(dni.isEmpty() && contrasenya.isEmpty()) {
                     Toast.makeText(MainActivity.this, "Hi ha camps buits.",
                             Toast.LENGTH_SHORT).show();
-                }else {
+                }
+                else if(dni.isEmpty() | contrasenya.isEmpty()){
+                    Toast.makeText(MainActivity.this, "Dades incompletes.",
+                            Toast.LENGTH_SHORT).show();
+                }
+                else {
                     List<DocumentSnapshot> documents = queryDocumentSnapshots.getDocuments();
+                    boolean existeix = false;
                     for (DocumentSnapshot document : documents) {
 
                         if (dni.equals(document.getString("Dni")) && contencriptada.equals(document.getString("Contrasenya"))) {
@@ -107,7 +110,15 @@ public class MainActivity extends AppCompatActivity {
                             client.setJornadaAcces(document.getString("Jornada acces"));
                             client.setCuota(document.getLong("Cuota").floatValue());
                             enviaClientNovaActivitat(client);
+                            existeix=true;
+                            break;
+                        }else{
+                            existeix=false;
                         }
+                    }
+                    if(existeix == false){
+                        Toast.makeText(MainActivity.this, "L'usuari no existeix o no s'ha trobat.",
+                                Toast.LENGTH_SHORT).show();
                     }
                 }
             }

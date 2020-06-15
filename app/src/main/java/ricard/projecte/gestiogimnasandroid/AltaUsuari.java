@@ -42,7 +42,6 @@ public class AltaUsuari extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_alta_usuari);
-        Modelo.amagaBarraNavegacio(this.getWindow());
         nom = findViewById(R.id.TfNomAlta);
         cognoms = findViewById(R.id.TfCognomsAlta);
         dni = findViewById(R.id.TfDniAlta);
@@ -94,7 +93,7 @@ public class AltaUsuari extends AppCompatActivity {
                     } catch (UnsupportedEncodingException e) {
                         e.printStackTrace();
                     } catch (NumberFormatException es) {
-                        Toast.makeText(AltaUsuari.this, "Tipus de dades erroni!",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(AltaUsuari.this, "Tipus de dades erroni o falten dades!",Toast.LENGTH_SHORT).show();
                     }
                 }
             }
@@ -162,12 +161,12 @@ public class AltaUsuari extends AppCompatActivity {
         db.collection("Clients").document(client.getNom()).set(data).addOnSuccessListener(new OnSuccessListener() {
             @Override
             public void onSuccess(Object o) {
-                Toast.makeText(AltaUsuari.this, "Dades guardades", Toast.LENGTH_SHORT);
+                Toast.makeText(AltaUsuari.this, "Dades guardades", Toast.LENGTH_SHORT).show();
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
-                Toast.makeText(AltaUsuari.this, "No s'ha pogut guardar les dades.", Toast.LENGTH_SHORT);
+                Toast.makeText(AltaUsuari.this, "No s'ha pogut guardar les dades.", Toast.LENGTH_SHORT).show();
             }
         });
         inicialitzaCamps();
