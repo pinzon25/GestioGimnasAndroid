@@ -31,6 +31,7 @@ public class RutinesUsuari extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rutines_usuari);
+        Modelo.amagaBarraNavegacio(this.getWindow());
         Musculs  = new ArrayList<>();
         NomsMusculs = new ArrayList<>();
         clientRutina = (Client)getIntent().getSerializableExtra("ClientRutines");

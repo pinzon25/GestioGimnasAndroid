@@ -30,7 +30,7 @@ public class ModificaDadesUsuari extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_modifica_dades_usuari);
-
+        Modelo.amagaBarraNavegacio(this.getWindow());
         c = (Client)getIntent().getSerializableExtra("ClientObjectiu");
 
         etiquetaClient = findViewById(R.id.LbClientModificaDades);

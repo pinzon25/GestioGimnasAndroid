@@ -42,7 +42,7 @@ public class AltaUsuari extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_alta_usuari);
-
+        Modelo.amagaBarraNavegacio(this.getWindow());
         nom = findViewById(R.id.TfNomAlta);
         cognoms = findViewById(R.id.TfCognomsAlta);
         dni = findViewById(R.id.TfDniAlta);

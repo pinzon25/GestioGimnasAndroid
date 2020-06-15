@@ -23,52 +23,59 @@
         android:id="@+id/EtDni"
         android:layout_width="196dp"
         android:layout_height="39dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="56dp"
+        android:layout_marginEnd="15dp"
         android:ems="10"
-        android:textColor="#ffffff"
         android:inputType="textPersonName"
+        android:textColor="#ffffff"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.66"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/IvLogo" />
-
-    <TextView
-        android:id="@+id/TvDni"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Dni:"
-        android:textColor="#ffffff"
-        app:layout_constraintBottom_toBottomOf="@+id/EtDni"
-        app:layout_constraintEnd_toStartOf="@+id/EtDni"
-        app:layout_constraintHorizontal_bias="0.824"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/EtDni"
-        app:layout_constraintVertical_bias="0.583" />
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="4dp"
         android:text="Contrasenya:"
         android:textColor="#ffffff"
         app:layout_constraintBottom_toBottomOf="@+id/EtContrasenya"
         app:layout_constraintEnd_toStartOf="@+id/EtContrasenya"
+        app:layout_constraintHorizontal_bias="0.694"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/EtContrasenya" />
+        app:layout_constraintTop_toTopOf="@+id/EtContrasenya"
+        app:layout_constraintVertical_bias="0.521" />
 
     <EditText
         android:id="@+id/EtContrasenya"
         android:layout_width="196dp"
-        android:layout_height="42dp"
+        android:layout_height="39dp"
+        android:layout_marginTop="10dp"
         android:layout_marginBottom="248dp"
-        android:ems="10"
         android:textColor="#ffffff"
+        android:ems="10"
         android:inputType="textPassword"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/EtDni"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/EtDni"
         app:layout_constraintTop_toBottomOf="@+id/EtDni"
-        app:layout_constraintVertical_bias="0.248" />
+        app:layout_constraintVertical_bias="0.255" />
+
+    <TextView
+        android:id="@+id/TvDni"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="4dp"
+        android:text="Dni:"
+        android:textColor="#ffffff"
+        app:layout_constraintBottom_toBottomOf="@+id/EtDni"
+        app:layout_constraintEnd_toStartOf="@+id/EtDni"
+        app:layout_constraintHorizontal_bias="0.847"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/EtDni"
+        app:layout_constraintVertical_bias="0.65" />
 
     <Button
         android:id="@+id/BtRegistre"

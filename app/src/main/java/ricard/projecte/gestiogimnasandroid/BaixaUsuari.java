@@ -26,7 +26,7 @@ public class BaixaUsuari extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_baixa_usuari);
-
+        Modelo.amagaBarraNavegacio(this.getWindow());
         dniBaixa = findViewById(R.id.TfDniAlta);
         contrasenyaBaixa = findViewById(R.id.TfContrasenya);
         cancelarBaixa = findViewById(R.id.BtCancelar);

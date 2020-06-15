@@ -35,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
         baixa=findViewById(R.id.BtBaixaUsuari);
         registrar=findViewById(R.id.BtRegistre);
 
+        Modelo.amagaBarraNavegacio(this.getWindow());
 
         registrar.setOnClickListener(new View.OnClickListener(){
         @Override

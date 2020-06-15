@@ -52,6 +52,7 @@ public class DetailRutines extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail_rutines);
+        Modelo.amagaBarraNavegacio(this.getWindow());
         BtMostrar = findViewById(R.id.BtMostrarRutina);
         SpRutines = findViewById(R.id.SpRutinesExistents);
         exercicis = findViewById(R.id.LlistaEx);

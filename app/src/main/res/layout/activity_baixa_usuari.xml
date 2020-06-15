@@ -10,23 +10,24 @@
     <EditText
         android:id="@+id/TfDniAlta"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="96dp"
+        android:layout_height="39dp"
+        android:layout_marginEnd="85dp"
         android:ems="10"
-        android:textColor="#ffffff"
         android:inputType="textPersonName"
+        android:textColor="#ffffff"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.97"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/IvLogo"
-        app:layout_constraintVertical_bias="0.088" />
+        app:layout_constraintVertical_bias="0.218" />
 
     <TextView
         android:id="@+id/LbDni"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="64dp"
+        android:layout_marginEnd="4dp"
         android:text="Dni"
         android:textColor="#ffffff"
         app:layout_constraintBottom_toBottomOf="@+id/TfDniAlta"
@@ -40,6 +41,7 @@
         android:layout_height="134dp"
         android:layout_marginTop="100dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/bodybuilder" />
@@ -63,17 +65,19 @@
         android:text="Cancel·lar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/BtFinalitzar"
+        app:layout_constraintHorizontal_bias="0.352"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/TfContrasenya" />
+        app:layout_constraintTop_toBottomOf="@+id/TfContrasenya"
+        app:layout_constraintVertical_bias="0.342" />
 
     <EditText
         android:id="@+id/TfContrasenya"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
+        android:layout_height="39dp"
+        android:layout_marginTop="20dp"
         android:ems="10"
-        android:textColor="#ffffff"
         android:inputType="textPassword"
+        android:textColor="#ffffff"
         app:layout_constraintEnd_toEndOf="@+id/TfDniAlta"
         app:layout_constraintTop_toBottomOf="@+id/TfDniAlta" />
 
@@ -81,6 +85,7 @@
         android:id="@+id/LbContrasenyaBaixa"
         android:layout_width="84dp"
         android:layout_height="24dp"
+        android:layout_marginEnd="4dp"
         android:text="Contrasenya"
         android:textColor="#ffffff"
         app:layout_constraintBottom_toBottomOf="@+id/TfContrasenya"

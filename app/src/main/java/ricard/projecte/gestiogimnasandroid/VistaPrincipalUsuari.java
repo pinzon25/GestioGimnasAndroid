@@ -26,6 +26,7 @@ public class VistaPrincipalUsuari extends AppCompatActivity {
         veureRutines = findViewById(R.id.BtRutinesFitness);
         veureActivitats = findViewById(R.id.BtActivitats);
         benvinguda = (TextView)findViewById(R.id.LbBenvingudaClient);
+        Modelo.amagaBarraNavegacio(this.getWindow());
         cli = (Client)getIntent().getSerializableExtra("Client");
         try {
         benvinguda.setText("Benvingut: " + cli.getNom());

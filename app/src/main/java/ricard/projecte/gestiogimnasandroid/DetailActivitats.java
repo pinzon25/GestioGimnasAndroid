@@ -36,6 +36,7 @@ public class DetailActivitats extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.upordown);
+        Modelo.amagaBarraNavegacio(this.getWindow());
         dispAct= new ArrayList<>();
         insAct = new ArrayList<>();
         nomActivitat = findViewById(R.id.LbActivitat);

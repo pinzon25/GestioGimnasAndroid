@@ -35,6 +35,7 @@ public class ActivitatsUsuari extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_activitats_usuari);
+        Modelo.amagaBarraNavegacio(this.getWindow());
         inscrites  = new ArrayList<>();
         disponibles  = new ArrayList<>();
         client = (Client)getIntent().getSerializableExtra("ClientActivitats");
