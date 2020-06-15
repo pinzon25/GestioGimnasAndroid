@@ -54,10 +54,15 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    @Override //Quan tornem a la activity de Login, inicialitzem els camps.
+    public void onResume(){
+        super.onResume();
+        this.inicialitzaCamps();
+    }
+
     public void login(View view) throws Exception {
         if(EtDni.getText() != null && EtContrasenya != null){
             obteClients();
-
         }else{
             Toast.makeText(MainActivity.this, "Verifiqui el format de les dades!",
                     Toast.LENGTH_SHORT).show();
@@ -69,6 +74,7 @@ public class MainActivity extends AppCompatActivity {
         Task<QuerySnapshot> querySnapshotTask = db.collection("Clients").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
             @Override
             public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                boolean trobat = true;
                 String nom="";
                 String dni="";
                 String contrasenya="";
@@ -77,28 +83,33 @@ public class MainActivity extends AppCompatActivity {
                 contrasenya = EtContrasenya.getText().toString();
                 contencriptada = EncriptaDesencripta.getMD5(contrasenya);
 
-                List<DocumentSnapshot> documents = queryDocumentSnapshots.getDocuments();
-                for (DocumentSnapshot document : documents) {
+                if(dni.isEmpty() | contrasenya.isEmpty()){
+                    Toast.makeText(MainActivity.this, "Hi ha camps buits.",
+                            Toast.LENGTH_SHORT).show();
+                }else {
+                    List<DocumentSnapshot> documents = queryDocumentSnapshots.getDocuments();
+                    for (DocumentSnapshot document : documents) {
 
-                    if (dni.equals(document.getString("Dni")) && contencriptada.equals(document.getString("Contrasenya"))) {
-                        nom = document.getString("Nom");
+                        if (dni.equals(document.getString("Dni")) && contencriptada.equals(document.getString("Contrasenya"))) {
+                            nom = document.getString("Nom");
 
-                        Client client = new Client();
-                        client.setNom(document.getString("Nom"));
-                        client.setCognoms(document.getString("Cognoms"));
-                        client.setDni(document.getString("Dni"));
-                        client.setTelefon(document.getLong("Telefon"));
-                        client.setContrassenya(document.getString("Contrasenya"));
-                        client.setCodiPostal(document.getLong("Codi Postal").intValue());
-                        client.setPoblacio(document.getString("Poblacio"));
-                        client.setComptePagament(document.getString("Compte pagament"));
-                        client.setJornadaAcces(document.getString("Jornada acces"));
-                        client.setCuota(document.getLong("Cuota").floatValue());
-                        enviaClientNovaActivitat(client);
-
+                            Client client = new Client();
+                            client.setNom(document.getString("Nom"));
+                            client.setCognoms(document.getString("Cognoms"));
+                            client.setDni(document.getString("Dni"));
+                            client.setTelefon(document.getLong("Telefon"));
+                            client.setContrassenya(document.getString("Contrasenya"));
+                            client.setCodiPostal(document.getLong("Codi Postal").intValue());
+                            client.setPoblacio(document.getString("Poblacio"));
+                            client.setComptePagament(document.getString("Compte pagament"));
+                            client.setJornadaAcces(document.getString("Jornada acces"));
+                            client.setCuota(document.getLong("Cuota").floatValue());
+                            enviaClientNovaActivitat(client);
+                        }
                     }
                 }
             }
+
         });
     }
 

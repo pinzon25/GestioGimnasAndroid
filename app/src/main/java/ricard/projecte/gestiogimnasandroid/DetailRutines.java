@@ -266,6 +266,8 @@ public class DetailRutines extends AppCompatActivity {
                     llistaExercicisMuscul.add(ex);
                     exercicisLlista.add(ex.getNom());
                     Log.d("exerciciLlista conte",ex.getNom()); //Verifiquem el nom que ens arriba des de la activity ActivitatsUsuari.
+
+                    //Aquest apartat ens permet establir el color de font dels elements que es mostraran al ListView, en aquest cas, es el color Blanc.
                     ArrayAdapter adaptador = new ArrayAdapter(DetailRutines.this, android.R.layout.simple_list_item_1,exercicisLlista){
                         @Override
                     public View getView(int position, View convertView, ViewGroup parent){
