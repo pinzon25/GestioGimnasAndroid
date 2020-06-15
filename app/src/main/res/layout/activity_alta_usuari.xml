@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/fonspantallaaplicacio"
     tools:context=".AltaUsuari">
 
     <ScrollView
@@ -17,156 +18,180 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/fonspantallaaplicacio"
             android:orientation="vertical">
 
             <TextView
                 android:id="@+id/LBNomAlta"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Nom" />
+                android:text="Nom"
+                android:textColor="#ffffff"/>
 
             <EditText
                 android:id="@+id/TfNomAlta"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
+                android:textColor="#ffffff"
                 android:inputType="textPersonName" />
 
             <TextView
                 android:id="@+id/LbCognomsAlta"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Cognoms" />
+                android:text="Cognoms"
+                android:textColor="#ffffff"/>
 
             <EditText
                 android:id="@+id/TfCognomsAlta"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:inputType="textPersonName" />
+                android:inputType="textPersonName"
+                android:textColor="#ffffff"/>
 
             <TextView
                 android:id="@+id/LbDniAlta"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Dni" />
+                android:text="Dni"
+                android:textColor="#ffffff"/>
 
             <EditText
                 android:id="@+id/TfDniAlta"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:inputType="textPersonName" />
+                android:inputType="textPersonName"
+                android:textColor="#ffffff"/>
 
             <TextView
                 android:id="@+id/LbTelefonAlta"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Telefon" />
+                android:text="Telefon"
+                android:textColor="#ffffff"/>
 
             <EditText
                 android:id="@+id/TfTelefonAlta"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:inputType="textPersonName" />
+                android:inputType="textPersonName"
+                android:textColor="#ffffff"/>
 
             <TextView
                 android:id="@+id/LbContrasenyaAlta"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Contrasenya" />
+                android:text="Contrasenya"
+                android:textColor="#ffffff"/>
 
             <EditText
                 android:id="@+id/TfContrasenya"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:inputType="textPassword" />
+                android:inputType="textPassword"
+                android:textColor="#ffffff"/>
 
             <TextView
                 android:id="@+id/LbRepeticioAlta"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Torna a introduir la contrasenya" />
+                android:text="Torna a introduir la contrasenya"
+                android:textColor="#ffffff"/>
 
             <EditText
                 android:id="@+id/TfRepeticioAlta"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:inputType="textPassword" />
+                android:inputType="textPassword"
+                android:textColor="#ffffff"/>
 
             <TextView
                 android:id="@+id/LbCodiPostalAlta"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Codi Postal" />
+                android:text="Codi Postal"
+                android:textColor="#ffffff"/>
 
             <EditText
                 android:id="@+id/TfCodiPostalAlta"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:inputType="textPersonName" />
+                android:inputType="textPersonName"
+                android:textColor="#ffffff"/>
 
             <TextView
                 android:id="@+id/LbPoblacioAlta"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Poblacio" />
+                android:text="Poblacio"
+                android:textColor="#ffffff"/>
 
             <EditText
                 android:id="@+id/TfPoblacioAlta"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:inputType="textPersonName" />
+                android:inputType="textPersonName"
+                android:textColor="#ffffff"/>
 
             <TextView
                 android:id="@+id/LbIbanAlta"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="IBAN Electronic"
-                android:textSize="12sp" />
+                android:textSize="12sp"
+                android:textColor="#ffffff"/>
 
             <EditText
                 android:id="@+id/TfIbanAlta"
                 android:layout_width="401dp"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:inputType="textPersonName" />
+                android:inputType="textPersonName"
+                android:textColor="#ffffff"/>
 
             <TextView
                 android:id="@+id/LbJornadaAlta"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Jornada" />
+                android:text="Jornada"
+                android:textColor="#ffffff"/>
 
             <RadioButton
                 android:id="@+id/RbMatiAlta"
                 android:layout_width="match_parent"
                 android:layout_height="22dp"
-                android:text="Mati" />
+                android:text="Mati"
+                android:textColor="#ffffff"/>
 
             <RadioButton
                 android:id="@+id/RbTardaAlta"
                 android:layout_width="match_parent"
                 android:layout_height="22dp"
-                android:text="Tarda" />
+                android:text="Tarda"
+                android:textColor="#ffffff"/>
 
             <TextView
                 android:id="@+id/LbCuotaAlta"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Cuota" />
+                android:text="Cuota"
+                android:textColor="#ffffff"/>
 
             <EditText
                 android:id="@+id/TfCuotaAlta"
                 android:layout_width="398dp"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:inputType="textPersonName" />
+                android:inputType="textPersonName"
+                android:textColor="#ffffff"/>
 
         </LinearLayout>
     </ScrollView>
@@ -184,12 +209,14 @@
             android:id="@+id/BtAcceptarAlta"
             android:layout_width="match_parent"
             android:layout_height="34dp"
+            android:background="@drawable/gradientbuton"
             android:text="Acceptar" />
 
         <Button
             android:id="@+id/BtCancelarAlta"
             android:layout_width="match_parent"
             android:layout_height="33dp"
+            android:background="@drawable/gradientbuton"
             android:onClick="sortir"
             android:text="Cancel·lar"
             android:textSize="12sp" />

@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/fonspantallaaplicacio">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -30,6 +31,7 @@
                 android:id="@+id/LbNomMuscul"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="#ffffff"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/LogoIv" />
@@ -50,7 +52,8 @@
         <ListView
             android:id="@+id/LlistaEx"
             android:layout_width="match_parent"
-            android:layout_height="342dp" />
+            android:layout_height="342dp"
+            android:textColor="#ffffff"/>
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -75,6 +78,7 @@
                         android:layout_height="32dp"
                         android:layout_marginTop="2dp"
                         android:ems="10"
+                        android:textColor="#ffffff"
                         android:inputType="textPersonName"
                         android:textSize="12sp"
                         app:layout_constraintBottom_toTopOf="@+id/BtAfegirExercici"
@@ -90,6 +94,7 @@
                         android:layout_height="22dp"
                         android:contextClickable="false"
                         android:gravity="left"
+                        android:textColor="#ffffff"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.424"
@@ -101,6 +106,7 @@
                         android:id="@+id/BtCancelarRutina"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:background="@drawable/gradientbuton"
                         android:onClick="sortir"
                         android:text="Cancel·lar"
                         app:layout_constraintBottom_toBottomOf="@+id/BtAfegirExercici"
@@ -112,6 +118,7 @@
                         android:id="@+id/BtAfegirExercici"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:background="@drawable/gradientbuton"
                         android:onClick="guardaExerciciRutina"
                         android:text="Afegir"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -125,6 +132,7 @@
                         android:id="@+id/BtEsborraExercici"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:background="@drawable/gradientbuton"
                         android:onClick="esborraExerciciRutina"
                         android:text="Esborra"
                         app:layout_constraintBottom_toBottomOf="@+id/BtAfegirExercici"
@@ -139,6 +147,7 @@
                         android:layout_width="117dp"
                         android:layout_height="36dp"
                         android:layout_marginBottom="24dp"
+                        android:background="@drawable/gradientbuton"
                         android:onClick="creaNovaRutina"
                         android:text="Crear"
                         app:layout_constraintBottom_toBottomOf="@+id/TfNomRutina"
@@ -153,6 +162,7 @@
                         android:layout_height="20dp"
                         android:text="Rutines existents"
                         android:textSize="12sp"
+                        android:textColor="#ffffff"
                         app:layout_constraintBottom_toBottomOf="@+id/SpRutinesExistents"
                         app:layout_constraintEnd_toStartOf="@+id/SpRutinesExistents"
                         app:layout_constraintStart_toStartOf="parent"
@@ -163,6 +173,7 @@
                         android:layout_width="38dp"
                         android:layout_height="16dp"
                         android:text="Nom:"
+                        android:textColor="#ffffff"
                         app:layout_constraintBottom_toBottomOf="@+id/TfNomRutina"
                         app:layout_constraintEnd_toStartOf="@+id/TfNomRutina"
                         app:layout_constraintStart_toStartOf="parent"
@@ -172,6 +183,7 @@
                         android:id="@+id/BtEsborrarRutina"
                         android:layout_width="115dp"
                         android:layout_height="35dp"
+                        android:background="@drawable/gradientbuton"
                         android:onClick="esborrarRutina"
                         android:text="Esborrar"
                         app:layout_constraintBottom_toTopOf="@+id/SpRutinesExistents"
@@ -185,6 +197,7 @@
                         android:id="@+id/BtMostrarRutina"
                         android:layout_width="116dp"
                         android:layout_height="35dp"
+                        android:background="@drawable/gradientbuton"
                         android:longClickable="true"
                         android:text="Mostrar"
                         app:layout_constraintBottom_toTopOf="@+id/SpRutinesExistents"

@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/fonspantallaaplicacio"
     tools:context=".VistaPrincipalUsuari">
 
     <ImageView
@@ -22,6 +23,7 @@
         android:layout_width="107dp"
         android:layout_height="35dp"
         android:layout_marginTop="40dp"
+        android:textColor="#ffffff"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
@@ -31,6 +33,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
+        android:background="@drawable/gradientbuton"
         android:onClick="ModificaDadesClient"
         android:text="Modificar dades"
         app:layout_constraintEnd_toEndOf="parent"
@@ -42,6 +45,7 @@
         android:id="@+id/BtRutinesFitness"
         android:layout_width="147dp"
         android:layout_height="54dp"
+        android:background="@drawable/gradientbuton"
         android:onClick="RutinesClient"
         android:text="Rutines Fitness"
         app:layout_constraintEnd_toEndOf="parent"
@@ -52,6 +56,7 @@
         android:id="@+id/BtActivitats"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@drawable/gradientbuton"
         android:onClick="ActivitatsClient"
         android:text="Activitats"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -64,6 +69,7 @@
         android:id="@+id/BtSortir"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@drawable/gradientbuton"
         android:onClick="sortir"
         android:text="Sortir"
         app:layout_constraintEnd_toEndOf="parent"

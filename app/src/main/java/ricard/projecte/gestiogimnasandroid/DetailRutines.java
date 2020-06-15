@@ -53,6 +53,7 @@ public class DetailRutines extends AppCompatActivity {
         BtMostrar = findViewById(R.id.BtMostrarRutina);
         SpRutines = findViewById(R.id.SpRutinesExistents);
         exercicis = findViewById(R.id.LlistaEx);
+
         nomMuscul = findViewById(R.id.LbNomMuscul);
         Nrutina = findViewById(R.id.TfNomRutina);
         CancelarRutina = findViewById(R.id.BtCancelarRutines);
@@ -175,6 +176,7 @@ public class DetailRutines extends AppCompatActivity {
                     llistaExercicisRutina.add(ex);
                     exercicisLlista.add(ex.getNom());
                     ArrayAdapter adaptador = new ArrayAdapter(DetailRutines.this, android.R.layout.simple_list_item_1,exercicisLlista);
+
                     exercicis.setAdapter(adaptador);
                 }
             }
@@ -262,6 +264,7 @@ public class DetailRutines extends AppCompatActivity {
                     exercicisLlista.add(ex.getNom());
                     Log.d("exerciciLlista conte",ex.getNom()); //Verifiquem el nom que ens arriba des de la activity ActivitatsUsuari.
                     ArrayAdapter adaptador = new ArrayAdapter(DetailRutines.this, android.R.layout.simple_list_item_1,exercicisLlista);
+
                     exercicis.setAdapter(adaptador);
                 }
             }
