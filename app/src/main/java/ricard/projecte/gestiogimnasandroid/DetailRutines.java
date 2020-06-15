@@ -266,18 +266,12 @@ public class DetailRutines extends AppCompatActivity {
                     llistaExercicisMuscul.add(ex);
                     exercicisLlista.add(ex.getNom());
                     Log.d("exerciciLlista conte",ex.getNom()); //Verifiquem el nom que ens arriba des de la activity ActivitatsUsuari.
-                    ArrayAdapter adaptador = new ArrayAdapter(DetailRutines.this, android.R.layout.simple_list_item_1,exercicisLlista){@Override
+                    ArrayAdapter adaptador = new ArrayAdapter(DetailRutines.this, android.R.layout.simple_list_item_1,exercicisLlista){
+                        @Override
                     public View getView(int position, View convertView, ViewGroup parent){
-                        // Get the Item from ListView
                         View view = super.getView(position, convertView, parent);
-
-                        // Initialize a TextView for ListView each Item
                         TextView tv = (TextView) view.findViewById(android.R.id.text1);
-
-                        // Set the text color of TextView (ListView Item)
                         tv.setTextColor(Color.WHITE);
-
-                        // Generate ListView Item using TextView
                         return view;
                     }};
 
